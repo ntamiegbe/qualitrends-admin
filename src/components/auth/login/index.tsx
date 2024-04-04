@@ -4,9 +4,12 @@ import Button from "@/components/global/Button";
 import Checkbox from "@/components/global/Checkbox";
 import Input from "@/components/global/Input";
 import Icons from "@/components/icons";
-import { FormProvider, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 const Login = () => {
+	const router = useRouter();
+
 	const methods = useForm({
 		mode: "onChange",
 		defaultValues: {
@@ -19,6 +22,12 @@ const Login = () => {
 		formState: { errors, isValid },
 		watch,
 	} = methods;
+
+	const onSubmit: SubmitHandler<any> = async (data) => {
+		try {
+			router.push("/dashboard");
+		} catch (error: any) {}
+	};
 
 	return (
 		<div className='w-full bg-white min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-y-5'>
@@ -34,7 +43,7 @@ const Login = () => {
 					</div>
 
 					<FormProvider {...methods}>
-						<form>
+						<form onSubmit={methods.handleSubmit(onSubmit)}>
 							<div className='space-y-4 lg:space-y-6'>
 								<Input
 									label='Email Address'
@@ -69,7 +78,7 @@ const Login = () => {
 								</button>
 							</div>
 							<div className='max-w-[240px] my-11 lg:mt-20 mx-auto'>
-								<Button disabled={!isValid} className='w-full'>
+								<Button type='submit' disabled={!isValid} className='w-full'>
 									Login
 								</Button>
 							</div>
