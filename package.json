@@ -15,7 +15,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.2",
     "react-spinners": "^0.13.8",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
