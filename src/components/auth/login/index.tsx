@@ -4,7 +4,6 @@ import Button from "@/components/global/Button";
 import Checkbox from "@/components/global/Checkbox";
 import Input from "@/components/global/Input";
 import Icons from "@/components/icons";
-import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
 
 const Login = () => {
