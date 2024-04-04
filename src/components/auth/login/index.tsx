@@ -4,10 +4,12 @@ import Button from "@/components/global/Button";
 import Checkbox from "@/components/global/Checkbox";
 import Input from "@/components/global/Input";
 import Icons from "@/components/icons";
-import Link from "next/link";
-import { FormProvider, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 const Login = () => {
+	const router = useRouter();
+
 	const methods = useForm({
 		mode: "onChange",
 		defaultValues: {
@@ -21,18 +23,28 @@ const Login = () => {
 		watch,
 	} = methods;
 
+	const onSubmit: SubmitHandler<any> = async (data) => {
+		try {
+			router.push("/dashboard");
+		} catch (error: any) {}
+	};
+
 	return (
-		<div className='w-full bg-white min-h-screen grid grid-cols-3'>
-			<main className='col-span-1 flex items-center justify-center'>
-				<div className='space-y-10 w-full max-w-[332px] px-4'>
-					<div className='space-y-2 text-center'>
-						<h1 className='text-3xl font-semibold'>Welcome Back!</h1>
-						<p>Log in with your details below</p>
+		<div className='w-full bg-white min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-y-5'>
+			<main className='col-span-1 order-2 lg:order-1 flex items-center justify-center'>
+				<div className='space-y-6 lg:space-y-10 w-full max-lg:container lg:max-w-[332px] lg:px-4'>
+					<div className='space-y-1 lg:space-y-2 text-center'>
+						<h1 className='text-2xl lg:text-3xl font-semibold'>
+							Welcome Back!
+						</h1>
+						<p className='text-sm lg:text-base'>
+							Log in with your details below
+						</p>
 					</div>
 
 					<FormProvider {...methods}>
-						<form>
-							<div className='space-y-6'>
+						<form onSubmit={methods.handleSubmit(onSubmit)}>
+							<div className='space-y-4 lg:space-y-6'>
 								<Input
 									label='Email Address'
 									name='email'
@@ -57,6 +69,7 @@ const Login = () => {
 							<div className='mt-6 flex items-center space-x-4 justify-between'>
 								<Checkbox
 									name='rememberMe'
+									id='rememberMe'
 									label='Keep me logged in'
 									labelClassName='text-sm'
 								/>
@@ -64,8 +77,8 @@ const Login = () => {
 									Forgot Password?
 								</button>
 							</div>
-							<div className='max-w-[240px] mt-20 mx-auto'>
-								<Button disabled={!isValid} className='w-full'>
+							<div className='max-w-[240px] my-11 lg:mt-20 mx-auto'>
+								<Button type='submit' disabled={!isValid} className='w-full'>
 									Login
 								</Button>
 							</div>
@@ -73,12 +86,12 @@ const Login = () => {
 					</FormProvider>
 				</div>
 			</main>
-			<aside className='col-span-2 py-10 px-16'>
-				<div className='relative h-full'>
+			<aside className='col-span-2 lg:order-2 py-1.5 lg:py-10 max-lg:container lg:px-16'>
+				<div className='relative h-[366px] lg:h-full'>
 					<div className='absolute w-full h-full border-[5px] border-primary'></div>
 					<div className='relative w-full h-full'>
-						<div className="h-[calc(100%-128px)] w-full flex justify-center items-center absolute  top-1/2 transform -translate-y-1/2 -left-16 bg-[url('/assets/images/auth-bg.jpg')] bg-cover bg-no-repeat bg-center">
-							<Icons.Logo />
+						<div className="h-[calc(100%-40px)] lg:h-[calc(100%-128px)] w-full flex justify-center items-center absolute top-1/2 transform -translate-y-1/2 -left-5 lg:-left-16 bg-[url('/assets/images/auth-bg.jpg')] bg-cover bg-no-repeat bg-center">
+							<Icons.Logo className='w-[99px] h-[74px] lg:w-[300px] lg:h-[225px]' />
 						</div>
 					</div>
 				</div>
