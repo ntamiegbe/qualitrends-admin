@@ -3,10 +3,12 @@
 import Icons from "@/components/icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Navigation = () => {
 	const pathname = usePathname();
+
+	const router = useRouter();
 
 	const links = [
 		{
@@ -95,35 +97,55 @@ const Navigation = () => {
 			<Link href='/dashboard' className='flex justify-center items-center pb-6'>
 				<Icons.Logo className='w-[99px] h-[74px]' />
 			</Link>
-			<ul className='px-2.5 mt-8'>
-				{links.map((link) => {
-					return (
-						<li>
-							<Link
-								href={link.to}
-								className={cn(
-									"block transition-all rounded-lg w-full text-white px-4 py-3",
-									{
-										"bg-white text-primary font-semibold": pathname.includes(
-											link.to
-										),
-									}
-								)}>
-								<div className='flex items-center space-x-6'>
-									<div
-										className={cn("fill-white transition-all", {
-											"fill-primary": pathname.includes(link.to),
-										})}>
-										{link.icon}
+			<div className='flex flex-col h-[calc(100%-198px)] justify-between'>
+				<ul className='px-2.5 space-y-2 mt-8'>
+					{links.map((link) => {
+						return (
+							<li>
+								<Link
+									href={link.to}
+									className={cn(
+										"block transition-all rounded-lg w-full text-white px-4 py-3",
+										{
+											"bg-white text-primary font-semibold": pathname.includes(
+												link.to
+											),
+										}
+									)}>
+									<div className='flex items-center space-x-6'>
+										<div
+											className={cn("fill-white transition-all", {
+												"fill-primary": pathname.includes(link.to),
+											})}>
+											{link.icon}
+										</div>
+										<div className=''>{link.name}</div>
 									</div>
-									<div className=''>{link.name}</div>
-								</div>
-								<div></div>
-							</Link>
-						</li>
-					);
-				})}
-			</ul>
+									<div></div>
+								</Link>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+
+			<div className='px-2.5'>
+				<button
+					onClick={() => {
+						router.push("/auth/login");
+					}}
+					className={cn(
+						"block transition-all rounded-lg w-full text-white px-4 py-3"
+					)}>
+					<div className='flex items-center space-x-6'>
+						<div className={cn("fill-white transition-all", {})}>
+							<Icons.LogoutIcon className='fill-inherit' />
+						</div>
+						<div className=''>Logout</div>
+					</div>
+					<div></div>
+				</button>
+			</div>
 		</nav>
 	);
 };

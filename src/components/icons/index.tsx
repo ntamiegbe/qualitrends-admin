@@ -13,6 +13,7 @@ import FinancesIcon from "/public/assets/icons/finances.svg";
 import LeaseIcon from "/public/assets/icons/lease.svg";
 import ReportsIcon from "/public/assets/icons/reports.svg";
 import SettingsIcon from "/public/assets/icons/settings.svg";
+import LogoutIcon from "/public/assets/icons/logout.svg";
 
 const Icons = {
 	Logo,
@@ -28,6 +29,7 @@ const Icons = {
 	LeaseIcon,
 	ReportsIcon,
 	SettingsIcon,
+	LogoutIcon,
 };
 
 export default Icons;
