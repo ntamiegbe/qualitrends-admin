@@ -14,6 +14,9 @@ import LeaseIcon from "/public/assets/icons/lease.svg";
 import ReportsIcon from "/public/assets/icons/reports.svg";
 import SettingsIcon from "/public/assets/icons/settings.svg";
 import LogoutIcon from "/public/assets/icons/logout.svg";
+import SearchIcon from "/public/assets/icons/search.svg";
+import PlusIcon from "/public/assets/icons/plus.svg";
+import NotificationsIcon from "/public/assets/icons/notifications.svg";
 
 const Icons = {
 	Logo,
@@ -30,6 +33,9 @@ const Icons = {
 	ReportsIcon,
 	SettingsIcon,
 	LogoutIcon,
+	SearchIcon,
+	PlusIcon,
+	NotificationsIcon,
 };
 
 export default Icons;

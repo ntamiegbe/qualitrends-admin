@@ -101,7 +101,7 @@ const Navigation = () => {
 				<ul className='px-2.5 space-y-2 mt-8'>
 					{links.map((link) => {
 						return (
-							<li>
+							<li key={link.name}>
 								<Link
 									href={link.to}
 									className={cn(

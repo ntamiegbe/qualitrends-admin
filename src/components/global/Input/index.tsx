@@ -261,9 +261,11 @@ const Input = ({
 
 	return (
 		<label htmlFor={id} className='flex flex-col relative'>
-			<span className='w-full flex items-center space-x-2 text-sm text-left leading-5 mb-2'>
-				<span className='capitalize text-black-900'>{label}</span>
-			</span>
+			{label && (
+				<span className='w-full flex items-center space-x-2 text-sm text-left leading-5 mb-2'>
+					<span className='capitalize text-black-900'>{label}</span>
+				</span>
+			)}
 			<input
 				onFocus={() => setPasswordIsDirty(true)}
 				{...register}
@@ -298,13 +300,21 @@ const Input = ({
 			)}
 
 			{right && (
-				<div className='absolute flex items-center justify-center h-10 right-[2px] top-7'>
+				<div
+					className={cn(
+						"absolute flex items-center justify-center h-10 right-[2px] top-7",
+						{ "top-0": !label }
+					)}>
 					{right}
 				</div>
 			)}
 
 			{left && (
-				<div className='absolute flex items-center justify-center h-10 left-[2px] top-7'>
+				<div
+					className={cn(
+						"absolute flex items-center justify-center h-10 left-[2px] top-7",
+						{ "top-0": !label }
+					)}>
 					{left}
 				</div>
 			)}
