@@ -10,9 +10,11 @@ const Layout = ({ children }: LayoutProps) => {
 	return (
 		<section className='flex h-screen'>
 			<Navigation />
-			<div className='ml-[218px] w-[calc(100%-218px)]'>
-				{/* <Header /> */}
-				<main className='bg-[#F7F6F6] w-full min-h-[calc(100vh-68px)] p-7 mt-[68px]'>
+			<div className='ml-[278px] w-[calc(100%-278px)]'>
+				<header className='h-[72px] px-8 py-4 fixed top-0 right-0 w-[calc(100%-278px)] shadow-sm'>
+					hello
+				</header>
+				<main className='bg-white w-full min-h-[calc(100vh-72px)] p-7 mt-[72px]'>
 					{children}
 				</main>
 			</div>
