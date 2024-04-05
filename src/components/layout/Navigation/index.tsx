@@ -17,7 +17,7 @@ const Navigation = () => {
 		{
 			name: "Projects",
 			to: "/projects",
-			icon: <Icons.DashboardIcon className='fill-inherit' />,
+			icon: <Icons.ProjectsIcon className='fill-inherit' />,
 			children: [
 				{
 					name: "All Projects",
@@ -36,7 +36,7 @@ const Navigation = () => {
 		{
 			name: "Warehouse",
 			to: "/warehouse",
-			icon: <Icons.DashboardIcon className='fill-inherit' />,
+			icon: <Icons.WarehouseIcon className='fill-inherit' />,
 			children: [
 				{
 					name: "Product List",
@@ -51,12 +51,12 @@ const Navigation = () => {
 		{
 			name: "Requests",
 			to: "/requests",
-			icon: <Icons.DashboardIcon className='fill-inherit' />,
+			icon: <Icons.RequestsIcon className='fill-inherit' />,
 		},
 		{
 			name: "People",
 			to: "/people",
-			icon: <Icons.DashboardIcon className='fill-inherit' />,
+			icon: <Icons.PeopleIcon className='fill-inherit' />,
 			children: [
 				{
 					name: "Product List",
@@ -71,22 +71,22 @@ const Navigation = () => {
 		{
 			name: "Finances",
 			to: "/finances",
-			icon: <Icons.DashboardIcon className='fill-inherit' />,
+			icon: <Icons.FinancesIcon className='fill-inherit' />,
 		},
 		{
 			name: "Lease & Sales",
 			to: "/lease-and-sales",
-			icon: <Icons.DashboardIcon className='fill-inherit' />,
+			icon: <Icons.LeaseIcon className='fill-inherit' />,
 		},
 		{
 			name: "Reports",
 			to: "/reports",
-			icon: <Icons.DashboardIcon className='fill-inherit' />,
+			icon: <Icons.ReportsIcon className='fill-inherit' />,
 		},
 		{
 			name: "Settings",
 			to: "/settings",
-			icon: <Icons.DashboardIcon className='fill-inherit' />,
+			icon: <Icons.SettingsIcon className='fill-inherit' />,
 		},
 	];
 
