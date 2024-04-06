@@ -17,11 +17,14 @@ const Header = () => {
 	} = methods;
 
 	return (
-		<header className='px-8 py-4 fixed top-0 right-0 w-[calc(100%-278px)] shadow-sm'>
-			<div className='flex items-center justify-between space-x-5'>
+		<header className='max-lg:container lg:px-8 py-4 w-full fixed top-0 right-0 lg:w-[calc(100%-278px)] shadow-sm'>
+			<div className='flex items-center justify-between space-x-8 lg:space-x-6'>
+				<div className='lg:hidden'>
+					<Icons.MenuIcon />
+				</div>
 				<FormProvider {...methods}>
-					<form>
-						<div className='w-[300px]'>
+					<form className='max-lg:max-w-[300px] lg:!ml-0 flex-1'>
+						<div className='lg:w-[300px]'>
 							<Input
 								name='search'
 								placeholder='Search'
@@ -37,20 +40,20 @@ const Header = () => {
 					</form>
 				</FormProvider>
 
-				<div className='flex items-center space-x-6'>
-					<button className='flex justify-center items-center p-4 rounded border border-primary'>
+				<div className='flex items-center space-x-4 lg:space-x-6'>
+					<button className='hidden lg:flex justify-center items-center p-4 rounded border border-primary'>
 						<Icons.PlusIcon />
 					</button>
-					<div className='w-[1px] h-10 bg-[#CBCFD3]' />
-					<button className='flex justify-center items-center '>
+					<div className='hidden lg:block w-[1px] h-10 bg-[#CBCFD3]' />
+					<button className='flex max-lg:!ml-0 justify-center items-center '>
 						<Icons.NotificationsIcon />
 					</button>
-					<div className='w-[1px] h-10 bg-[#CBCFD3]' />
+					<div className='hidden lg:block w-[1px] h-10 bg-[#CBCFD3]' />
 					<button className='flex items-center space-x-4'>
 						<div className='size-8 rounded-full border border-[#FFE2D2] bg-primary flex items-center justify-center text-xs text-white font-bold'>
 							DD
 						</div>
-						<div className='text-black-900 text-left'>
+						<div className='hidden lg:block text-black-900 text-left'>
 							<div className='font-medium'>Daniel Donald</div>
 							<div className='text-xs'>Super Admin</div>
 						</div>

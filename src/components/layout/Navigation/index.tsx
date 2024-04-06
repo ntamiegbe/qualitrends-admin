@@ -98,7 +98,7 @@ const Navigation = () => {
 	];
 
 	return (
-		<nav className='w-[278px] h-screen fixed bg-[#173E62] pt-5'>
+		<nav className='hidden lg:block w-[278px] h-screen fixed bg-[#173E62] pt-5'>
 			<Link href='/dashboard' className='flex justify-center items-center pb-6'>
 				<Icons.Logo className='w-[99px] h-[74px]' />
 			</Link>
