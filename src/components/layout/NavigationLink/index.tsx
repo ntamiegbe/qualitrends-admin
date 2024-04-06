@@ -27,7 +27,7 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 
 	if (link.children)
 		return (
-			<li className='w-full' key={link.name}>
+			<li className='hidden lg:block w-full'>
 				<button
 					onClick={() => setExpanded(!expanded)}
 					className={cn(
@@ -84,27 +84,46 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 			</li>
 		);
 	return (
-		<li key={link.name}>
-			<Link
-				href={link.to}
-				className={cn(
-					"block transition-all rounded-lg w-full text-white px-4 py-3",
-					{
-						"bg-white text-primary font-semibold": pathname.includes(link.to),
-					}
-				)}>
-				<div className='flex items-center space-x-6'>
-					<div
-						className={cn("fill-white transition-all", {
-							"fill-primary": pathname.includes(link.to),
-						})}>
-						{link.icon}
+		<>
+			<li className='hidden lg:block'>
+				<Link
+					href={link.to}
+					className={cn(
+						"block transition-all rounded-lg w-full text-white px-4 py-3",
+						{
+							"bg-white text-primary font-semibold": pathname.includes(link.to),
+						}
+					)}>
+					<div className='flex items-center space-x-6'>
+						<div
+							className={cn("fill-white transition-all", {
+								"fill-primary": pathname.includes(link.to),
+							})}>
+							{link.icon}
+						</div>
+						<div className=''>{link.name}</div>
 					</div>
-					<div className=''>{link.name}</div>
-				</div>
-				<div></div>
-			</Link>
-		</li>
+				</Link>
+			</li>
+			<li className='lg:hidden' key={link.name}>
+				<Link href={link.to}>
+					<div className='flex flex-col px-4 sm:px-14 items-center space-y-1'>
+						<div
+							className={cn("fill-[#ffffff80] transition-all", {
+								"fill-white": pathname.includes(link.to),
+							})}>
+							{link.icon}
+						</div>
+						<div
+							className={cn("text-[10px] text-[#ffffff80]", {
+								"text-white": pathname.includes(link.to),
+							})}>
+							{link.name}
+						</div>
+					</div>
+				</Link>
+			</li>
+		</>
 	);
 };
 
