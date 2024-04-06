@@ -47,6 +47,10 @@ const config: Config = {
 					"2xl": "6rem",
 				},
 			},
+			transitionProperty: {
+				height: "height",
+				"max-height": "max-height",
+			},
 		},
 	},
 	plugins: [],

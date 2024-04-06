@@ -50,7 +50,7 @@ const Header = () => {
 						<div className='size-8 rounded-full border border-[#FFE2D2] bg-primary flex items-center justify-center text-xs text-white font-bold'>
 							DD
 						</div>
-						<div className='text-black-900'>
+						<div className='text-black-900 text-left'>
 							<div className='font-medium'>Daniel Donald</div>
 							<div className='text-xs'>Super Admin</div>
 						</div>

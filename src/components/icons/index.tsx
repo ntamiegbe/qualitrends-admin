@@ -17,6 +17,7 @@ import LogoutIcon from "/public/assets/icons/logout.svg";
 import SearchIcon from "/public/assets/icons/search.svg";
 import PlusIcon from "/public/assets/icons/plus.svg";
 import NotificationsIcon from "/public/assets/icons/notifications.svg";
+import CaretIcon from "/public/assets/icons/caret.svg";
 
 const Icons = {
 	Logo,
@@ -36,6 +37,7 @@ const Icons = {
 	SearchIcon,
 	PlusIcon,
 	NotificationsIcon,
+	CaretIcon,
 };
 
 export default Icons;

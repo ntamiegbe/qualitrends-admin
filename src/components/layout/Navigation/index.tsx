@@ -4,6 +4,7 @@ import Icons from "@/components/icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import NavigationLink from "../NavigationLink";
 
 const Navigation = () => {
 	const pathname = usePathname();
@@ -23,15 +24,15 @@ const Navigation = () => {
 			children: [
 				{
 					name: "All Projects",
-					to: "/projects",
+					to: "/projects/all-projects",
 				},
 				{
 					name: "Ongoing Projects",
-					to: "/ongoing-projects",
+					to: "/projects/ongoing-projects",
 				},
 				{
 					name: "Completed Project",
-					to: "/completed",
+					to: "/projects/completed-projects",
 				},
 			],
 		},
@@ -42,11 +43,11 @@ const Navigation = () => {
 			children: [
 				{
 					name: "Product List",
-					to: "/projects",
+					to: "/warehouse/product-list",
 				},
 				{
 					name: "Warehouse Activities",
-					to: "/ongoing-projects",
+					to: "/warehouse/warehouse-activities",
 				},
 			],
 		},
@@ -61,12 +62,16 @@ const Navigation = () => {
 			icon: <Icons.PeopleIcon className='fill-inherit' />,
 			children: [
 				{
-					name: "Product List",
-					to: "/product-list",
+					name: "Customers",
+					to: "/people/customers",
 				},
 				{
-					name: "Warehouse Activities",
-					to: "/warehouse-activities",
+					name: "Suppliers",
+					to: "/people/suppliers",
+				},
+				{
+					name: "Staff",
+					to: "/people/staff",
 				},
 			],
 		},
@@ -100,31 +105,7 @@ const Navigation = () => {
 			<div className='flex flex-col h-[calc(100%-198px)] justify-between'>
 				<ul className='px-2.5 space-y-2 mt-8'>
 					{links.map((link) => {
-						return (
-							<li key={link.name}>
-								<Link
-									href={link.to}
-									className={cn(
-										"block transition-all rounded-lg w-full text-white px-4 py-3",
-										{
-											"bg-white text-primary font-semibold": pathname.includes(
-												link.to
-											),
-										}
-									)}>
-									<div className='flex items-center space-x-6'>
-										<div
-											className={cn("fill-white transition-all", {
-												"fill-primary": pathname.includes(link.to),
-											})}>
-											{link.icon}
-										</div>
-										<div className=''>{link.name}</div>
-									</div>
-									<div></div>
-								</Link>
-							</li>
-						);
+						return <NavigationLink key={link.name} link={link} />;
 					})}
 				</ul>
 			</div>
