@@ -7,7 +7,10 @@ const roboto = Roboto({
 	subsets: ["latin"],
 	weight: ["100", "300", "400", "500", "700"],
 	variable: "--roboto",
+	display: "swap",
+	style: ["normal", "italic"],
 });
+
 const openSans = Open_Sans({ subsets: ["latin"], variable: "--open-sans" });
 
 export const metadata: Metadata = {
@@ -22,9 +25,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={cn(roboto.className, openSans.className)}>
-				{children}
-			</body>
+			<body className={cn(openSans.variable, roboto.variable)}>{children}</body>
 		</html>
 	);
 }

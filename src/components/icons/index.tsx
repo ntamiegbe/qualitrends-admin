@@ -19,6 +19,10 @@ import PlusIcon from "/public/assets/icons/plus.svg";
 import NotificationsIcon from "/public/assets/icons/notifications.svg";
 import CaretIcon from "/public/assets/icons/caret.svg";
 import MenuIcon from "/public/assets/icons/menu.svg";
+import IncomeIcon from "/public/assets/icons/income.svg";
+import ExpensesIcon from "/public/assets/icons/expenses.svg";
+import ProjectStatsIcon from "/public/assets/icons/projectsStats.svg";
+import CustomersIcon from "/public/assets/icons/customers.svg";
 
 const Icons = {
 	Logo,
@@ -40,6 +44,10 @@ const Icons = {
 	NotificationsIcon,
 	CaretIcon,
 	MenuIcon,
+	IncomeIcon,
+	ExpensesIcon,
+	ProjectStatsIcon,
+	CustomersIcon,
 };
 
 export default Icons;
