@@ -4,6 +4,7 @@ import CreateCard from "../CreateCard";
 import DashboardStats from "../DashboardStats";
 import IncomeAndExpensesChart from "../IncomeAndExpensesChart";
 import Projects from "../Projects";
+import RecentTransactions from "../RecentTransactions";
 import SideStats from "../SideStats";
 
 const Dashboard = () => {
@@ -17,6 +18,7 @@ const Dashboard = () => {
 			</div>
 			<div className='col-span-2 space-y-6'>
 				<IncomeAndExpensesChart />
+				<RecentTransactions />
 			</div>
 			<div className='col-span-1 space-y-6'>
 				<Projects />
