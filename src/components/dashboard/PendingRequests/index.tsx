@@ -38,7 +38,7 @@ const PendingRequests = () => {
 				data={data!}
 				loaderLength={10}
 				tableHeadData={tableHeadData}
-				className='xl:min-h-[160px]'
+				className='xl:min-h-[323px]'
 				rowComponent={(transaction) => {
 					const { id, type } = transaction;
 					return (
