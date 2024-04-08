@@ -23,6 +23,7 @@ import IncomeIcon from "/public/assets/icons/income.svg";
 import ExpensesIcon from "/public/assets/icons/expenses.svg";
 import ProjectStatsIcon from "/public/assets/icons/projectsStats.svg";
 import CustomersIcon from "/public/assets/icons/customers.svg";
+import FilterIcon from "/public/assets/icons/filter.svg";
 
 const Icons = {
 	Logo,
@@ -48,6 +49,7 @@ const Icons = {
 	ExpensesIcon,
 	ProjectStatsIcon,
 	CustomersIcon,
+	FilterIcon,
 };
 
 export default Icons;

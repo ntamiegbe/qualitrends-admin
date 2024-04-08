@@ -6,8 +6,7 @@ const Header = () => {
 	const methods = useForm({
 		mode: "onChange",
 		defaultValues: {
-			email: "",
-			password: "",
+			search: "",
 		},
 	});
 

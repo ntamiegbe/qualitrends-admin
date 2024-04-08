@@ -1,5 +1,5 @@
 const AllProjectsPage = () => {
-	return <div>AllProjectsPage</div>;
+	return <div></div>;
 };
 
 export default AllProjectsPage;
