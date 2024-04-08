@@ -1,5 +1,5 @@
 import Table from "@/components/global/Table";
-import { cn, formatAmount } from "@/lib/utils";
+import { formatAmount } from "@/lib/utils";
 
 const RecentTransactions = () => {
 	const data = [
@@ -47,6 +47,13 @@ const RecentTransactions = () => {
 		},
 		{
 			id: "100",
+			type: "Income",
+			source: "General Account",
+			amount: 0,
+			date: "12 Jul 2023",
+		},
+		{
+			id: "100",
 			type: "Expenses",
 			source: "Project Balance",
 			amount: 0,
@@ -78,13 +85,13 @@ const RecentTransactions = () => {
 	];
 
 	return (
-		<section className='col-span-6'>
+		<section>
 			<Table
 				title='Recent Transactions'
 				data={data!}
 				loaderLength={10}
 				tableHeadData={tableHeadData}
-				rowComponent={(transaction, index, length) => {
+				rowComponent={(transaction) => {
 					const { id, type, source, amount, date } = transaction;
 					return (
 						<tr

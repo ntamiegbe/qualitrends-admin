@@ -41,13 +41,10 @@ const Table = <T,>({
 	isFetching = false,
 	tableHeadData = [],
 	rowComponent,
-	mobileComponent,
 	height,
 	loaderLength = 5,
 	emptyStateMessage = "All your data will show here",
-	mobileTitleStickyOffset = "top-[70px]",
 	tableHeaderLeftComponent,
-	showMobileTitleOnly = false,
 	tableMobileFooter,
 	footerComponent,
 	className,
@@ -64,7 +61,7 @@ const Table = <T,>({
 				className={cn(
 					"h-fit flex flex-col xl:flex-row xl:items-center justify-between"
 				)}>
-				<h3 className={cn("text-base lg:text-xl font-bold", {})}>{title}</h3>
+				<h3 className='text-base lg:text-xl font-bold px-3'>{title}</h3>
 				<div className='hidden xl:block'>
 					{tableHeaderLeftComponent && tableHeaderLeftComponent()}
 				</div>
@@ -86,7 +83,7 @@ const Table = <T,>({
 				<>
 					{data?.length > 0 ? (
 						<>
-							<div className='mt-1 lg:mt-4'>
+							<div className='mt-1'>
 								<div className='overflow-x-auto sm:-mx-6 lg:-mx-8'>
 									<div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'>
 										<div

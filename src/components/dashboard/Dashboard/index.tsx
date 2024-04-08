@@ -3,6 +3,7 @@
 import CreateCard from "../CreateCard";
 import DashboardStats from "../DashboardStats";
 import IncomeAndExpensesChart from "../IncomeAndExpensesChart";
+import PendingRequests from "../PendingRequests";
 import Projects from "../Projects";
 import RecentTransactions from "../RecentTransactions";
 import SideStats from "../SideStats";
@@ -23,6 +24,7 @@ const Dashboard = () => {
 			<div className='col-span-1 space-y-6'>
 				<Projects />
 				<CreateCard />
+				<PendingRequests />
 			</div>
 		</section>
 	);

@@ -30,7 +30,7 @@ const Projects = () => {
 
 	return (
 		<div className='px-2.5 py-6 bg-white drop-shadow-md rounded-lg'>
-			<h2 className='lg:text-xl font-bold'>Projects</h2>
+			<h2 className='lg:text-xl font-bold px-4'>Projects</h2>
 			<hr className='h-[1.5px] bg-[#CBCFD3] mt-3 mb-1' />
 			<ul>
 				{projectStats.map((project, index) => (
