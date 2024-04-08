@@ -17,7 +17,7 @@ const Header = () => {
 	} = methods;
 
 	return (
-		<header className='max-lg:container lg:px-8 py-4 w-full fixed top-0 right-0 lg:w-[calc(100%-278px)] shadow-sm'>
+		<header className='max-lg:container bg-white lg:px-8 py-4 w-full fixed z-50 top-0 right-0 lg:w-[calc(100%-278px)] shadow-sm'>
 			<div className='flex items-center justify-between space-x-8 lg:space-x-6'>
 				<div className='lg:hidden'>
 					<Icons.MenuIcon />
@@ -42,7 +42,7 @@ const Header = () => {
 
 				<div className='flex items-center space-x-4 lg:space-x-6'>
 					<button className='hidden lg:flex justify-center items-center p-4 rounded border border-primary'>
-						<Icons.PlusIcon />
+						<Icons.PlusIcon className='fill-primary' />
 					</button>
 					<div className='hidden lg:block w-[1px] h-10 bg-[#CBCFD3]' />
 					<button className='flex max-lg:!ml-0 justify-center items-center '>

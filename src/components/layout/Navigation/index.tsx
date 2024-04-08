@@ -155,7 +155,7 @@ const Navigation = () => {
 				</div>
 			</nav>
 			<div className='relative'>
-				<nav className='lg:hidden bg-[#173E62] w-screen fixed bottom-0 left-0 right-0'>
+				<nav className='lg:hidden bg-[#173E62] w-screen fixed z-50 bottom-0 left-0 right-0'>
 					<div className='flex items-center space-x-8 justify-between py-2'>
 						<ul className='flex items-center'>
 							{mobileLinks.slice(0, 2).map((link) => {
@@ -170,7 +170,7 @@ const Navigation = () => {
 					</div>
 					<div className='flex justify-center items-center absolute -top-1/2 left-1/2 transform -translate-x-1/2 size-16 rounded-full bg-white'>
 						<div className='flex justify-center items-center shadow-2xl border-2 border-gray-100 size-14 rounded-full'>
-							<Icons.PlusIcon />
+							<Icons.PlusIcon className='fill-primary' />
 						</div>
 					</div>
 				</nav>
