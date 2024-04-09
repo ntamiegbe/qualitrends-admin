@@ -20,6 +20,7 @@ const config: Config = {
 						"100": "#008000",
 					},
 					warning: {
+						10: "#FFA5001A",
 						100: "#F7D4C3",
 						500: "#FFA500",
 					},

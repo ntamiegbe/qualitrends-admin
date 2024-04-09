@@ -1,5 +1,6 @@
 "use client";
 
+import Status, { StatusType } from "@/components/global/Status";
 import Table from "@/components/global/Table";
 import Icons from "@/components/icons";
 import { cn, formatAmount } from "@/lib/utils";
@@ -13,7 +14,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "sold",
 		},
 		{
 			code: "CPD1",
@@ -22,7 +23,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "handed_over",
 		},
 		{
 			code: "CPD1",
@@ -31,7 +32,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "in_warehouse",
 		},
 		{
 			code: "CPD1",
@@ -40,7 +41,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "sold",
 		},
 		{
 			code: "CPD1",
@@ -49,7 +50,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "sold",
 		},
 		{
 			code: "CPD1",
@@ -58,7 +59,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "out_on_lease",
 		},
 		{
 			code: "CPD1",
@@ -67,7 +68,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "handed_over",
 		},
 		{
 			code: "CPD1",
@@ -76,7 +77,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "out_on_lease",
 		},
 		{
 			code: "CPD1",
@@ -85,7 +86,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "in_warehouse",
 		},
 		{
 			code: "CPD1",
@@ -94,7 +95,7 @@ const CompletedProjects = () => {
 			budget: 3000000,
 			invoiceValue: 50000,
 			accountBalance: 500000,
-			totalExpenses: 2500000,
+			status: "sold",
 		},
 	];
 
@@ -124,8 +125,8 @@ const CompletedProjects = () => {
 			key: "accountBalance",
 		},
 		{
-			title: "Total Expenses",
-			key: "totalExpenses",
+			title: "Project Status",
+			key: "projectStatus",
 		},
 		{
 			title: "Actions",
@@ -147,7 +148,7 @@ const CompletedProjects = () => {
 						budget,
 						invoiceValue,
 						accountBalance,
-						totalExpenses,
+						status,
 					} = transaction;
 					return (
 						<tr
@@ -172,7 +173,7 @@ const CompletedProjects = () => {
 								{formatAmount(+accountBalance, "NGN")}
 							</td>
 							<td className='p-4 text-black-500 whitespace-nowrap'>
-								{formatAmount(+totalExpenses, "NGN")}
+								<Status status={status as StatusType} />
 							</td>
 							<td className='p-4'>
 								<button>
