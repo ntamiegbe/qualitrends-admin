@@ -11,7 +11,7 @@ const Login = () => {
 	const router = useRouter();
 
 	const methods = useForm({
-		mode: "onChange",
+		mode: "onChange", 
 		defaultValues: {
 			email: "",
 			password: "",
