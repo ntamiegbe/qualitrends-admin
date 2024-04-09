@@ -204,7 +204,7 @@ const Input = ({
 	const inputTheme = (theme: string) => {
 		switch (theme) {
 			case "outline":
-				return `p-4 bg-white text-tc-secondary border-[1.5px] disabled:bg-[#83819729] disabled:border-[#83819729] ${
+				return `p-4 bg-white border-[1.5px] disabled:bg-[#83819729] disabled:border-[#83819729] ${
 					error
 						? "border-status-error-100 focus:border-status-error-100"
 						: "border-[#5A5A5A33] focus:border-primary"

@@ -23,6 +23,11 @@ import IncomeIcon from "/public/assets/icons/income.svg";
 import ExpensesIcon from "/public/assets/icons/expenses.svg";
 import ProjectStatsIcon from "/public/assets/icons/projectsStats.svg";
 import CustomersIcon from "/public/assets/icons/customers.svg";
+import FilterIcon from "/public/assets/icons/filter.svg";
+import MoreIcon from "/public/assets/icons/more.svg";
+import ProjectEmailIcon from "/public/assets/icons/project-email.svg";
+import ProjectPrinterIcon from "/public/assets/icons/project-printer.svg";
+import ProjectDocumentIcon from "/public/assets/icons/project-document.svg";
 
 const Icons = {
 	Logo,
@@ -48,6 +53,11 @@ const Icons = {
 	ExpensesIcon,
 	ProjectStatsIcon,
 	CustomersIcon,
+	FilterIcon,
+	MoreIcon,
+	ProjectEmailIcon,
+	ProjectPrinterIcon,
+	ProjectDocumentIcon,
 };
 
 export default Icons;
