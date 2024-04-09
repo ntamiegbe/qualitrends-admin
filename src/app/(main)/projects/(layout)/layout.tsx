@@ -16,10 +16,6 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 	const pathname = usePathname();
 
 	const routes = [
-		// {
-		// 	name: "all projects",
-		// 	path: "/projects/all-projects",
-		// },
 		{
 			name: "ongoing projetcs",
 			path: "/projects/ongoing-projects",
@@ -38,7 +34,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 	});
 
 	const {
-		formState: { errors, isValid },
+		formState: { errors },
 		watch,
 	} = methods;
 
@@ -52,7 +48,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 						<span>
 							<Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
 						</span>
-						<span>Projects</span>
+						<Link href='/projects'>Projects</Link>
 						<span>
 							<Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
 						</span>
