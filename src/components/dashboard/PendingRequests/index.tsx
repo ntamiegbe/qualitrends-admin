@@ -1,4 +1,5 @@
 import Table from "@/components/global/Table";
+import Icons from "@/components/icons";
 
 const PendingRequests = () => {
 	const data = [
@@ -35,10 +36,11 @@ const PendingRequests = () => {
 		<section>
 			<Table
 				title='Pending Requests'
+				useShadow
 				data={data!}
 				loaderLength={10}
 				tableHeadData={tableHeadData}
-				className='xl:min-h-[160px]'
+				className='xl:min-h-[323px]'
 				rowComponent={(transaction) => {
 					const { id, type } = transaction;
 					return (
@@ -50,6 +52,9 @@ const PendingRequests = () => {
 							</td>
 							<td className='py-[18px] px-4 text-black-500 whitespace-nowrap'>
 								{type}
+							</td>
+							<td className='py-[18px] px-4 text-black-500 whitespace-nowrap'>
+								<Icons.UnhideIcon />
 							</td>
 						</tr>
 					);

@@ -1,7 +1,30 @@
-"use client";
-
 import Header from "@/components/layout/Header";
 import Navigation from "@/components/layout/Navigation";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: {
+		template: "QualitrendsGS | %s",
+		default: "QualitrendsGS",
+	},
+	description: "At Qualitrends we build your visions.",
+	openGraph: {
+		type: "website",
+		locale: "en_US",
+		url: "https://qualitrendsng.com",
+		title: "QualitrendsGS",
+		description: "At Qualitrends we build your visions.",
+		images: [
+			{
+				url: "https://qualitrendsng.com/wp-content/uploads/2023/08/1-1.png",
+				width: 1200,
+				height: 630,
+				alt: "QualitrendsGS",
+			},
+		],
+		siteName: "QualitrendsGS",
+	},
+};
 
 type LayoutProps = {
 	children: React.ReactNode;

@@ -9,7 +9,7 @@ type TableProps<T> = {
 	data: T[];
 	rowComponent: (row: T, index: number, length: number) => JSX.Element;
 	mobileComponent?: () => JSX.Element;
-	title: string;
+	title?: string;
 	showMobileTitleOnly?: boolean;
 	isLoading?: boolean;
 	isFetching?: boolean;
@@ -27,6 +27,7 @@ type TableProps<T> = {
 	footerComponent?: () => JSX.Element;
 	className?: string;
 	hasPagination?: boolean;
+	useShadow?: boolean;
 	paginationData?: {
 		page: number;
 		limit: number;
@@ -50,11 +51,16 @@ const Table = <T,>({
 	className,
 	hasPagination = false,
 	paginationData,
+	useShadow = false,
 }: TableProps<T>) => {
 	return (
 		<section
 			className={cn(
-				"min-h-[200px] h-full xl:min-h-[360px] bg-white drop-shadow-md rounded-lg p-2 xl:py-4 xl:px-4",
+				"min-h-[200px] h-full xl:min-h-[360px] bg-white",
+				{
+					"drop-shadow-md p-2 xl:py-4 xl:px-4 rounded-lg": useShadow,
+					"border border-[#5A5A5A99] rounded-t": !useShadow,
+				},
 				className
 			)}>
 			<div
@@ -83,9 +89,12 @@ const Table = <T,>({
 				<>
 					{data?.length > 0 ? (
 						<>
-							<div className='mt-1'>
-								<div className='overflow-x-auto sm:-mx-6 lg:-mx-8'>
-									<div className='inline-block min-w-full py-2 sm:px-6 lg:px-8'>
+							<div className={cn({ "mt-1": useShadow })}>
+								<div className='overflow-x-auto'>
+									<div
+										className={cn("inline-block min-w-full", {
+											"py-2": useShadow,
+										})}>
 										<div
 											className={cn(
 												"scrollbar scrollbar-w-1 scrollbar-thumb-primary scrollbar-track-pc-02 scrollbar-track-rounded-md scrollbar-thumb-rounded-md overflow-y-auto relative",
