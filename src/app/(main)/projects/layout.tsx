@@ -57,7 +57,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 							<Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
 						</span>
 						<span className='capitalize text-primary'>
-							{pathname.split("/")[2].replace("-", " ")}
+							{pathname?.split("/")[2]?.replace("-", " ")}
 						</span>
 					</div>
 					<div className='max-lg:hidden mt-6 font-semibold'>
