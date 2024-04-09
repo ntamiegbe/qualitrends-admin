@@ -24,6 +24,7 @@ import ExpensesIcon from "/public/assets/icons/expenses.svg";
 import ProjectStatsIcon from "/public/assets/icons/projectsStats.svg";
 import CustomersIcon from "/public/assets/icons/customers.svg";
 import FilterIcon from "/public/assets/icons/filter.svg";
+import MoreIcon from "/public/assets/icons/more.svg";
 
 const Icons = {
 	Logo,
@@ -50,6 +51,7 @@ const Icons = {
 	ProjectStatsIcon,
 	CustomersIcon,
 	FilterIcon,
+	MoreIcon,
 };
 
 export default Icons;

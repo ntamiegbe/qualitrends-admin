@@ -1,5 +1,7 @@
+import OngoingProjects from "@/components/projects/OngoingProjects";
+
 const OngoingProjectsPage = () => {
-	return <div></div>;
+	return <OngoingProjects />;
 };
 
 export default OngoingProjectsPage;

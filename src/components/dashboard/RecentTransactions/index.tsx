@@ -89,6 +89,7 @@ const RecentTransactions = () => {
 			<Table
 				title='Recent Transactions'
 				data={data!}
+				useShadow
 				loaderLength={10}
 				tableHeadData={tableHeadData}
 				rowComponent={(transaction) => {

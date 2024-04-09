@@ -36,6 +36,7 @@ const PendingRequests = () => {
 		<section>
 			<Table
 				title='Pending Requests'
+				useShadow
 				data={data!}
 				loaderLength={10}
 				tableHeadData={tableHeadData}
