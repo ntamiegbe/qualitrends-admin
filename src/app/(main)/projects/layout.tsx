@@ -67,7 +67,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 				<div className='space-y-4 lg:space-y-6 max-lg:mt-4'>
 					<div className='flex items-center space-x-5 lg:space-x-6'>
 						<FormProvider {...methods}>
-							<form className='max-lg:max-w-[300px] lg:!ml-0 flex-1'>
+							<form className='lg:!ml-0 flex-1'>
 								<div className='lg:w-[300px]'>
 									<Input
 										name='search'
