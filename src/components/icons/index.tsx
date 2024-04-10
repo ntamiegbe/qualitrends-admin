@@ -28,6 +28,11 @@ import MoreIcon from "/public/assets/icons/more.svg";
 import ProjectEmailIcon from "/public/assets/icons/project-email.svg";
 import ProjectPrinterIcon from "/public/assets/icons/project-printer.svg";
 import ProjectDocumentIcon from "/public/assets/icons/project-document.svg";
+import CheckIcon from "/public/assets/icons/check.svg";
+import ErrorIcon from "/public/assets/icons/error.svg";
+import InfoIcon from "/public/assets/icons/info.svg";
+import WarningIcon from "/public/assets/icons/warning.svg";
+import SelectedIcon from "/public/assets/icons/selected.svg";
 
 const Icons = {
 	Logo,
@@ -58,6 +63,11 @@ const Icons = {
 	ProjectEmailIcon,
 	ProjectPrinterIcon,
 	ProjectDocumentIcon,
+	CheckIcon,
+	ErrorIcon,
+	InfoIcon,
+	WarningIcon,
+	SelectedIcon,
 };
 
 export default Icons;

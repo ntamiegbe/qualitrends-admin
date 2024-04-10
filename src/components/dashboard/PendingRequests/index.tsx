@@ -36,6 +36,13 @@ const PendingRequests = () => {
 		<section>
 			<Table
 				title='Pending Requests'
+				tableHeaderLeftComponent={() => (
+					<div className='px-4'>
+						<button className='trasform -rotate-90'>
+							<Icons.MoreIcon />
+						</button>
+					</div>
+				)}
 				useShadow
 				data={data!}
 				loaderLength={10}

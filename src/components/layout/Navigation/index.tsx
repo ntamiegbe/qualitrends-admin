@@ -105,7 +105,7 @@ const Navigation = () => {
 		},
 		{
 			name: "Projects",
-			to: "/projects/ongoing-projects",
+			to: "/projects",
 			icon: <Icons.ProjectsIcon className='fill-inherit' />,
 		},
 		{
