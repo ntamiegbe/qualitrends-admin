@@ -8,9 +8,7 @@ import Icons from "@/components/icons";
 type TableProps<T> = {
 	data: T[];
 	rowComponent: (row: T, index: number, length: number) => JSX.Element;
-	mobileComponent?: () => JSX.Element;
 	title?: string;
-	showMobileTitleOnly?: boolean;
 	isLoading?: boolean;
 	isFetching?: boolean;
 	children?: React.ReactNode;
@@ -21,7 +19,6 @@ type TableProps<T> = {
 	height?: string;
 	loaderLength?: number;
 	emptyStateMessage?: string;
-	mobileTitleStickyOffset?: string;
 	tableHeaderLeftComponent?: () => JSX.Element;
 	tableMobileFooter?: () => JSX.Element;
 	footerComponent?: () => JSX.Element;

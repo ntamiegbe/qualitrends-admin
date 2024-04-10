@@ -71,7 +71,7 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 									className={cn(
 										"block text-sm transition-all text-black-900 px-8 py-[18.5px]",
 										{
-											"font-semibold text-primary": pathname.includes(child.to),
+											"font-semibold bg-[#FF69001A]": child.to === pathname,
 										}
 									)}
 									href={child.to}>

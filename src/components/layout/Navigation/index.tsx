@@ -22,16 +22,16 @@ const Navigation = () => {
 			to: "/projects",
 			icon: <Icons.ProjectsIcon className='fill-inherit' />,
 			children: [
-				// {
-				// 	name: "All Projects",
-				// 	to: "/projects/all-projects",
-				// },
+				{
+					name: "Projects",
+					to: "/projects",
+				},
 				{
 					name: "Ongoing Projects",
 					to: "/projects/ongoing-projects",
 				},
 				{
-					name: "Completed Project",
+					name: "Completed Projects",
 					to: "/projects/completed-projects",
 				},
 			],
