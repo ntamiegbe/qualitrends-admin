@@ -33,6 +33,7 @@ import ErrorIcon from "/public/assets/icons/error.svg";
 import InfoIcon from "/public/assets/icons/info.svg";
 import WarningIcon from "/public/assets/icons/warning.svg";
 import SelectedIcon from "/public/assets/icons/selected.svg";
+import WarehouseXIcon from "/public/assets/icons/warehouse-x.svg";
 
 const Icons = {
 	Logo,
@@ -68,6 +69,7 @@ const Icons = {
 	InfoIcon,
 	WarningIcon,
 	SelectedIcon,
+	WarehouseXIcon,
 };
 
 export default Icons;
