@@ -10,6 +10,7 @@ import { formatAmount, numberWithCommas } from "@/lib/utils";
 import Stats from "@/components/global/Stats";
 import IncomeAndExpensesChart from "@/components/dashboard/IncomeAndExpensesChart";
 import ProjectsTable from "../ProjectsTable";
+import RecentProjectsProgressChart from "../RecentProjectsProgressChart";
 
 const Projects = () => {
 	const methods = useForm({
@@ -159,7 +160,9 @@ const Projects = () => {
 					<div className='col-span-1 space-y-6'>
 						<IncomeAndExpensesChart />
 					</div>
-					<div className='col-span-1 space-y-6'></div>
+					<div className='col-span-1 space-y-6'>
+						<RecentProjectsProgressChart />
+					</div>
 				</section>
 			</div>
 			<div className='mt-6'>
