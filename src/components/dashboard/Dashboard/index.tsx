@@ -1,21 +1,57 @@
 "use client";
 
+import { formatAmount } from "@/lib/utils";
 import CreateCard from "../CreateCard";
-import DashboardStats from "../DashboardStats";
 import IncomeAndExpensesChart from "../IncomeAndExpensesChart";
 import PendingRequests from "../PendingRequests";
 import Projects from "../Projects";
 import RecentTransactions from "../RecentTransactions";
-import SideStats from "../SideStats";
+import SideStats from "../../global/SideStats";
+import Icons from "@/components/icons";
+import Stats from "@/components/global/Stats";
 
 const Dashboard = () => {
+	const stats = [
+		{
+			title: "Total Income",
+			value: formatAmount(0, "NGN"),
+			icon: <Icons.IncomeIcon />,
+		},
+		{
+			title: "Total Expenses",
+			value: formatAmount(0, "NGN"),
+			icon: <Icons.ExpensesIcon />,
+		},
+		{
+			title: "Projects",
+			value: 0,
+			icon: <Icons.ProjectStatsIcon />,
+		},
+		{
+			title: "Customers",
+			value: 0,
+			icon: <Icons.CustomersIcon />,
+		},
+	];
+
+	const sideStats = [
+		{
+			title: "Pending Expenses",
+			value: formatAmount(0, "NGN"),
+		},
+		{
+			title: "Unpaid Receivables",
+			value: formatAmount(0, "NGN"),
+		},
+	];
+
 	return (
 		<section className='lg:grid lg:grid-cols-3 lg:gap-8 max-lg:space-y-4'>
 			<div className='col-span-2 space-y-6'>
-				<DashboardStats />
+				<Stats stats={stats} />
 			</div>
 			<div className='col-span-1 space-y-6'>
-				<SideStats />
+				<SideStats stats={sideStats} />
 			</div>
 			<div className='col-span-2 space-y-6'>
 				<IncomeAndExpensesChart />
