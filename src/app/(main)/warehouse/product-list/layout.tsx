@@ -18,12 +18,12 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 
     const routes = [
         {
-            name: "products list",
-            path: "/warehouse/product-list",
+            name: "warehouse inventory",
+            path: "/warehouse/product-list/warehouse-inventory",
         },
         {
-            name: "warehouse activities",
-            path: "/warehouse/warehouse-activities",
+            name: "assets",
+            path: "/warehouse/product-list/assets",
         },
     ];
 
