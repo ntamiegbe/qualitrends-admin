@@ -1,4 +1,5 @@
 import Table from "@/components/global/Table";
+import Icons from "@/components/icons";
 import { formatAmount } from "@/lib/utils";
 
 const RecentTransactions = () => {
@@ -88,6 +89,13 @@ const RecentTransactions = () => {
 		<section>
 			<Table
 				title='Recent Transactions'
+				tableHeaderLeftComponent={() => (
+					<div className='px-4'>
+						<button className='trasform -rotate-90'>
+							<Icons.MoreIcon />
+						</button>
+					</div>
+				)}
 				data={data!}
 				useShadow
 				loaderLength={10}

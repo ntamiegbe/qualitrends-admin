@@ -4,7 +4,10 @@ export type StatusType =
 	| "sold"
 	| "handed_over"
 	| "in_warehouse"
-	| "out_on_lease";
+	| "out_on_lease"
+	| "pending"
+	| "declined"
+	| "approved";
 
 type StatusProps = {
 	status: StatusType;
@@ -17,16 +20,19 @@ type StatusColorMap = {
 const Status = ({ status }: StatusProps) => {
 	const statusColorMap: StatusColorMap = {
 		"text-primary bg-[#FF00001A]": ["handed_over"],
-		"text-status-success-100 bg-status-success-10": ["in_warehouse"],
-		"text-status-error-100 bg-status-error-10": ["sold"],
-		"text-status-warning-500 bg-status-warning-10": ["out_on_lease"],
+		"text-status-success-100 bg-status-success-10": [
+			"in_warehouse",
+			"approved",
+		],
+		"text-status-error-100 bg-status-error-10": ["sold", "declined"],
+		"text-status-warning-500 bg-status-warning-10": ["out_on_lease", "pending"],
 	};
 
 	const statusDotColorMap: StatusColorMap = {
 		"bg-primary": ["handed_over"],
-		"bg-status-success-100": ["in_warehouse"],
-		"bg-status-error-100": ["sold"],
-		"bg-status-warning-500": ["out_on_lease"],
+		"bg-status-success-100": ["in_warehouse", "approved"],
+		"bg-status-error-100": ["sold", "declined"],
+		"bg-status-warning-500": ["out_on_lease", "pending"],
 	};
 
 	const getStatusColor = (status: StatusType) => {
