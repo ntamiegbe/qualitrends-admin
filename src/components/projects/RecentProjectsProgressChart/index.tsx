@@ -1,3 +1,5 @@
+"use client";
+
 import * as echarts from "echarts/core";
 import {
 	TitleComponent,
@@ -28,6 +30,11 @@ const RecentProjectsProgressChart = () => {
 		"#FF0000",
 		"#D35B17",
 		"#FF6900",
+		"#FFD700",
+		"#FF00FF",
+		"#800080",
+		"#0000FF",
+		"#00FF00",
 	];
 
 	const breakpoint = useBreakpoint();
@@ -113,10 +120,13 @@ const RecentProjectsProgressChart = () => {
 			<h2 className='lg:text-xl font-bold'>Recent Projects Progress</h2>
 
 			<div className='h-[250px] lg:h-[330px] mt-2 lg:mt-5 grid grid-cols-2 justify-between space-x-4'>
-				<div id='main' className='h-full w-[170px] lg:w-[330px] relative'>
-					<div className='text-center text-black-500 text-sm absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+				<div className='h-full w-[170px] lg:w-[330px] relative'>
+					<div id='main' className='h-full w-[170px] lg:w-[330px]'></div>
+					<div className='text-center text-black-500 text-[10px] lg:text-sm absolute z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
 						<div className='font-semibold'>{polarBar.length}</div>
-						<div>Total Projects</div>
+						<div>
+							Total <br className='lg:hidden' /> Projects
+						</div>
 					</div>
 				</div>
 				<div className='flex items-center justify-end lg:items-end lg:pr-4'>

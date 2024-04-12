@@ -14,9 +14,11 @@ const getDeviceConfig = (width: number) => {
 };
 
 const useBreakpoint = () => {
-	const [breakPoint, setBreakPoint] = useState(() =>
-		getDeviceConfig(window.innerWidth)
-	);
+	const [breakPoint, setBreakPoint] = useState(() => {
+		if (typeof window !== "undefined") {
+			return getDeviceConfig(window?.innerWidth);
+		}
+	});
 
 	useEffect(() => {
 		const calcInnerWidth = throttle(function () {

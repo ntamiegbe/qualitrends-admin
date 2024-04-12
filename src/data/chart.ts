@@ -61,4 +61,20 @@ export const polarBar = [
 		value: 76,
 		name: "Project 6",
 	},
+	{
+		value: 67,
+		name: "Project 7",
+	},
+	// {
+	// 	value: 45,
+	// 	name: "Project 8",
+	// },
+	// {
+	// 	value: 39,
+	// 	name: "Project 9",
+	// },
+	// {
+	// 	value: 83,
+	// 	name: "Project 10",
+	// },
 ];
