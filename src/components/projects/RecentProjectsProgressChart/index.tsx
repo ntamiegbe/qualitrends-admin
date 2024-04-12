@@ -10,6 +10,7 @@ import {
 import { BarChart, BarSeriesOption } from "echarts/charts";
 import { SVGRenderer } from "echarts/renderers";
 import { useEffect, useState } from "react";
+import { polarBar } from "@/data/chart";
 
 type EChartsOption = echarts.ComposeOption<
 	| TitleComponentOption
@@ -23,6 +24,8 @@ const RecentProjectsProgressChart = () => {
 		polar: {
 			radius: [55, "85%"],
 		},
+		colorBy: "data",
+		color: ["#008000", "#17A2B8", "#FFE2D2", "#FF0000", "#D35B17", "#FF6900"],
 		angleAxis: {
 			max: 100,
 			startAngle: -90,
@@ -41,58 +44,30 @@ const RecentProjectsProgressChart = () => {
 		},
 		radiusAxis: {
 			type: "category",
-			data: [
-				"Project 1",
-				"Project 2",
-				"Project 3",
-				"Project 4",
-				"Project 5",
-				"Project 6",
-			],
+			axisLine: {
+				show: false,
+			},
+			axisLabel: {
+				show: true,
+				formatter: (value, index) => {
+					return value + "%";
+				},
+			},
+			axisTick: {
+				show: false,
+			},
+			data: polarBar.map((item) => item.value),
 		},
-		tooltip: {},
+		tooltip: {
+			formatter: "{b}: {c}%",
+		},
 		series: {
 			type: "bar",
-			data: [
-				{
-					value: 40,
-					itemStyle: {
-						color: "#008000",
-					},
-				},
-				{
-					value: 35,
-					itemStyle: {
-						color: "#17A2B8",
-					},
-				},
-				{
-					value: 45,
-					itemStyle: {
-						color: "#FFE2D2",
-					},
-				},
-				{
-					value: 86,
-					itemStyle: {
-						color: "#FF0000",
-					},
-				},
-				{
-					value: 46,
-					itemStyle: {
-						color: "#D35B17",
-					},
-				},
-				{
-					value: 76,
-					itemStyle: {
-						color: "#FF6900",
-					},
-				},
-			],
+			data: polarBar,
 			coordinateSystem: "polar",
-			colorBy: "data",
+			label: {
+				show: false,
+			},
 		},
 	});
 
