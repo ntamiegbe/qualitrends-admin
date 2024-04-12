@@ -11,6 +11,7 @@ import { BarChart, BarSeriesOption } from "echarts/charts";
 import { SVGRenderer } from "echarts/renderers";
 import { useEffect, useState } from "react";
 import { polarBar } from "@/data/chart";
+import useBreakpoint from "@/hooks/useBreakpoints";
 
 type EChartsOption = echarts.ComposeOption<
 	| TitleComponentOption
@@ -20,12 +21,26 @@ type EChartsOption = echarts.ComposeOption<
 >;
 
 const RecentProjectsProgressChart = () => {
+	const colors = [
+		"#008000",
+		"#17A2B8",
+		"#FFE2D2",
+		"#FF0000",
+		"#D35B17",
+		"#FF6900",
+	];
+
+	const breakpoint = useBreakpoint();
+
 	const [option] = useState<EChartsOption>({
 		polar: {
-			radius: [55, "85%"],
+			radius: [
+				breakpoint === "sm" ? 30 : 55,
+				breakpoint === "sm" ? "100%" : "85%",
+			],
 		},
 		colorBy: "data",
-		color: ["#008000", "#17A2B8", "#FFE2D2", "#FF0000", "#D35B17", "#FF6900"],
+		color: colors,
 		angleAxis: {
 			max: 100,
 			startAngle: -90,
@@ -49,7 +64,8 @@ const RecentProjectsProgressChart = () => {
 			},
 			axisLabel: {
 				show: true,
-				formatter: (value, index) => {
+				fontSize: 10,
+				formatter: (value) => {
 					return value + "%";
 				},
 			},
@@ -96,8 +112,27 @@ const RecentProjectsProgressChart = () => {
 		<div className='bg-white drop-shadow-md rounded-lg h-[320px] lg:h-[412px] px-5 py-4'>
 			<h2 className='lg:text-xl font-bold'>Recent Projects Progress</h2>
 
-			<div className='h-[250px] lg:h-[330px] mt-2 lg:mt-5 flex'>
-				<div id='main' className='h-full w-[330px]'></div>
+			<div className='h-[250px] lg:h-[330px] mt-2 lg:mt-5 grid grid-cols-2 justify-between space-x-4'>
+				<div id='main' className='h-full w-[170px] lg:w-[330px] relative'>
+					<div className='text-center text-black-500 text-sm absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+						<div className='font-semibold'>{polarBar.length}</div>
+						<div>Total Projects</div>
+					</div>
+				</div>
+				<div className='flex items-center justify-end lg:items-end lg:pr-4'>
+					<div className='grid grid-cols-2 gap-3'>
+						{polarBar.map((item, index) => (
+							<div key={index} className='flex items-center space-x-2'>
+								<div
+									className='size-3 rounded-[2px]'
+									style={{ background: colors[index] }}></div>
+								<div className='max-lg:text-[10px] text-[#2B2B29]'>
+									{item.name}
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	);

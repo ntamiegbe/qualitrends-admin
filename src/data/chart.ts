@@ -61,8 +61,4 @@ export const polarBar = [
 		value: 76,
 		name: "Project 6",
 	},
-	{
-		value: 56,
-		name: "Project 7",
-	},
 ];
