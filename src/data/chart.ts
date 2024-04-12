@@ -36,89 +36,45 @@ export const bar = [
 	},
 ];
 
-export const radialBar = [
+export const polarBar = [
 	{
-		id: "Supermarket",
-		data: [
-			{
-				x: "Vegetables",
-				y: 147,
-			},
-			{
-				x: "Fruits",
-				y: 197,
-			},
-			{
-				x: "Meat",
-				y: 218,
-			},
-			{
-				x: "Fish",
-				y: 217,
-			},
-		],
+		value: 40,
+		name: "Project 1",
 	},
 	{
-		id: "Combini",
-		data: [
-			{
-				x: "Vegetables",
-				y: 69,
-			},
-			{
-				x: "Fruits",
-				y: 181,
-			},
-			{
-				x: "Meat",
-				y: 152,
-			},
-			{
-				x: "Fish",
-				y: 116,
-			},
-		],
+		value: 35,
+		name: "Project 2",
 	},
 	{
-		id: "Online",
-		data: [
-			{
-				x: "Vegetables",
-				y: 138,
-			},
-			{
-				x: "Fruits",
-				y: 134,
-			},
-			{
-				x: "Meat",
-				y: 61,
-			},
-			{
-				x: "Fish",
-				y: 98,
-			},
-		],
+		value: 45,
+		name: "Project 3",
 	},
 	{
-		id: "Marché",
-		data: [
-			{
-				x: "Vegetables",
-				y: 227,
-			},
-			{
-				x: "Fruits",
-				y: 142,
-			},
-			{
-				x: "Meat",
-				y: 291,
-			},
-			{
-				x: "Fish",
-				y: 250,
-			},
-		],
+		value: 86,
+		name: "Project 4",
 	},
+	{
+		value: 46,
+		name: "Project 5",
+	},
+	{
+		value: 76,
+		name: "Project 6",
+	},
+	{
+		value: 67,
+		name: "Project 7",
+	},
+	// {
+	// 	value: 45,
+	// 	name: "Project 8",
+	// },
+	// {
+	// 	value: 39,
+	// 	name: "Project 9",
+	// },
+	// {
+	// 	value: 83,
+	// 	name: "Project 10",
+	// },
 ];
