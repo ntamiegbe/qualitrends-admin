@@ -77,7 +77,7 @@ const Navigation = () => {
 		},
 		{
 			name: "Finances",
-			to: "/finances",
+			to: "/finances/income",
 			icon: <Icons.FinancesIcon className='fill-inherit' />,
 		},
 		{
@@ -110,7 +110,7 @@ const Navigation = () => {
 		},
 		{
 			name: "Finances",
-			to: "/finances",
+			to: "/finances/income",
 			icon: <Icons.FinancesIcon className='fill-inherit' />,
 		},
 		{
