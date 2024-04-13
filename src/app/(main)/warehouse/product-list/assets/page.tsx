@@ -1,9 +1,8 @@
-import React from 'react'
 
 const WarehouseAssets = () => {
-  return (
-    <div>WarehouseAssets</div>
-  )
+    return (
+        <WarehouseAssets />
+    )
 }
 
 export default WarehouseAssets

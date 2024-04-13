@@ -6,14 +6,54 @@ import Icons from "@/components/icons";
 import { cn, formatAmount } from "@/lib/utils";
 import { FormProvider, useForm } from "react-hook-form";
 
-const WarehouseInventory = () => {
+const WarehouseAssets = () => {
     const methods = useForm();
     const data = [
         {
             id: "WHV_23_1",
-            itemName: "Wood",
+            assetName: "Excavator",
+            assetCategory: "Timer",
+            assetQuantity: 10,
+            unitPrice: 10000000,
+            totalValue: 100000000,
+        },
+        {
+            id: "WHV_23_1",
+            assetName: "Bulldozer",
+            assetCategory: "Timer",
+            assetQuantity: 10,
+            unitPrice: 10000000,
+            totalValue: 100000000,
+        },
+        {
+            id: "WHV_23_1",
+            assetName: "Crane",
+            assetCategory: "Timer",
+            assetQuantity: 10,
+            unitPrice: 10000000,
+            totalValue: 100000000,
+        },
+        {
+            id: "WHV_23_1",
+            assetName: "Loader",
+            assetCategory: "Timer",
+            assetQuantity: 10,
+            unitPrice: 10000000,
+            totalValue: 100000000,
+        },
+        {
+            id: "WHV_23_1",
+            assetName: "Concrete mixer",
+            assetCategory: "Timer",
+            assetQuantity: 10,
+            unitPrice: 10000000,
+            totalValue: 100000000,
+        },
+        {
+            id: "WHV_23_1",
+            assetName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -21,7 +61,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -29,7 +69,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -37,7 +77,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -45,7 +85,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -53,7 +93,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -61,7 +101,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -69,7 +109,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -77,7 +117,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -85,7 +125,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -93,7 +133,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -101,47 +141,7 @@ const WarehouseInventory = () => {
             id: "WHV_23_1",
             itemName: "Wood",
             itemCategory: "Timer",
-            stockQuantity: 10,
-            unitPrice: 10000000,
-            totalValue: 100000000,
-        },
-        {
-            id: "WHV_23_1",
-            itemName: "Wood",
-            itemCategory: "Timer",
-            stockQuantity: 10,
-            unitPrice: 10000000,
-            totalValue: 100000000,
-        },
-        {
-            id: "WHV_23_1",
-            itemName: "Wood",
-            itemCategory: "Timer",
-            stockQuantity: 10,
-            unitPrice: 10000000,
-            totalValue: 100000000,
-        },
-        {
-            id: "WHV_23_1",
-            itemName: "Wood",
-            itemCategory: "Timer",
-            stockQuantity: 10,
-            unitPrice: 10000000,
-            totalValue: 100000000,
-        },
-        {
-            id: "WHV_23_1",
-            itemName: "Wood",
-            itemCategory: "Timer",
-            stockQuantity: 10,
-            unitPrice: 10000000,
-            totalValue: 100000000,
-        },
-        {
-            id: "WHV_23_1",
-            itemName: "Wood",
-            itemCategory: "Timer",
-            stockQuantity: 10,
+            assetQuantity: 10,
             unitPrice: 10000000,
             totalValue: 100000000,
         },
@@ -153,16 +153,16 @@ const WarehouseInventory = () => {
             key: "id",
         },
         {
-            title: "Item Name",
-            key: "itemName",
+            title: "Asset Name",
+            key: "assetName",
         },
         {
-            title: "Item Category",
-            key: "itemCategory",
+            title: "Asset Category",
+            key: "assetCategory",
         },
         {
-            title: "Stock Quantity",
-            key: "stockQuantity",
+            title: "Asset Quantity",
+            key: "assetQuantity",
         },
         {
             title: "Unit Price",
@@ -191,9 +191,9 @@ const WarehouseInventory = () => {
                 rowComponent={(transaction, index, length) => {
                     const {
                         id,
-                        itemName,
-                        itemCategory,
-                        stockQuantity,
+                        assetName,
+                        assetCategory,
+                        assetQuantity,
                         unitPrice,
                         totalValue,
                     } = transaction;
@@ -205,13 +205,13 @@ const WarehouseInventory = () => {
                             })}>
                             <td className='p-4 text-black-500 whitespace-nowrap'>{id}</td>
                             <td className='p-4 text-black-500 whitespace-nowrap'>
-                                {itemName}
+                                {assetName}
                             </td>
                             <td className='py-[18px] w-[100px] px-4 text-black-500 whitespace-nowrap'>
-                                {itemCategory}
+                                {assetCategory}
                             </td>
                             <td className='p-4 text-black-500 whitespace-nowrap'>
-                                {stockQuantity}
+                                {assetQuantity}
                             </td>
                             <td className='p-4 text-black-500 whitespace-nowrap'>
                                 {formatAmount(+unitPrice, "NGN")}
@@ -219,7 +219,7 @@ const WarehouseInventory = () => {
                             <td className='p-4 text-black-500 whitespace-nowrap'>
                                 {formatAmount(+totalValue, "NGN")}
                             </td>
-                            <td className='p-4'>
+                            <td className='p-4 flex items-center justify-center'>
                                 <FormProvider {...methods}>
                                     <form>
                                         <SwitchInput name="Name" />
@@ -239,4 +239,4 @@ const WarehouseInventory = () => {
     );
 };
 
-export default WarehouseInventory;
+export default WarehouseAssets;

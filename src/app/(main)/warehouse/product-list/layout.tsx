@@ -46,11 +46,11 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
         },
         {
             title: "Total Income",
-            value: formatAmount(1500000000, "NGN"),
+            value: formatAmount(+1500000000, "NGN"),
         },
         {
             title: "Total Expenses",
-            value: formatAmount(500000000, "NGN"),
+            value: formatAmount(+500000000, "NGN"),
         },
     ];
 
