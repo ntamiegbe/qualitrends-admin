@@ -8,11 +8,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 
-type WarehouseProps = {
+type WarehouseLayoutProps = {
     children: React.ReactNode;
 };
 
-const Warehouse = () => {
+const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
     const pathname = usePathname();
 
     const routes = [
@@ -139,8 +139,9 @@ const Warehouse = () => {
                     })}
                 </ul>
             </div>
+            <div>{children}</div>
         </div>
     );
 };
 
-export default Warehouse;
+export default WarehouseLayout;

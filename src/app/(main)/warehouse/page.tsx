@@ -1,12 +1,13 @@
-import Warehouse from "@/components/warehouse/Warehouse";
-import { Metadata } from "next";
+"use client"
 
-export const metadata: Metadata = {
-	title: "Warehouse",
-};
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const WarehousePage = () => {
-	return <Warehouse />;
-};
+export default function WarehousePage() {
+	const router = useRouter();
 
-export default WarehousePage;
+	useEffect(() => {
+		router.push("/warehouse/purchase-order");
+	}, []);
+	return <main className=''></main>;
+}
