@@ -11,12 +11,19 @@ import Stats from "@/components/global/Stats";
 import IncomeAndExpensesChart from "@/components/dashboard/IncomeAndExpensesChart";
 import ProjectsTable from "../ProjectsTable";
 import RecentProjectsProgressChart from "../RecentProjectsProgressChart";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const Projects = () => {
+	const router = useRouter();
+
 	const methods = useForm({
 		mode: "onChange",
 		defaultValues: {
-			search: "",
+			route: {
+				name: "Projects",
+				value: "/projects",
+			},
 		},
 	});
 
@@ -24,6 +31,12 @@ const Projects = () => {
 		formState: { errors },
 		watch,
 	} = methods;
+
+	const route = watch("route");
+
+	useEffect(() => {
+		router.push(route.value);
+	}, [route]);
 
 	const stats = [
 		{
@@ -88,7 +101,7 @@ const Projects = () => {
 			</div>
 			<div className='flex items-center space-x-2 mt-2 max-lg:mt-4'>
 				<div className='text-xs'>Showing data for:</div>
-				<div className='w-[200px]'>
+				<div className='w-[205px]'>
 					<FormProvider {...methods}>
 						<SelectInput
 							name='route'

@@ -3,7 +3,7 @@
 import Status, { StatusType } from "@/components/global/Status";
 import Table from "@/components/global/Table";
 import Icons from "@/components/icons";
-import { cn, formatAmount } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const ProjectsTable = () => {
 	const data = [
