@@ -1,7 +1,13 @@
+import SiteSupplyRequests from '@/components/warehouse/SiteSupplyRequests';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Warehouse | Site Supply Requests",
+};
 
 const SiteSupplyRequestsPage = () => {
   return (
-    <div>SiteSupplyRequestsPage</div>
+    <SiteSupplyRequests />
   )
 }
 

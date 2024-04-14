@@ -5,119 +5,102 @@ import Table from "@/components/global/Table";
 import { cn, formatAmount } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 
-const MaterialTransfer = () => {
+const SiteSupplyRequests = () => {
     const methods = useForm();
     const data = [
         {
-            materialName: "Cement",
-            quantity: 200,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
+            id: "SS_001",
+            projectCode: "Wuse_1936",
+            requester: "John Doe",
+            materialRequested: "Cement",
+            quantityRequested: 40,
             pickUpDate: "1 Jul 2023",
             deliveryDate: "12 Jul 2023",
-            status: "fully_delivered",
+            status: "delivered",
         },
         {
-            materialName: "Block",
-            quantity: 500,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
-            pickUpDate: "1 Jul 2023",
-            deliveryDate: "12 Jul 2023",
-            status: "picked_up",
-        },
-        {
-            materialName: "Block",
-            quantity: 500,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
+            id: "SS_001",
+            projectCode: "Wuse_1936",
+            requester: "John Doe",
+            materialRequested: "Cement",
+            quantityRequested: 40,
             pickUpDate: "1 Jul 2023",
             deliveryDate: "12 Jul 2023",
             status: "in_transit",
         },
         {
-            materialName: "Block",
-            quantity: 500,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
+            id: "SS_001",
+            projectCode: "Wuse_1936",
+            requester: "John Doe",
+            materialRequested: "Cement",
+            quantityRequested: 40,
             pickUpDate: "1 Jul 2023",
             deliveryDate: "12 Jul 2023",
             status: "picked_up",
         },
         {
-            materialName: "Cement",
-            quantity: 200,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
+            id: "SS_001",
+            projectCode: "Wuse_1936",
+            requester: "John Doe",
+            materialRequested: "Cement",
+            quantityRequested: 40,
             pickUpDate: "1 Jul 2023",
             deliveryDate: "12 Jul 2023",
-            status: "fully_delivered",
-        }, {
-            materialName: "Cement",
-            quantity: 200,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
-            pickUpDate: "1 Jul 2023",
-            deliveryDate: "12 Jul 2023",
-            status: "fully_delivered",
+            status: "delivered",
         },
         {
-            materialName: "Block",
-            quantity: 500,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
+            id: "SS_001",
+            projectCode: "Wuse_1936",
+            requester: "John Doe",
+            materialRequested: "Cement",
+            quantityRequested: 40,
             pickUpDate: "1 Jul 2023",
             deliveryDate: "12 Jul 2023",
-            status: "picked_up",
-        }, {
-            materialName: "Block",
-            quantity: 500,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
-            pickUpDate: "1 Jul 2023",
-            deliveryDate: "12 Jul 2023",
-            status: "picked_up",
-        }, {
-            materialName: "Block",
-            quantity: 500,
-            totalValue: 10000000,
-            source: "Warehouse 1",
-            destination: "QGS_GK_001",
-            pickUpDate: "1 Jul 2023",
-            deliveryDate: "12 Jul 2023",
-            status: "picked_up",
+            status: "delivered",
         },
-       
+        {
+            id: "SS_001",
+            projectCode: "Wuse_1936",
+            requester: "John Doe",
+            materialRequested: "Cement",
+            quantityRequested: 40,
+            pickUpDate: "1 Jul 2023",
+            deliveryDate: "12 Jul 2023",
+            status: "delivered",
+        },
+        {
+            id: "SS_001",
+            projectCode: "Wuse_1936",
+            requester: "John Doe",
+            materialRequested: "Cement",
+            quantityRequested: 40,
+            pickUpDate: "1 Jul 2023",
+            deliveryDate: "12 Jul 2023",
+            status: "delivered",
+        },
+        
     ];
 
     const tableHeadData = [
         {
-            title: "Material Name",
-            key: "materialName",
+            title: "ID",
+            key: "id"
         },
         {
-            title: "Quantity",
-            key: "quantity",
+            title: "Project Code",
+            key: "projectCode",
         },
         {
-            title: "Total Value",
-            key: "totalValue",
+            title: "Requester",
+            key: "requester",
         },
         {
-            title: "Source",
-            key: "source",
+            title: "Material Requested",
+            key: "materialRequested",
         },
         {
-            title: "Destination",
-            key: "destination",
+            title: "Quantity Requested",
+            key: "quantityRequested",
         },
         {
             title: "Pick-Up Date",
@@ -141,11 +124,11 @@ const MaterialTransfer = () => {
                 tableHeadData={tableHeadData}
                 rowComponent={(transaction, index, length) => {
                     const {
-                        materialName,
-                        quantity,
-                        totalValue,
-                        source,
-                        destination,
+                        id,
+                        projectCode,
+                        requester,
+                        materialRequested,
+                        quantityRequested,
                         pickUpDate,
                         deliveryDate,
                         status,
@@ -157,19 +140,19 @@ const MaterialTransfer = () => {
                                 "border-b": index !== length - 1,
                             })}>
                             <td className='p-4 text-black-500 whitespace-nowrap'>
-                                {materialName}
+                                {id}
                             </td>
                             <td className='p-4 text-black-500 whitespace-nowrap'>
-                                {quantity}
+                                {projectCode}
+                            </td>
+                            <td className='p-4 text-black-500 whitespace-nowrap'>
+                                {requester}
                             </td>
                             <td className='py-[18px] w-[100px] px-4 text-black-500 whitespace-nowrap'>
-                                {formatAmount(+totalValue, "NGN")}
+                                {materialRequested}
                             </td>
                             <td className='p-4 text-black-500 whitespace-nowrap'>
-                                {source}
-                            </td>
-                            <td className='p-4 text-black-500 whitespace-nowrap'>
-                                {destination}
+                                {quantityRequested}
                             </td>
                             <td className='p-4 text-black-500 whitespace-nowrap'>
                                 {pickUpDate}
@@ -188,4 +171,4 @@ const MaterialTransfer = () => {
     );
 };
 
-export default MaterialTransfer;
+export default SiteSupplyRequests;
