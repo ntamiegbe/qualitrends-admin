@@ -1,8 +1,9 @@
+import WarehouseAssets from "@/components/warehouse/WarehouseAssets"
 
-const WarehouseAssets = () => {
+const WarehouseAssetsPage = () => {
     return (
         <WarehouseAssets />
     )
 }
 
-export default WarehouseAssets
+export default WarehouseAssetsPage
