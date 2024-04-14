@@ -1,11 +1,13 @@
-import { Metadata } from "next";
+"use client"
 
-export const metadata: Metadata = {
-	title: "Warehouse | Product List",
-};
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const ProductListPage = () => {
-	return <div>ProductListPage</div>;
-};
+export default function ProductListPage() {
+	const router = useRouter();
 
-export default ProductListPage;
+	useEffect(() => {
+		router.push("/warehouse/product-list/warehouse-inventory");
+	}, []);
+	return <main className=''></main>;
+}
