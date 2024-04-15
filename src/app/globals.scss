@@ -11,3 +11,14 @@ body {
 		text-wrap: balance;
 	}
 }
+
+/* Toggle B */
+input:checked {
+	& ~ .dot {
+		transform: translateX(150%);
+	}
+
+	& ~ .background {
+		@apply bg-primary;
+	}
+}
