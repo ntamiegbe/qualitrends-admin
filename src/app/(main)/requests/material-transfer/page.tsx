@@ -1,5 +1,5 @@
+import MaterialTransferRequests from '@/components/requests/material-transfer';
 import { Metadata } from 'next';
-import React from 'react'
 
 export const metadata: Metadata = {
     title: "Requests | Material Transfer",
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const MaterialTransferRequestsPage = () => {
     return (
-        <div>MaterialTransferRequestsPage</div>
+       <MaterialTransferRequests />
     )
 }
 

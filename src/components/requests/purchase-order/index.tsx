@@ -131,7 +131,7 @@ const PurchaseOrderRequests = () => {
 					return (
 						<tr
 							onClick={() => {
-                                router.push("/requests/" + purchaseOrderId + "/inventory");
+                                router.push("/purchase-order/" + purchaseOrderId);
 							}}
 							className={cn("text-sm cursor-pointer border-[#5A5A5A99]", {
 								"border-b": index !== length - 1,
