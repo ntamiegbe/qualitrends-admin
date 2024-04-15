@@ -44,6 +44,14 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			name: "Expense Requests",
 			path: `/projects/${params.id}/expense-requests`,
 		},
+		{
+			name: "Warehouse Supply Requests",
+			path: `/projects/${params.id}/warehouse-supply-requests`,
+		},
+		{
+			name: "Transactions",
+			path: `/projects/${params.id}/transactions`,
+		},
 	];
 
 	const projectDetailsStatsData = [
@@ -228,13 +236,13 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			<div className='mt-6 pb-5'>
 				<ProjectDetails />
 			</div>
-			<ul className='hidden mt-7 mb-10 lg:flex items-center space-x-4 border-b border-[#CBCFD3] py-2'>
+			<ul className='hidden mt-7 mb-10 lg:flex items-center space-x-4 overflow-x-auto border-b border-[#CBCFD3] py-2'>
 				{routes.map((route, index) => {
 					return (
 						<li key={index} className='relative max-lg:w-1/2'>
 							<Link
 								className={cn(
-									"capitalize max-lg:text-sm transition-all text-black-500 lg:w-[200px] flex justify-center",
+									"capitalize whitespace-nowrap max-lg:text-sm transition-all text-black-500 lg:w-[210px] flex justify-center",
 									{
 										"font-semibold text-black-900": pathname.includes(
 											route.path
@@ -282,6 +290,14 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 							{
 								name: "Expense Requests",
 								value: `/projects/${params.id}/expense-requests`,
+							},
+							{
+								name: "Warehouse Supply Requests",
+								value: `/projects/${params.id}/warehouse-supply-requests`,
+							},
+							{
+								name: "Transactions",
+								value: `/projects/${params.id}/transactions`,
 							},
 						]}
 						optionComponent={(option, selectedOption) => {
