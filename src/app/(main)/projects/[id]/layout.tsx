@@ -86,9 +86,9 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 		defaultValues: {
 			search: "",
 			project: "",
-			route: {
-				name: "Inventory",
-				value: `/projects/${params.id}/inventory`,
+			route: "" as unknown as {
+				name: string;
+				value: string;
 			},
 		},
 	});
@@ -96,13 +96,24 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 	const {
 		formState: { errors },
 		watch,
+		setValue,
 	} = methods;
 
-	const route = watch("route.value");
+	const route = watch("route") as unknown as {
+		name: string;
+		value: string;
+	};
+
+	useEffect(() => {
+		setValue("route", {
+			name: pathname?.split("/")[3]?.replace("-", " "),
+			value: `/projects/${params.id}/${pathname?.split("/")[3]}`,
+		});
+	}, []);
 
 	useEffect(() => {
 		if (route) {
-			router.push(route);
+			router.push(route.value);
 		}
 	}, [route]);
 
@@ -299,7 +310,7 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 								<div className='flex h-min bg-transparent items-center space-x-1'>
 									{selected ? (
 										<div className='text-tc-main flex space-x-2 items-center text-sm'>
-											<span>{selected.name}</span>
+											<span className='capitalize'>{selected.name}</span>
 										</div>
 									) : (
 										<div className='text-sm mt-[2px] text-tc-secondary'>
