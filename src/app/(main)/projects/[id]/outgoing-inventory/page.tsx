@@ -1,5 +1,7 @@
+import OutgoingInventory from "@/components/projects/OutgoingInventory";
+
 const OutgoingInventoryPage = () => {
-	return <div></div>;
+	return <OutgoingInventory />;
 };
 
 export default OutgoingInventoryPage;
