@@ -9,7 +9,7 @@ import ProjectDetailsStats from "@/components/projects/ProjectDetailsStats";
 import { cn, formatAmount } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type ProjectDetailsLayoutProps = {
@@ -17,10 +17,10 @@ type ProjectDetailsLayoutProps = {
 };
 
 const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
+	const [canScrollRight, setCanScrollRight] = useState(true);
+	const [canScrollLeft, setCanScrollLeft] = useState(false);
 	const router = useRouter();
-
 	const pathname = usePathname();
-
 	const params = useParams();
 
 	const routes = [
@@ -47,6 +47,7 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 		{
 			name: "Warehouse Supply Requests",
 			path: `/projects/${params.id}/warehouse-supply-requests`,
+			isWider: true,
 		},
 		{
 			name: "Transactions",
@@ -124,6 +125,26 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			router.push(route.value);
 		}
 	}, [route]);
+
+	const scrollableElement = useRef<HTMLDivElement>(null);
+
+	// write a function to listen to the resize event and set the state of canScrollRight and canScrollLeft
+	useEffect(() => {
+		const handleResize = () => {
+			setCanScrollLeft(scrollableElement?.current?.scrollLeft! > 0);
+			setCanScrollRight(
+				scrollableElement?.current?.scrollLeft! <
+					scrollableElement?.current?.scrollWidth! -
+						scrollableElement?.current?.clientWidth!
+			);
+		};
+
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
 
 	return (
 		<div>
@@ -236,70 +257,103 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			<div className='mt-6 pb-5'>
 				<ProjectDetails />
 			</div>
-			<ul className='hidden mt-7 mb-10 lg:flex items-center space-x-4 overflow-x-auto border-b border-[#CBCFD3] py-2'>
-				{routes.map((route, index) => {
-					return (
-						<li key={index} className='relative max-lg:w-1/2'>
-							<Link
-								className={cn(
-									"capitalize whitespace-nowrap max-lg:text-sm transition-all text-black-500 lg:w-[210px] flex justify-center",
-									{
-										"font-semibold text-black-900": pathname.includes(
-											route.path
-										),
-									}
-								)}
-								href={route.path}>
-								{route.name}
-							</Link>
+			<div className='relative'>
+				<div
+					ref={scrollableElement}
+					className='max-w-full scrollbar-none mt-7 mb-10 overflow-x-auto border-b border-[#CBCFD3]'>
+					<ul className='hidden lg:flex items-center space-x-4 py-2'>
+						{routes.map((route, index) => {
+							return (
+								<li key={index} className='relative max-lg:w-1/2'>
+									<Link
+										className={cn(
+											"capitalize max-lg:text-sm whitespace-nowrap transition-all text-black-500 lg:w-[220px] flex justify-center",
+											{
+												"font-semibold text-black-900": pathname.includes(
+													route.path
+												),
+											}
+										)}
+										href={route.path}>
+										{route.name}
+									</Link>
 
-							<div
-								className={cn(
-									"absolute left-1/2 transition-width transform -translate-x-1/2 -bottom-2.5 h-[3px] w-0 bg-primary",
-									{
-										"opacity-0": !pathname.includes(route.path),
-										"w-2/4": pathname.includes(route.path),
-									}
-								)}
-							/>
-						</li>
-					);
-				})}
-			</ul>
+									<div
+										className={cn(
+											"absolute left-1/2 transition-width transform -translate-x-1/2 -bottom-2 h-[3px] w-0 bg-primary",
+											{
+												"opacity-0": !pathname.includes(route.path),
+												"w-2/4": pathname.includes(route.path),
+											}
+										)}
+									/>
+								</li>
+							);
+						})}
+						<li className='w-80 h-full bg-red-600'></li>
+					</ul>
+					<div
+						className={cn(
+							"absolute h-[40px] w-12 flex items-center justify-center right-0 top-1/2 transform -translate-y-1/2 bg-white",
+							{
+								"pointer-events-none opacity-0": !canScrollRight,
+							}
+						)}>
+						<button
+							onClick={() => {
+								scrollableElement.current?.scrollBy({
+									left: 200,
+									behavior: "smooth",
+								});
+								setCanScrollLeft(scrollableElement?.current?.scrollLeft! > 0);
+								setCanScrollRight(
+									scrollableElement?.current?.scrollLeft! <
+										scrollableElement?.current?.scrollWidth! -
+											scrollableElement?.current?.clientWidth! -
+											200
+								);
+							}}
+							className='bg-white/30 bg-white rounded-full p-1 transition-all hover:bg-primary/45'>
+							<Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
+						</button>
+					</div>
+					<div
+						className={cn(
+							"absolute h-[40px] w-12 flex items-center justify-center left-0 top-1/2 transform -translate-y-1/2 bg-white",
+							{
+								"pointer-events-none opacity-0": !canScrollLeft,
+							}
+						)}>
+						<button
+							onClick={() => {
+								scrollableElement.current?.scrollBy({
+									left: -200,
+									behavior: "smooth",
+								});
+								setCanScrollLeft(scrollableElement?.current?.scrollLeft! > 0);
+								setCanScrollRight(
+									scrollableElement?.current?.scrollLeft! <
+										scrollableElement?.current?.scrollWidth! -
+											scrollableElement?.current?.clientWidth! -
+											200
+								);
+							}}
+							className='bg-white/30 bg-white rounded-full p-1 transition-all hover:bg-primary/45'>
+							<Icons.CaretIcon className='fill-black-900 transform rotate-90' />
+						</button>
+					</div>
+				</div>
+			</div>
 			<div className='mb-6 mt-2 lg:hidden'>
 				<FormProvider {...methods}>
 					<SelectInput
 						name='route'
-						options={[
-							{
-								name: "Inventory",
-								value: `/projects/${params.id}/inventory`,
-							},
-							{
-								name: "Incoming Inventory",
-								value: `/projects/${params.id}/incoming-inventory`,
-							},
-							{
-								name: "Outgoing Inventory",
-								value: `/projects/${params.id}/outgoing-inventory`,
-							},
-							{
-								name: "Purchase Order",
-								value: `/projects/${params.id}/purchase-order`,
-							},
-							{
-								name: "Expense Requests",
-								value: `/projects/${params.id}/expense-requests`,
-							},
-							{
-								name: "Warehouse Supply Requests",
-								value: `/projects/${params.id}/warehouse-supply-requests`,
-							},
-							{
-								name: "Transactions",
-								value: `/projects/${params.id}/transactions`,
-							},
-						]}
+						options={routes.map((route) => {
+							return {
+								name: route.name,
+								value: route.path,
+							};
+						})}
 						optionComponent={(option, selectedOption) => {
 							return (
 								<div
