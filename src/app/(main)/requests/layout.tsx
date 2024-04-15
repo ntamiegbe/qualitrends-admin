@@ -50,11 +50,11 @@ const RequestsLayout = ({ children }: RequestsLayoutProps) => {
     const stats = [
         {
             title: "Total Approved",
-            value: formatAmount(+3500000000, "NGN"),
+            value: formatAmount(+350000000, "NGN"),
         },
         {
             title: "Total Denied",
-            value: formatAmount(+500000000, "NGN"),
+            value: formatAmount(+50000000, "NGN"),
         },
         {
             title: "Total Pending",

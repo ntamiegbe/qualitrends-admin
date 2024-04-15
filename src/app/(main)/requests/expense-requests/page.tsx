@@ -1,3 +1,4 @@
+import ExpenseRequests from '@/components/requests/expense';
 import { Metadata } from 'next';
 import React from 'react'
 
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 
 const ExpenseRequestsPage = () => {
     return (
-        <div>ExpenseRequestsPage</div>
+        <ExpenseRequests />
     )
 }
 
