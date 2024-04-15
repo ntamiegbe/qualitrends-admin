@@ -257,11 +257,11 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			<div className='mt-6 pb-5'>
 				<ProjectDetails />
 			</div>
-			<div className='relative'>
+			<div className='relative hidden lg:block'>
 				<div
 					ref={scrollableElement}
 					className='max-w-full scrollbar-none mt-7 mb-10 overflow-x-auto border-b border-[#CBCFD3]'>
-					<ul className='hidden lg:flex items-center space-x-4 py-2'>
+					<ul className='flex items-center space-x-4 py-2'>
 						{routes.map((route, index) => {
 							return (
 								<li key={index} className='relative max-lg:w-1/2'>
