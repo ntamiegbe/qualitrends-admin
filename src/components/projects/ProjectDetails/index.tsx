@@ -33,16 +33,18 @@ const ProjectDetails = () => {
 
 	return (
 		<section>
-			<h3 className='bg-[#FFF0E5] py-4 px-5 text-xl font-semibold'>
+			<h3 className='bg-[#FFF0E5] max-lg:mb-4 p-2.5 lg:py-4 lg:px-5 lg:text-xl font-semibold'>
 				Project Details
 			</h3>
-			<ul className='grid grid-cols-2 mt-10 gap-6 px-5'>
+			<ul className='grid grid-cols-1 max-lg:roundedm bg-white max-lg:drop-shadow-md lg:grid-cols-2 max-lg:py-4 lg:mt-10 gap-y-5 lg:gap-6 px-5'>
 				{data.map((item, index) => {
 					return (
-						<li key={index} className='flex items-center'>
-							<div className='w-52 text-black-500'>{item.label}</div>
+						<li
+							key={index}
+							className='max-lg:text-sm max-lg:space-y-2 lg:flex items-center'>
+							<div className='w-52 text-black-500'>{item.label}:</div>
 							<div
-								className={cn("font-semibold w-[calc(100%-230px)]", {
+								className={cn("font-semibold lg:w-[calc(100%-230px)]", {
 									"text-primary": index === 0,
 								})}>
 								{item.isStatus ? (

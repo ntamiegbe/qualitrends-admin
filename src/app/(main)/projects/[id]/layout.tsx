@@ -8,7 +8,8 @@ import ProjectDetails from "@/components/projects/ProjectDetails";
 import ProjectDetailsStats from "@/components/projects/ProjectDetailsStats";
 import { cn, formatAmount } from "@/lib/utils";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type ProjectDetailsLayoutProps = {
@@ -16,6 +17,8 @@ type ProjectDetailsLayoutProps = {
 };
 
 const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
+	const router = useRouter();
+
 	const pathname = usePathname();
 
 	const params = useParams();
@@ -82,6 +85,11 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 		mode: "onChange",
 		defaultValues: {
 			search: "",
+			project: "",
+			route: {
+				name: "Inventory",
+				value: `/projects/${params.id}/inventory`,
+			},
 		},
 	});
 
@@ -89,6 +97,14 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 		formState: { errors },
 		watch,
 	} = methods;
+
+	const route = watch("route.value");
+
+	useEffect(() => {
+		if (route) {
+			router.push(route);
+		}
+	}, [route]);
 
 	return (
 		<div>
@@ -111,7 +127,7 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 						<div className='w-[205px]'>
 							<FormProvider {...methods}>
 								<SelectInput
-									name='route'
+									name='project'
 									options={[
 										{
 											name: "Project 1",
@@ -170,25 +186,38 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 				</div>
 				<div className='space-y-4 lg:space-y-6 max-lg:mt-4'>
 					<div className='flex justify-between space-x-6 items-center'>
-						<Button className='w-[200px] max-lg:h-9'>
+						<Button className='w-1/2 lg:w-[200px] max-lg:h-9 max-lg:!px-0'>
 							<div className='flex items-center space-x-3'>
 								<Icons.PlusIcon className='fill-white' />
 								<div>Create Request</div>
 							</div>
 						</Button>
-						<Button theme='outline' className='w-[200px] max-lg:h-9'>
+						<Button
+							theme='outline'
+							className='w-1/2 lg:w-[200px] max-lg:h-9 max-lg:!px-0'>
 							Change Status
 						</Button>
 					</div>
+				</div>
+				<div className='lg:hidden flex items-center space-x-4 mt-4'>
+					<button className='lg:hidden'>
+						<Icons.ProjectEmailIcon />
+					</button>
+					<button className='lg:hidden'>
+						<Icons.ProjectPrinterIcon />
+					</button>
+					<button className='lg:hidden'>
+						<Icons.ProjectDocumentIcon />
+					</button>
 				</div>
 			</div>
 			<div className='mt-6'>
 				<ProjectDetailsStats data={projectDetailsStatsData} />
 			</div>
-			<div className='mt-6 py-5'>
+			<div className='mt-6 pb-5'>
 				<ProjectDetails />
 			</div>
-			<ul className='mt-7 mb-10 flex items-center space-x-4 border-b border-[#CBCFD3] py-2'>
+			<ul className='hidden mt-7 mb-10 lg:flex items-center space-x-4 border-b border-[#CBCFD3] py-2'>
 				{routes.map((route, index) => {
 					return (
 						<li key={index} className='relative max-lg:w-1/2'>
@@ -218,6 +247,71 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 					);
 				})}
 			</ul>
+			<div className='mb-6 mt-2 lg:hidden'>
+				<FormProvider {...methods}>
+					<SelectInput
+						name='route'
+						options={[
+							{
+								name: "Inventory",
+								value: `/projects/${params.id}/inventory`,
+							},
+							{
+								name: "Incoming Inventory",
+								value: `/projects/${params.id}/incoming-inventory`,
+							},
+							{
+								name: "Outgoing Inventory",
+								value: `/projects/${params.id}/outgoing-inventory`,
+							},
+							{
+								name: "Purchase Order",
+								value: `/projects/${params.id}/purchase-order`,
+							},
+							{
+								name: "Expense Requests",
+								value: `/projects/${params.id}/expense-requests`,
+							},
+						]}
+						optionComponent={(option, selectedOption) => {
+							return (
+								<div
+									className={cn(
+										"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+										{
+											"bg-[#FF69001A]": option?.value === selectedOption?.value,
+										}
+									)}>
+									<div className='w-full text-sm flex items-center space-x-2'>
+										<div>{option?.name}</div>
+									</div>
+
+									{option?.name === selectedOption?.name && (
+										<div>
+											<Icons.SelectedIcon />
+										</div>
+									)}
+								</div>
+							);
+						}}
+						trigger={(selected) => {
+							return (
+								<div className='flex h-min bg-transparent items-center space-x-1'>
+									{selected ? (
+										<div className='text-tc-main flex space-x-2 items-center text-sm'>
+											<span>{selected.name}</span>
+										</div>
+									) : (
+										<div className='text-sm mt-[2px] text-tc-secondary'>
+											Select Section
+										</div>
+									)}
+								</div>
+							);
+						}}
+					/>
+				</FormProvider>
+			</div>
 			<div className='mb-6'>
 				<FormProvider {...methods}>
 					<form className='lg:!ml-0 flex-1'>
