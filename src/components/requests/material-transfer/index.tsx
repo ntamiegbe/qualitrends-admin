@@ -109,7 +109,7 @@ const MaterialTransferRequests = () => {
                     return (
                         <tr
                             onClick={() => {
-                                router.push("/material-transfer/" + id );
+                                router.push("/requests/" + id + "/material-transfer");
                             }}
                             className={cn("text-sm cursor-pointer border-[#5A5A5A99]", {
                                 "border-b": index !== length - 1,

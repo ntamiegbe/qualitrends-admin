@@ -98,7 +98,7 @@ const WarehouseSupplyRequests = () => {
                     return (
                         <tr
                             onClick={() => {
-                                router.push("/warehouse-supply-requests/" + id);
+                                router.push("/requests/" + id + "/warehouse-supply-requests/");
                             }}
                             className={cn("text-sm cursor-pointer border-[#5A5A5A99]", {
                                 "border-b": index !== length - 1,

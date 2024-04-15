@@ -131,7 +131,7 @@ const ExpenseRequests = () => {
                     return (
                         <tr
                             onClick={() => {
-                                router.push("/expense-requests/" + expenseRequestId );
+                                router.push("/requests/" + expenseRequestId + "/expense-requests" );
                             }}
                             className={cn("text-sm cursor-pointer border-[#5A5A5A99]", {
                                 "border-b": index !== length - 1,
