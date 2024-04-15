@@ -1,5 +1,7 @@
+import Transactions from "@/components/projects/Transactions";
+
 const TransactionsPage = () => {
-	return <div></div>;
+	return <Transactions />;
 };
 
 export default TransactionsPage;
