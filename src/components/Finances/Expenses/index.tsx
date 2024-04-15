@@ -11,93 +11,93 @@ const expenses = () => {
     const data = [
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: -50000,
-			lastpaymentdate: "12 Jul 2023",
+			expensename: "Rent",
+			expensetype: "Expenses Request",
+			totalpaid: 5000000,
+			totaloutstanding: " ₦ 0.00",
+			sourceaccount: "Gen Acct",
+			receiver: "Project Manager",
 		},
         {
-			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: 5000000,
-			lastpaymentdate: "12 Jul 2023",
+          id: "INC_001",
+          expensename: "Mortgage",
+          expensetype: "Purchase Order",
+          totalpaid: 50000,
+          totaloutstanding: -50000,
+          sourceaccount: "Project Code",
+          receiver: "Project Manager",
 		},
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: 5000000,
-			lastpaymentdate: "12 Jul 2023",
+          expensename: "Material Purchase",
+          expensetype: "Expenses Request",
+          totalpaid: 500000,
+          totaloutstanding: -50000,
+          sourceaccount: "Project Code",
+          receiver: "Supplier ID",
 		},
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: -10000,
-			lastpaymentdate: "12 Jul 2023",
+          expensename: "Material Purchase",
+          expensetype: "Purchase Order",
+          totalpaid: 500000,
+          totaloutstanding: -50000,
+          sourceaccount: "Gen Acct",
+          receiver: "Project Manager",
 		},
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: -5000,
-			lastpaymentdate: "12 Jul 2023",
+          expensename: "Rent",
+          expensetype: "Expenses Request",
+          totalpaid: 500000,
+          totaloutstanding: -50000,
+          sourceaccount: "Project Code",
+          receiver: "Project Manager",
 		},
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: 5000000,
-			lastpaymentdate: "12 Jul 2023",
+          expensename: "Mortgage",
+          expensetype: "Purchase Order",
+          totalpaid: 50000,
+          totaloutstanding: -50000,
+          sourceaccount: "Gen Acct",
+          receiver: "Supplier ID",
 		},
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: "₦00.00",
-			lastpaymentdate: "12 Jul 2023",
+          expensename: "Mortgage",
+          expensetype: "Purchase Order",
+          totalpaid: 500000,
+          totaloutstanding: -50000,
+          sourceaccount: "Gen Acct",
+          receiver: "Project Manager",
 		},
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: 500000,
-			lastpaymentdate: "12 Jul 2023",
+          expensename: "Rent",
+          expensetype: "Expenses Request",
+          totalpaid: 500000,
+          totaloutstanding: -50000,
+          sourceaccount: "Project Code",
+          receiver: "Supplier ID",
 		},
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales",
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: -50000,
-			lastpaymentdate: "12 Jul 2023",
+          expensename: "Material Purchase",
+          expensetype: "Expenses Request",
+          totalpaid: 500000,
+          totaloutstanding: -50000,
+          sourceaccount: "Gen Acct",
+          receiver: "Project Manager",
 		},
 		{
 			id: "INC_001",
-			customer: "Jane Doe",
-			incomecategory: "Sales", 
-			invoiceID: "12J23",
-			totalReceived: 5000000,
-			outstandingbalance: -190000,
-			lastpaymentdate: "12 Jul 2023",
+          expensename: "Rent",
+          expensetype: "Purchase Order",
+          totalpaid: 50000,
+          totaloutstanding: -50000,
+          sourceaccount: "Project Code",
+          receiver: "Supplier ID",
 		},
     ];
 
@@ -107,28 +107,28 @@ const expenses = () => {
 			key: "id",
 		},
 		{
-			title: "Customer",
-			key: "customer",
+			title: "Expense Name",
+			key: "expensename",
 		},
 		{
-			title: "Income Category",
-			key: "incomecategory",
+			title: "Expense Type",
+			key: "expensetype",
 		},
 		{
-			title: "Invoice ID",
-			key: "invoiceID",
+			title: "Total Paid",
+			key: "totalpaid",
 		},
 		{
-			title: "Total Received",
-			key: "totalReceived",
+			title: "Total Outstanding",
+			key: "totaloutstanding",
 		},
 		{
-			title: "Outstanding Balance",
-			key: "outstandingbalance",
+			title: "Source Account",
+			key: "sourceaccount",
 		},
 		{
-			title: "Last Payment Date",
-			key: "lastpaymentdate",
+			title: "Receiver",
+			key: "receiver",
 		},
 		{
 			title: "Actions",
@@ -145,12 +145,12 @@ const expenses = () => {
                 rowComponent={(transaction, index, length) => {
                     const {
                         id,
-                        customer,
-                        incomecategory,
-                        invoiceID,
-                        totalReceived,
-                        outstandingbalance,
-                        lastpaymentdate,
+                        expensename,
+                        expensetype,
+                        totaloutstanding,
+                        totalpaid,
+                        sourceaccount,
+                        receiver,
                     } = transaction;
                     return (
                         <tr
@@ -160,14 +160,14 @@ const expenses = () => {
                             })}
                         >
                             <td className="p-4 text-black-500 whitespace-nowrap">{id}</td>
-                            <td className="p-4 text-black-500 whitespace-nowrap">{customer}</td>
-                            <td className="py-[18px] w-[100px] px-4 text-black-500 whitespace-nowrap">{incomecategory}</td>
-                            <td className="p-4 text-black-500 whitespace-nowrap uppercase">{invoiceID}</td>
-                            <td className="p-4 whitespace-nowrap">{formatAmount(+totalReceived, "NGN")}</td>
+                            <td className="p-4 text-black-500 whitespace-nowrap">{expensename}</td>
+                            <td className="py-[18px] w-[100px] px-4 text-black-500 whitespace-nowrap">{expensetype}</td>
+                            <td className="p-4 whitespace-nowrap">{formatAmount(+totalpaid, "NGN")}</td>
                             <td className="p-4 text-black-500 whitespace-nowrap">
-                                <TotalOutstanding value={outstandingbalance} />
+                                <TotalOutstanding value={totaloutstanding} />
                             </td>
-                            <td className="p-4 text-black-500 whitespace-nowrap">{lastpaymentdate}</td>
+                            <td className="p-4 text-black-500 whitespace-nowrap capitalise">{sourceaccount}</td>
+                            <td className="p-4 text-black-500 whitespace-nowrap">{receiver}</td>
                             <td className="p-4">
                                 <button>
                                     <Icons.MoreIcon />
@@ -177,6 +177,11 @@ const expenses = () => {
                     );
                 }}
             />
+
+            <div className="flex justify-between items-center mt-8">
+                <div className="text-black-500 font-semibold pt-2">Showing 1 - 9 from 100</div>
+                <div className="">pagination</div>
+            </div>
         </section>
     );
 };
