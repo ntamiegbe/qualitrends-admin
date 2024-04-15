@@ -1,5 +1,7 @@
+import PurchaseOrder from "@/components/projects/PurchaseOrder";
+
 const PurchaseOrderPage = () => {
-	return <div></div>;
+	return <PurchaseOrder />;
 };
 
 export default PurchaseOrderPage;

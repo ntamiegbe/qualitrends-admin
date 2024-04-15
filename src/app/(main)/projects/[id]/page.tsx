@@ -10,7 +10,7 @@ const ProjectDetails = () => {
 
 	useEffect(() => {
 		router.push(`/projects/${params.id}/inventory`);
-	}, []);
+	}, [params]);
 
 	return <div></div>;
 };

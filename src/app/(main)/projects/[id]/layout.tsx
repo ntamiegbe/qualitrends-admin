@@ -44,6 +44,14 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			name: "Expense Requests",
 			path: `/projects/${params.id}/expense-requests`,
 		},
+		{
+			name: "Warehouse Supply Requests",
+			path: `/projects/${params.id}/warehouse-supply-requests`,
+		},
+		{
+			name: "Transactions",
+			path: `/projects/${params.id}/transactions`,
+		},
 	];
 
 	const projectDetailsStatsData = [
@@ -86,9 +94,9 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 		defaultValues: {
 			search: "",
 			project: "",
-			route: {
-				name: "Inventory",
-				value: `/projects/${params.id}/inventory`,
+			route: "" as unknown as {
+				name: string;
+				value: string;
 			},
 		},
 	});
@@ -96,13 +104,24 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 	const {
 		formState: { errors },
 		watch,
+		setValue,
 	} = methods;
 
-	const route = watch("route.value");
+	const route = watch("route") as unknown as {
+		name: string;
+		value: string;
+	};
+
+	useEffect(() => {
+		setValue("route", {
+			name: pathname?.split("/")[3]?.replace("-", " "),
+			value: `/projects/${params.id}/${pathname?.split("/")[3]}`,
+		});
+	}, []);
 
 	useEffect(() => {
 		if (route) {
-			router.push(route);
+			router.push(route.value);
 		}
 	}, [route]);
 
@@ -217,13 +236,13 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			<div className='mt-6 pb-5'>
 				<ProjectDetails />
 			</div>
-			<ul className='hidden mt-7 mb-10 lg:flex items-center space-x-4 border-b border-[#CBCFD3] py-2'>
+			<ul className='hidden mt-7 mb-10 lg:flex items-center space-x-4 overflow-x-auto border-b border-[#CBCFD3] py-2'>
 				{routes.map((route, index) => {
 					return (
 						<li key={index} className='relative max-lg:w-1/2'>
 							<Link
 								className={cn(
-									"capitalize max-lg:text-sm transition-all text-black-500 lg:w-[200px] flex justify-center",
+									"capitalize whitespace-nowrap max-lg:text-sm transition-all text-black-500 lg:w-[210px] flex justify-center",
 									{
 										"font-semibold text-black-900": pathname.includes(
 											route.path
@@ -272,6 +291,14 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 								name: "Expense Requests",
 								value: `/projects/${params.id}/expense-requests`,
 							},
+							{
+								name: "Warehouse Supply Requests",
+								value: `/projects/${params.id}/warehouse-supply-requests`,
+							},
+							{
+								name: "Transactions",
+								value: `/projects/${params.id}/transactions`,
+							},
 						]}
 						optionComponent={(option, selectedOption) => {
 							return (
@@ -299,7 +326,7 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 								<div className='flex h-min bg-transparent items-center space-x-1'>
 									{selected ? (
 										<div className='text-tc-main flex space-x-2 items-center text-sm'>
-											<span>{selected.name}</span>
+											<span className='capitalize'>{selected.name}</span>
 										</div>
 									) : (
 										<div className='text-sm mt-[2px] text-tc-secondary'>

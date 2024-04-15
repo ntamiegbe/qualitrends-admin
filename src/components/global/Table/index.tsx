@@ -1,3 +1,4 @@
+"use client";
 import { Fragment } from "react";
 import EmptyState from "../EmptyState";
 import { cn } from "@/lib/utils";
