@@ -1,5 +1,7 @@
+import IncomingInventory from "@/components/projects/IncomingInventory";
+
 const IncomingInventoryPage = () => {
-	return <div></div>;
+	return <IncomingInventory />;
 };
 
 export default IncomingInventoryPage;
