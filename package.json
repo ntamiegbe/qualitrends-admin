@@ -10,6 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "-": "^0.0.1",
     "@nivo/bar": "^0.85.1",
     "clsx": "^2.1.0",
     "date-fns": "^3.6.0",

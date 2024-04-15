@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '-':
+    specifier: ^0.0.1
+    version: 0.0.1
   '@nivo/bar':
     specifier: ^0.85.1
     version: 0.85.1(react-dom@18.2.0)(react@18.2.0)
@@ -93,6 +96,10 @@ devDependencies:
     version: 5.4.3
 
 packages:
+
+  /-@0.0.1:
+    resolution: {integrity: sha512-3HfneK3DGAm05fpyj20sT3apkNcvPpCuccOThOPdzz8sY7GgQGe0l93XH9bt+YzibcTIgUAIMoyVJI740RtgyQ==}
+    dev: false
 
   /@alloc/quick-lru@5.2.0:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
