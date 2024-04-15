@@ -7,7 +7,8 @@ export type StatusType =
 	| "out_on_lease"
 	| "pending"
 	| "declined"
-	| "approved";
+	| "approved"
+	| "credit";
 
 type StatusProps = {
 	status: StatusType;
@@ -24,7 +25,7 @@ const Status = ({ status }: StatusProps) => {
 			"in_warehouse",
 			"approved",
 		],
-		"text-status-error-100 bg-status-error-10": ["sold", "declined"],
+		"text-status-error-100 bg-status-error-10": ["sold", "declined", "credit"],
 		"text-status-warning-500 bg-status-warning-10": ["out_on_lease", "pending"],
 	};
 

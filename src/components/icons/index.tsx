@@ -33,6 +33,8 @@ import ErrorIcon from "/public/assets/icons/error.svg";
 import InfoIcon from "/public/assets/icons/info.svg";
 import WarningIcon from "/public/assets/icons/warning.svg";
 import SelectedIcon from "/public/assets/icons/selected.svg";
+import PdfFile from "/public/assets/icons/pdf-file.svg";
+import FileX from "/public/assets/icons/filex.svg";
 
 const Icons = {
 	Logo,
@@ -68,6 +70,8 @@ const Icons = {
 	InfoIcon,
 	WarningIcon,
 	SelectedIcon,
+	PdfFile,
+	FileX,
 };
 
 export default Icons;
