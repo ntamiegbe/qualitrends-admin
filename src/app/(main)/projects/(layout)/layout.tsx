@@ -2,6 +2,7 @@
 
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
+import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -40,7 +41,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 
 	return (
 		<div>
-			<div className='lg:flex lg:space-x-5 justify-between'>
+			<div className='max-lg:pb-5 lg:flex lg:space-x-5 justify-between'>
 				<div>
 					<h1 className='lg:text-2xl font-semibold'>Projects</h1>
 					<div className='text-sm lg:text-sm text-black-500 font-Roboto flex items-center space-x-3 mt-1'>
@@ -108,36 +109,13 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 					</div>
 				</div>
 			</div>
-			<ul className='mt-7 mb-10 flex items-center space-x-4 border-b border-[#CBCFD3] py-2'>
-				{routes.map((route, index) => {
-					return (
-						<li key={index} className='relative max-lg:w-1/2'>
-							<Link
-								className={cn(
-									"capitalize max-lg:text-sm transition-all text-black-500 lg:w-[200px] flex justify-center",
-									{
-										"font-semibold text-black-900": pathname.includes(
-											route.path
-										),
-									}
-								)}
-								href={route.path}>
-								{route.name}
-							</Link>
-
-							<div
-								className={cn(
-									"absolute left-1/2 transition-width transform -translate-x-1/2 -bottom-2.5 h-[3px] w-0 bg-primary",
-									{
-										"opacity-0": !pathname.includes(route.path),
-										"w-2/4": pathname.includes(route.path),
-									}
-								)}
-							/>
-						</li>
-					);
-				})}
-			</ul>
+			<Tab
+				routes={routes}
+				initialRoute={{
+					name: pathname?.split("/")[2]?.replace("-", " "),
+					value: `/projects/${pathname?.split("/")[2]}`,
+				}}
+			/>
 			<div>{children}</div>
 		</div>
 	);
