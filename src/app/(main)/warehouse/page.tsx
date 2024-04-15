@@ -1,5 +1,13 @@
-const Warehouse = () => {
-	return <div>Warehouse</div>;
-};
+"use client"
 
-export default Warehouse;
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+export default function WarehousePage() {
+	const router = useRouter();
+
+	useEffect(() => {
+		router.push("/warehouse/purchase-order");
+	}, []);
+	return <main className=''></main>;
+}

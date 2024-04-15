@@ -33,13 +33,15 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 					className={cn(
 						"transition-all flex items-center justify-between space-x-4 rounded-lg w-full text-white px-4 py-3",
 						{
-							"bg-white text-primary font-semibold": pathname.includes(link.to),
+							"bg-white text-primary font-semibold": pathname.includes(
+								link.to + "/"
+							),
 						}
 					)}>
 					<div className='flex items-center space-x-6'>
 						<div
 							className={cn("fill-white transition-all", {
-								"fill-primary": pathname.includes(link.to),
+								"fill-primary": pathname.includes(link.to + "/"),
 							})}>
 							{link.icon}
 						</div>
@@ -51,7 +53,7 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 						})}>
 						<Icons.CaretIcon
 							className={cn("fill-white", {
-								"fill-primary": pathname.includes(link.to),
+								"fill-primary": pathname.includes(link.to + "/"),
 							})}
 						/>
 					</div>

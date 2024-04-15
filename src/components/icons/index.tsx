@@ -33,8 +33,12 @@ import ErrorIcon from "/public/assets/icons/error.svg";
 import InfoIcon from "/public/assets/icons/info.svg";
 import WarningIcon from "/public/assets/icons/warning.svg";
 import SelectedIcon from "/public/assets/icons/selected.svg";
+<<<<<<< HEAD
 import PdfFile from "/public/assets/icons/pdf-file.svg";
 import FileX from "/public/assets/icons/filex.svg";
+=======
+import WarehouseXIcon from "/public/assets/icons/warehouse-x.svg";
+>>>>>>> 7789c6bbcc6347880fac9ebdeb7a8fc960647dc8
 
 const Icons = {
 	Logo,
@@ -70,8 +74,12 @@ const Icons = {
 	InfoIcon,
 	WarningIcon,
 	SelectedIcon,
+<<<<<<< HEAD
 	PdfFile,
 	FileX,
+=======
+	WarehouseXIcon,
+>>>>>>> 7789c6bbcc6347880fac9ebdeb7a8fc960647dc8
 };
 
 export default Icons;

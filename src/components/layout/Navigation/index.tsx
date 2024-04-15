@@ -42,6 +42,10 @@ const Navigation = () => {
 			icon: <Icons.WarehouseIcon className='fill-inherit' />,
 			children: [
 				{
+					name: "Warehouse",
+					to: "/warehouse",
+				},
+				{
 					name: "Product List",
 					to: "/warehouse/product-list",
 				},

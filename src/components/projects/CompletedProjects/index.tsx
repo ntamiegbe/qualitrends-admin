@@ -4,8 +4,11 @@ import Status, { StatusType } from "@/components/global/Status";
 import Table from "@/components/global/Table";
 import Icons from "@/components/icons";
 import { cn, formatAmount } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const CompletedProjects = () => {
+	const router = useRouter();
+
 	const data = [
 		{
 			code: "CPD1",
@@ -152,8 +155,10 @@ const CompletedProjects = () => {
 					} = transaction;
 					return (
 						<tr
-							onClick={() => {}}
-							className={cn("text-sm border-[#5A5A5A99]", {
+							onClick={() => {
+								router.push("/projects/" + code + "/inventory");
+							}}
+							className={cn("text-sm cursor-pointer border-[#5A5A5A99]", {
 								"border-b": index !== length - 1,
 							})}>
 							<td className='p-4 text-black-500 whitespace-nowrap'>{code}</td>
