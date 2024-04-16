@@ -34,6 +34,8 @@ import InfoIcon from "/public/assets/icons/info.svg";
 import WarningIcon from "/public/assets/icons/warning.svg";
 import SelectedIcon from "/public/assets/icons/selected.svg";
 import WarehouseXIcon from "/public/assets/icons/warehouse-x.svg";
+import CloseIcon from "/public/assets/icons/close.svg";
+import SuccessIcon from "/public/assets/icons/success.svg";
 
 const Icons = {
 	Logo,
@@ -70,6 +72,8 @@ const Icons = {
 	WarningIcon,
 	SelectedIcon,
 	WarehouseXIcon,
+	CloseIcon,
+	SuccessIcon,
 };
 
 export default Icons;
