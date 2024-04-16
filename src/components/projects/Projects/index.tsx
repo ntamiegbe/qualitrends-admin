@@ -11,10 +11,13 @@ import Stats from "@/components/global/Stats";
 import IncomeAndExpensesChart from "@/components/dashboard/IncomeAndExpensesChart";
 import ProjectsTable from "../ProjectsTable";
 import RecentProjectsProgressChart from "../RecentProjectsProgressChart";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import CreateProjectModal from "../CreateProjectModal";
 
 const Projects = () => {
+	const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
+
 	const router = useRouter();
 
 	const methods = useForm({
@@ -90,7 +93,9 @@ const Projects = () => {
 				</div>
 				<div className='space-y-4 lg:space-y-6 max-lg:mt-4'>
 					<div className='flex justify-between items-center lg:justify-end'>
-						<Button className='w-[200px] max-lg:h-9'>
+						<Button
+							onClick={() => setShowCreateProjectModal(true)}
+							className='w-[200px] max-lg:h-9'>
 							<div className='flex items-center space-x-3'>
 								<Icons.PlusIcon className='fill-white' />
 								<div>Create Project</div>
@@ -181,6 +186,10 @@ const Projects = () => {
 			<div className='mt-6'>
 				<ProjectsTable />
 			</div>
+			<CreateProjectModal
+				showModal={showCreateProjectModal}
+				setShowModal={setShowCreateProjectModal}
+			/>
 		</div>
 	);
 };

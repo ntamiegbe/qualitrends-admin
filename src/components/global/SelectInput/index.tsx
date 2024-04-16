@@ -60,12 +60,13 @@ export const Select = <T,>({
 				<label>
 					<div
 						className={cn(
-							"w-full font-medium text-sm h-5 text-tc-main capitalize tracking-tight text-left mb-2",
+							"w-full font-medium space-x-1 text-sm h-5 text-tc-main capitalize tracking-tight text-left mb-2",
 							disabled
 								? "pointer-events-none cursor-not-allowed"
 								: "cursor-pointer"
 						)}>
-						{label}
+						<span>{label}</span>
+						{required && <span className='text-status-error-100'>*</span>}
 					</div>
 				</label>
 			)}

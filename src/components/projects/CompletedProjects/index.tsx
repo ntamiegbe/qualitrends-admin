@@ -156,7 +156,7 @@ const CompletedProjects = () => {
 					return (
 						<tr
 							onClick={() => {
-								router.push("/projects/" + code);
+								router.push("/projects/" + code + "/inventory");
 							}}
 							className={cn("text-sm cursor-pointer border-[#5A5A5A99]", {
 								"border-b": index !== length - 1,

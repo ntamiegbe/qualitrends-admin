@@ -1,5 +1,7 @@
-const ExpenseRequests = () => {
-	return <div></div>;
+import ExpenseRequests from "@/components/projects/ExpenseRequests";
+
+const ExpenseRequestsPage = () => {
+	return <ExpenseRequests />;
 };
 
-export default ExpenseRequests;
+export default ExpenseRequestsPage;

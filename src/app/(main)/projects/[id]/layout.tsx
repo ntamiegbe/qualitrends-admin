@@ -3,13 +3,14 @@
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import SelectInput from "@/components/global/SelectInput";
+import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
 import ProjectDetails from "@/components/projects/ProjectDetails";
 import ProjectDetailsStats from "@/components/projects/ProjectDetailsStats";
 import { cn, formatAmount } from "@/lib/utils";
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type ProjectDetailsLayoutProps = {
@@ -17,10 +18,7 @@ type ProjectDetailsLayoutProps = {
 };
 
 const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
-	const router = useRouter();
-
 	const pathname = usePathname();
-
 	const params = useParams();
 
 	const routes = [
@@ -43,6 +41,15 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 		{
 			name: "Expense Requests",
 			path: `/projects/${params.id}/expense-requests`,
+		},
+		{
+			name: "Warehouse Supply Requests",
+			path: `/projects/${params.id}/warehouse-supply-requests`,
+			isWider: true,
+		},
+		{
+			name: "Transactions",
+			path: `/projects/${params.id}/transactions`,
 		},
 	];
 
@@ -86,10 +93,6 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 		defaultValues: {
 			search: "",
 			project: "",
-			route: {
-				name: "Inventory",
-				value: `/projects/${params.id}/inventory`,
-			},
 		},
 	});
 
@@ -97,14 +100,6 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 		formState: { errors },
 		watch,
 	} = methods;
-
-	const route = watch("route.value");
-
-	useEffect(() => {
-		if (route) {
-			router.push(route);
-		}
-	}, [route]);
 
 	return (
 		<div>
@@ -217,101 +212,13 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			<div className='mt-6 pb-5'>
 				<ProjectDetails />
 			</div>
-			<ul className='hidden mt-7 mb-10 lg:flex items-center space-x-4 border-b border-[#CBCFD3] py-2'>
-				{routes.map((route, index) => {
-					return (
-						<li key={index} className='relative max-lg:w-1/2'>
-							<Link
-								className={cn(
-									"capitalize max-lg:text-sm transition-all text-black-500 lg:w-[200px] flex justify-center",
-									{
-										"font-semibold text-black-900": pathname.includes(
-											route.path
-										),
-									}
-								)}
-								href={route.path}>
-								{route.name}
-							</Link>
-
-							<div
-								className={cn(
-									"absolute left-1/2 transition-width transform -translate-x-1/2 -bottom-2.5 h-[3px] w-0 bg-primary",
-									{
-										"opacity-0": !pathname.includes(route.path),
-										"w-2/4": pathname.includes(route.path),
-									}
-								)}
-							/>
-						</li>
-					);
-				})}
-			</ul>
-			<div className='mb-6 mt-2 lg:hidden'>
-				<FormProvider {...methods}>
-					<SelectInput
-						name='route'
-						options={[
-							{
-								name: "Inventory",
-								value: `/projects/${params.id}/inventory`,
-							},
-							{
-								name: "Incoming Inventory",
-								value: `/projects/${params.id}/incoming-inventory`,
-							},
-							{
-								name: "Outgoing Inventory",
-								value: `/projects/${params.id}/outgoing-inventory`,
-							},
-							{
-								name: "Purchase Order",
-								value: `/projects/${params.id}/purchase-order`,
-							},
-							{
-								name: "Expense Requests",
-								value: `/projects/${params.id}/expense-requests`,
-							},
-						]}
-						optionComponent={(option, selectedOption) => {
-							return (
-								<div
-									className={cn(
-										"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
-										{
-											"bg-[#FF69001A]": option?.value === selectedOption?.value,
-										}
-									)}>
-									<div className='w-full text-sm flex items-center space-x-2'>
-										<div>{option?.name}</div>
-									</div>
-
-									{option?.name === selectedOption?.name && (
-										<div>
-											<Icons.SelectedIcon />
-										</div>
-									)}
-								</div>
-							);
-						}}
-						trigger={(selected) => {
-							return (
-								<div className='flex h-min bg-transparent items-center space-x-1'>
-									{selected ? (
-										<div className='text-tc-main flex space-x-2 items-center text-sm'>
-											<span>{selected.name}</span>
-										</div>
-									) : (
-										<div className='text-sm mt-[2px] text-tc-secondary'>
-											Select Section
-										</div>
-									)}
-								</div>
-							);
-						}}
-					/>
-				</FormProvider>
-			</div>
+			<Tab
+				routes={routes}
+				initialRoute={{
+					name: pathname?.split("/")[3]?.replace("-", " "),
+					value: `/projects/${params.id}/${pathname?.split("/")[3]}`,
+				}}
+			/>
 			<div className='mb-6'>
 				<FormProvider {...methods}>
 					<form className='lg:!ml-0 flex-1'>
