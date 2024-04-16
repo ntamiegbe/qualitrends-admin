@@ -15,7 +15,21 @@ export type StatusType =
   | "delivered"
   | "paid"
   | "unpaid"
-  | "partial";
+  | "partial"
+  | "sold"
+  | "handed_over"
+  | "in_warehouse"
+  | "out_on_lease"
+  | "pending"
+  | "declined"
+  | "approved"
+  | "fully_delivered"
+  | "partial_delivery"
+  | "in_transit"
+  | "picked_up"
+  | "awaiting_pickup"
+  | "delivered";
+
 
 type StatusProps = {
 	status: StatusType;
