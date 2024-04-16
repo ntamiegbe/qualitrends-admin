@@ -36,6 +36,8 @@ import SelectedIcon from "/public/assets/icons/selected.svg";
 import PdfFile from "/public/assets/icons/pdf-file.svg";
 import FileX from "/public/assets/icons/filex.svg";
 import WarehouseXIcon from "/public/assets/icons/warehouse-x.svg";
+import CloseIcon from "/public/assets/icons/close.svg";
+import SuccessIcon from "/public/assets/icons/success.svg";
 
 const Icons = {
 	Logo,
@@ -74,6 +76,8 @@ const Icons = {
 	PdfFile,
 	FileX,
 	WarehouseXIcon,
+	CloseIcon,
+	SuccessIcon,
 };
 
 export default Icons;

@@ -1,9 +1,7 @@
 "use client";
 
-import Button from "@/components/global/Button";
-import Status, { StatusType } from "@/components/global/Status";
 import Table from "@/components/global/Table";
-import { cn, formatAmount, numberWithCommas } from "@/lib/utils";
+import { cn, formatAmount } from "@/lib/utils";
 
 const ExpenseRequests = () => {
 	const data = [
