@@ -1,4 +1,3 @@
-
 "use client";
 
 import Table from "@/components/global/Table";
