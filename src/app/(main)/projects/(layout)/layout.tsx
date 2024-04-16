@@ -4,9 +4,11 @@ import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
+import CreateProjectModal from "@/components/projects/CreateProjectModal";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type ProjectsLayoutProps = {
@@ -14,6 +16,8 @@ type ProjectsLayoutProps = {
 };
 
 const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
+	const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
+
 	const pathname = usePathname();
 
 	const routes = [
@@ -91,7 +95,9 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 						</Button>
 					</div>
 					<div className='flex justify-between items-center lg:justify-end'>
-						<Button className='w-[200px] max-lg:h-9'>
+						<Button
+							onClick={() => setShowCreateProjectModal(true)}
+							className='w-[200px] max-lg:h-9'>
 							<div className='flex items-center space-x-3'>
 								<Icons.PlusIcon className='fill-white' />
 								<div>Create Project</div>
@@ -117,6 +123,10 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 				}}
 			/>
 			<div>{children}</div>
+			<CreateProjectModal
+				showModal={showCreateProjectModal}
+				setShowModal={setShowCreateProjectModal}
+			/>
 		</div>
 	);
 };

@@ -219,8 +219,11 @@ const Input = ({
 	if (tag === "textarea")
 		return (
 			<label htmlFor={id} className='flex flex-col relative'>
-				<span className='w-full text-sm text-left leading-5 capitalize text-[#5B5B66] mb-2'>
-					{label}
+				<span className='w-full text-sm space-x-1 text-left leading-5 capitalize text-[#5B5B66] mb-2'>
+					<span>{label}</span>
+					{rules.includes("required") && (
+						<span className='text-status-error-100'>*</span>
+					)}
 				</span>
 				<textarea
 					{...register}
@@ -230,7 +233,7 @@ const Input = ({
 						"text-sm overflow-hidden font-normal rounded outline-none",
 						className
 					)}
-					rows={10}
+					rows={3}
 					placeholder={placeholder}
 					id={id}
 					onChange={(event) => {
@@ -262,8 +265,11 @@ const Input = ({
 	return (
 		<label htmlFor={id} className='flex flex-col relative'>
 			{label && (
-				<span className='w-full flex items-center space-x-2 text-sm text-left leading-5 mb-2'>
+				<span className='w-full flex items-center space-x-1 text-sm text-left leading-5 mb-2'>
 					<span className='capitalize text-black-900'>{label}</span>
+					{rules.includes("required") && (
+						<span className='text-status-error-100'>*</span>
+					)}
 				</span>
 			)}
 			<input
