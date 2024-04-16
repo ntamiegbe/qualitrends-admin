@@ -77,7 +77,7 @@ const RequestsLayout = ({ children }: RequestsLayoutProps) => {
                             <Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
                         </span>
                         <span className='capitalize text-primary'>
-                            {pathname?.split("/")[2]?.replace("-", " ")}
+                            {pathname?.split("/")[3]?.replace("-", " ")} Detail
                         </span>
                     </div>
                     <div className='mt-6'>
@@ -116,6 +116,17 @@ const RequestsLayout = ({ children }: RequestsLayoutProps) => {
                                 <Icons.CaretIcon className='fill-black-500 max-lg:hidden' />
                             </div>
                         </Button>
+                    </div>
+                    <div className='flex justify-between items-center lg:space-x-10 lg:justify-end'>
+                        <button>
+                            <Icons.ProjectDocumentIcon />
+                        </button>
+                        <button>
+                            <Icons.ProjectDocumentIcon />
+                        </button>
+                        <button>
+                            <Icons.ProjectDocumentIcon />
+                        </button>
                     </div>
                 </div>
             </div>

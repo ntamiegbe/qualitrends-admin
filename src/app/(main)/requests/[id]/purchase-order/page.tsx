@@ -1,12 +1,12 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import PurchaseOrderDetails from "@/components/requests/purchase-order-details";
 
 const PurchaseOrderRequestsDetailsPage = () => {
 
-    const params = useParams();
-
-    return <div>{params.id}</div>;
+    return (
+        <PurchaseOrderDetails />
+    );
 };
 
 export default PurchaseOrderRequestsDetailsPage;

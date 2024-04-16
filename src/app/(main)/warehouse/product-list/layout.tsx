@@ -117,7 +117,7 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
                             </div>
                         </Button>
                         <button>
-                            <Icons.WarehouseXIcon />
+                            <Icons.ProjectDocumentIcon />
                         </button>
                         <button>
                             <Icons.ProjectDocumentIcon />
