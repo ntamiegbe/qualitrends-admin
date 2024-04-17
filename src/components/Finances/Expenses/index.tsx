@@ -4,6 +4,7 @@ import Table from "@/components/global/Table";
 import Icons from "@/components/icons";
 import { cn, formatAmount } from "@/lib/utils";
 import TotalOutstanding from "./component/totaloutstanding"; 
+import Pagination from "./component/pagination"
 
 
 const expenses = () => {
@@ -179,7 +180,7 @@ const expenses = () => {
 
             <div className="flex justify-between items-center mt-8">
                 <div className="text-black-500 font-semibold pt-2">Showing 1 - 9 from 100</div>
-                <div className="">pagination</div>
+                <div className="mb-10"><Pagination /></div>
             </div>
         </section>
     );

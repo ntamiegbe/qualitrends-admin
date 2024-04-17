@@ -8,16 +8,13 @@ export type StatusType =
 	| "pending"
 	| "declined"
 	| "approved"
-<<<<<<< HEAD
-	| "credit";
-=======
+	| "credit"
 	| "fully_delivered"
 	| "partial_delivery"
 	| "in_transit"
 	| "picked_up"
 	| "awaiting_pickup"
 	| "delivered";
->>>>>>> 7789c6bbcc6347880fac9ebdeb7a8fc960647dc8
 
 type StatusProps = {
 	status: StatusType;
