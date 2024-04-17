@@ -5,6 +5,7 @@ import Input from "@/components/global/Input";
 import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
 import CreateProjectModal from "@/components/projects/CreateProjectModal";
+import ProjectFilter from "@/components/projects/ProjectFilter";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -127,6 +128,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 				showModal={showCreateProjectModal}
 				setShowModal={setShowCreateProjectModal}
 			/>
+			<ProjectFilter />
 		</div>
 	);
 };
