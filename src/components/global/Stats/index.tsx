@@ -7,10 +7,10 @@ type StatsProps = {
 		icon?: React.ReactNode;
 	}[];
 	showMobileTitle?: boolean;
-	warehouseStats?: boolean;
+	altStats?: boolean;
 };
 
-const Stats = ({ stats, showMobileTitle = true, warehouseStats = false }: StatsProps) => {
+const Stats = ({ stats, showMobileTitle = true, altStats = false }: StatsProps) => {
 	return (
 		<div>
 			{showMobileTitle && (
@@ -20,7 +20,7 @@ const Stats = ({ stats, showMobileTitle = true, warehouseStats = false }: StatsP
 				className={cn(
 					'grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8',
 					{
-						"lg:grid-cols-3": warehouseStats
+						"lg:grid-cols-3": altStats
 					}
 				)}>
 				{stats.map((stat, index) => (
@@ -32,7 +32,7 @@ const Stats = ({ stats, showMobileTitle = true, warehouseStats = false }: StatsP
 						<p className={cn(
 							'text-sm lg:text-lg mt-1 lg:mt-2',
 							{
-								"text-primary lg:text-base": warehouseStats
+								"text-primary lg:text-base": altStats
 							}
 						)}
 						>

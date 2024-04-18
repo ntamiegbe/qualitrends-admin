@@ -9,21 +9,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 
-type WarehouseLayoutProps = {
+type RequestsLayoutProps = {
     children: React.ReactNode;
 };
 
-const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
+const RequestsLayout = ({ children }: RequestsLayoutProps) => {
     const pathname = usePathname();
 
     const routes = [
         {
-            name: "warehouse inventory",
-            path: "/warehouse/product-list/warehouse-inventory",
+            name: "Purchase Order",
+            path: "/requests/purchase-order",
         },
         {
-            name: "assets",
-            path: "/warehouse/product-list/assets",
+            name: "Expense Request",
+            path: "/requests/expense-requests",
+        },
+        {
+            name: "Material Transfer",
+            path: "/requests/material-transfer",
+        },
+        {
+            name: "Warehouse Supply Request",
+            path: "/requests/warehouse-supply-requests",
         },
     ];
 
@@ -41,16 +49,16 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 
     const stats = [
         {
-            title: "Warehouse Inventory",
-            value: "8,000",
+            title: "Total Approved",
+            value: formatAmount(+350000000, "NGN"),
         },
         {
-            title: "Total Income",
-            value: formatAmount(+1500000000, "NGN"),
+            title: "Total Denied",
+            value: formatAmount(+50000000, "NGN"),
         },
         {
-            title: "Total Expenses",
-            value: formatAmount(+500000000, "NGN"),
+            title: "Total Pending",
+            value: formatAmount(+300000000, "NGN"),
         },
     ];
 
@@ -58,13 +66,13 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
         <div>
             <div className='lg:flex lg:space-x-5 justify-between'>
                 <div>
-                    <h1 className='lg:text-2xl font-semibold'>Warehouse</h1>
+                    <h1 className='lg:text-2xl font-semibold'>Requests</h1>
                     <div className='text-sm lg:text-sm text-black-500 font-Roboto flex items-center space-x-3 mt-1'>
                         <Link href='/dashboard'>Dashboard</Link>
                         <span>
                             <Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
                         </span>
-                        <Link href='/warehouse'>Warehouse</Link>
+                        <Link href='/requests'>Requests</Link>
                         <span>
                             <Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
                         </span>
@@ -109,20 +117,6 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
                             </div>
                         </Button>
                     </div>
-                    <div className='flex justify-between items-center lg:space-x-10 lg:justify-end'>
-                        <Button className='w-[200px] max-lg:h-9'>
-                            <div className='flex items-center space-x-3'>
-                                <Icons.PlusIcon className='fill-white' />
-                                <div>Add Product</div>
-                            </div>
-                        </Button>
-                        <button>
-                            <Icons.ProjectDocumentIcon />
-                        </button>
-                        <button>
-                            <Icons.ProjectDocumentIcon />
-                        </button>
-                    </div>
                 </div>
             </div>
             <ul className='mt-7 mb-10 flex items-center space-x-4 border-b border-[#CBCFD3] py-2'>
@@ -160,4 +154,4 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
     );
 };
 
-export default WarehouseLayout;
+export default RequestsLayout;
