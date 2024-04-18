@@ -87,7 +87,7 @@ const Navigation = () => {
 		},
 		{
 			name: "Lease & Sales",
-			to: "/lease-and-sales",
+			to: "/lease-and-sales/sales",
 			icon: <Icons.LeaseIcon className='fill-inherit' />,
 		},
 		{
