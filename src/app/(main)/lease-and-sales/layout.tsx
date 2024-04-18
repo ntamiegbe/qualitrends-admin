@@ -3,6 +3,7 @@
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import Stats from "@/components/global/Stats";
+import Tab from '@/components/global/Tab';
 import Icons from "@/components/icons";
 import { cn, formatAmount } from "@/lib/utils";
 import Link from "next/link";
@@ -24,6 +25,14 @@ const Layout = ({ children }: LayoutProps) => {
     {
       name: "Invoice",
       path: "/lease-and-sales/invoice",
+    },
+    {
+      name: "Offer Letter",
+      path: "/lease-and-sales/offer",
+    },
+    {
+      name: "Asset Lease",
+      path: "/lease-and-sales/lease",
     },
   ];
 
@@ -123,37 +132,13 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </div>
-      <ul className="mt-7 mb-10 flex items-center space-x-4 border-b border-[#CBCFD3] py-2">
-        {routes.map((route, index) => {
-          return (
-            <li key={index} className="relative max-lg:w-1/2">
-              <Link
-                className={cn(
-                  "capitalize max-lg:text-sm transition-all text-black-500 lg:w-[200px] flex justify-center",
-                  {
-                    "font-semibold text-black-900": pathname.includes(
-                      route.path
-                    ),
-                  }
-                )}
-                href={route.path}
-              >
-                {route.name}
-              </Link>
-
-              <div
-                className={cn(
-                  "absolute left-1/2 transition-width transform -translate-x-1/2 -bottom-2.5 h-[3px] w-0 bg-primary",
-                  {
-                    "opacity-0": !pathname.includes(route.path),
-                    "w-2/4": pathname.includes(route.path),
-                  }
-                )}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <Tab
+        routes={routes}
+        initialRoute={{
+          name: pathname?.split("/")[2]?.replace("-", " "),
+          value: `/lease-and-sales/${pathname?.split("/")[2]}`,
+        }}
+      />
       <div>{children}</div>
     </div>
   );
