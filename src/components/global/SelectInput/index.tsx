@@ -124,7 +124,7 @@ export const Select = <T,>({
 								exit={{ scale: 0.5, opacity: 0 }}
 								className={cn(
 									"absolute w-full",
-									position === "bottom" ? "top-[43px]" : "bottom-[52px]",
+									position === "bottom" ? "top-[43px]" : "bottom-[43px]",
 									"z-30 left-0 shadow-select-dropdown right-0 border py-0 overflow-hidden bg-white border-pc-03 rounded"
 								)}>
 								<div
