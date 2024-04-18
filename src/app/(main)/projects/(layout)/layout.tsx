@@ -5,7 +5,7 @@ import Input from "@/components/global/Input";
 import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
 import CreateProjectModal from "@/components/projects/CreateProjectModal";
-import { cn } from "@/lib/utils";
+import ProjectFilterModal from "@/components/projects/ProjectFilterModal";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -17,6 +17,7 @@ type ProjectsLayoutProps = {
 
 const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 	const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
+	const [showProjectFilterModal, setShowProjectFilterModal] = useState(false);
 
 	const pathname = usePathname();
 
@@ -85,6 +86,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 							</form>
 						</FormProvider>
 						<Button
+							onClick={() => setShowProjectFilterModal(true)}
 							theme='plain'
 							className='border text-black-500 max-lg:px-2.5 h-[42px] border-[#5A5A5A33] rounded'>
 							<div className='flex items-center lg:space-x-2.5'>
@@ -99,7 +101,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 							onClick={() => setShowCreateProjectModal(true)}
 							className='w-[200px] max-lg:h-9'>
 							<div className='flex items-center space-x-3'>
-								<Icons.PlusIcon className='fill-white' />
+								<Icons.PlusIcon className='fill-white size-3.5' />
 								<div>Create Project</div>
 							</div>
 						</Button>
@@ -126,6 +128,10 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 			<CreateProjectModal
 				showModal={showCreateProjectModal}
 				setShowModal={setShowCreateProjectModal}
+			/>
+			<ProjectFilterModal
+				showModal={showProjectFilterModal}
+				setShowModal={setShowProjectFilterModal}
 			/>
 		</div>
 	);

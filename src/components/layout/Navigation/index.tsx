@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import NavigationLink from "../NavigationLink";
+import Dropdown from "@/components/global/Dropdown";
 
 const Navigation = () => {
 	const pathname = usePathname();
@@ -124,6 +125,45 @@ const Navigation = () => {
 		},
 	];
 
+	const dropdownButtons = [
+		{
+			label: "Create New Project",
+			onClick: () => {},
+		},
+		{
+			label: "Create Offer Letter",
+			onClick: () => {},
+		},
+		{
+			label: "Create Expenses",
+			onClick: () => {},
+		},
+		{
+			label: "Create Invoice",
+			onClick: () => {},
+		},
+		{
+			label: "Approve Requests",
+			onClick: () => {},
+		},
+		{
+			label: "Create Purchase Order",
+			onClick: () => {},
+		},
+		{
+			label: "Create Material Transfer",
+			onClick: () => {},
+		},
+		{
+			label: "Item Lease",
+			onClick: () => {},
+		},
+		{
+			label: "Item Sales",
+			onClick: () => {},
+		},
+	];
+
 	return (
 		<>
 			<nav className='hidden lg:block w-[278px] h-screen fixed bg-[#173E62] pt-5'>
@@ -173,9 +213,29 @@ const Navigation = () => {
 						</ul>
 					</div>
 					<div className='flex justify-center items-center absolute -top-1/2 left-1/2 transform -translate-x-1/2 size-16 rounded-full bg-white'>
-						<div className='flex justify-center items-center shadow-2xl border-2 border-gray-100 size-14 rounded-full'>
-							<Icons.PlusIcon className='fill-primary' />
-						</div>
+						<Dropdown
+							trigger={(open) => (
+								<button className='flex justify-center fixed z-[500] left-1/2 -translate-x-1/2 bg-white top-1/2 -translate-y-1/2 items-center drop-shadow-2xl border-2 border-gray-100 size-14 rounded-full'>
+									<Icons.PlusIcon
+										className={cn("fill-primary transition-all size-4", {
+											"rotate-[135deg]": open,
+										})}
+									/>
+								</button>
+							)}
+							position='top'
+							className='-left-[90px] bottom-3 rounded-md'>
+							<div className='w-[180px] bg-white rounded-md'>
+								{dropdownButtons.map((button, index) => (
+									<button
+										key={index}
+										onClick={button.onClick}
+										className='flex text-[#2B2B29] w-full dropdown-item hover:bg-[#FFE2D2] transition-all text-xs items-center justify-between p-3 border-b last:border-b-0 border-[#CBCFD3]'>
+										{button.label}
+									</button>
+								))}
+							</div>
+						</Dropdown>
 					</div>
 				</nav>
 			</div>

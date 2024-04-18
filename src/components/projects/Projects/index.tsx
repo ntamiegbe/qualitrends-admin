@@ -6,7 +6,7 @@ import Icons from "@/components/icons";
 import Link from "next/link";
 import { FormProvider, useForm } from "react-hook-form";
 import SideStats from "@/components/global/SideStats";
-import { formatAmount, numberWithCommas } from "@/lib/utils";
+import { cn, formatAmount, numberWithCommas } from "@/lib/utils";
 import Stats from "@/components/global/Stats";
 import IncomeAndExpensesChart from "@/components/dashboard/IncomeAndExpensesChart";
 import ProjectsTable from "../ProjectsTable";
@@ -97,7 +97,7 @@ const Projects = () => {
 							onClick={() => setShowCreateProjectModal(true)}
 							className='w-[200px] max-lg:h-9'>
 							<div className='flex items-center space-x-3'>
-								<Icons.PlusIcon className='fill-white' />
+								<Icons.PlusIcon className='fill-white size-3.5' />
 								<div>Create Project</div>
 							</div>
 						</Button>
@@ -127,11 +127,13 @@ const Projects = () => {
 							optionComponent={(option, selectedOption) => {
 								return (
 									<div
-										className={`py-2 w-full px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A] ${
-											option?.value === selectedOption?.value
-												? "bg-[#FF69001A]"
-												: ""
-										}`}>
+										className={cn(
+											"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+											{
+												"bg-[#FF69001A]":
+													option?.value === selectedOption?.value,
+											}
+										)}>
 										<div className='w-full text-sm flex items-center space-x-2'>
 											<div>{option?.name}</div>
 										</div>

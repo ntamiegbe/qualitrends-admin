@@ -89,7 +89,7 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 					<div className='flex justify-between items-center lg:justify-end'>
 						<Button className='w-[200px] max-lg:h-9'>
 							<div className='flex items-center space-x-3'>
-								<Icons.PlusIcon className='fill-white' />
+								<Icons.PlusIcon className='fill-white size-3.5' />
 								<div>Create Project</div>
 							</div>
 						</Button>
