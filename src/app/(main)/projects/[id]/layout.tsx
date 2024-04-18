@@ -6,6 +6,7 @@ import SelectInput from "@/components/global/SelectInput";
 import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
 import ChangeStatusModal from "@/components/projects/ChangeStatusModal";
+import CreateRequestModal from "@/components/projects/CreateRequestModal";
 import ProjectDetails from "@/components/projects/ProjectDetails";
 import ProjectDetailsStats from "@/components/projects/ProjectDetailsStats";
 import { cn, formatAmount } from "@/lib/utils";
@@ -20,6 +21,7 @@ type ProjectDetailsLayoutProps = {
 
 const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 	const [showChangeStatusModal, setShowChangeStatusModal] = useState(false);
+	const [showCreateRequestModal, setShowCreateRequestModal] = useState(false);
 
 	const pathname = usePathname();
 	const params = useParams();
@@ -184,7 +186,9 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 				</div>
 				<div className='space-y-4 lg:space-y-6 max-lg:mt-4'>
 					<div className='flex justify-between space-x-6 items-center'>
-						<Button className='w-1/2 lg:w-[200px] max-lg:h-9 max-lg:!px-0'>
+						<Button
+							onClick={() => setShowCreateRequestModal(true)}
+							className='w-1/2 lg:w-[200px] max-lg:h-9 max-lg:!px-0'>
 							<div className='flex items-center space-x-3'>
 								<Icons.PlusIcon className='fill-white' />
 								<div>Create Request</div>
@@ -246,6 +250,10 @@ const ProjectDetailsLayout = ({ children }: ProjectDetailsLayoutProps) => {
 			<ChangeStatusModal
 				showModal={showChangeStatusModal}
 				setShowModal={setShowChangeStatusModal}
+			/>
+			<CreateRequestModal
+				showModal={showCreateRequestModal}
+				setShowModal={setShowCreateRequestModal}
 			/>
 		</div>
 	);

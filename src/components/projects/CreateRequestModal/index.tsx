@@ -8,15 +8,15 @@ import Icons from "@/components/icons";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
-type CreateProjectModalProps = {
+type CreateRequestModalProps = {
 	showModal: boolean;
 	setShowModal: (value: boolean) => void;
 };
 
-const CreateProjectModal = ({
+const CreateRequestModal = ({
 	showModal,
 	setShowModal,
-}: CreateProjectModalProps) => {
+}: CreateRequestModalProps) => {
 	const [step, setStep] = useState<"create" | "success">("create");
 
 	const methods = useForm({
@@ -80,17 +80,18 @@ const CreateProjectModal = ({
 						<form
 							onSubmit={methods.handleSubmit(onSubmit)}
 							className='max-lg:space-y-6 lg:grid lg:grid-cols-2 lg:gap-x-9 gap-y-6'>
+							<div className='col-span-2 flex items-center space-x-3'>
+								<div>ID:</div>
+								<div className='font-semibold'>Ex_03949</div>
+							</div>
 							<Input
-								name='code'
-								label='Project Code'
+								name='documents'
+								label='Supporting Documents'
 								rules={["required"]}
-								placeholder='68_89GYN'
-								left={<div className='font-medium text-sm px-3'>QGS - </div>}
-								paddingLeft='pl-14'
 							/>
 							<SelectInput
-								label='Project Type'
-								name='type'
+								label='Expense Category'
+								name='expenseCategory'
 								required
 								options={[
 									{
@@ -135,7 +136,7 @@ const CreateProjectModal = ({
 												</div>
 											) : (
 												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Type
+													Select Expense Category
 												</div>
 											)}
 										</div>
@@ -143,125 +144,23 @@ const CreateProjectModal = ({
 								}}
 							/>
 							<Input
-								name='budget'
-								label='Project Budget'
+								name='date'
+								label='Date'
 								rules={["required"]}
-								placeholder='Enter Budget'
-							/>
-							<SelectInput
-								label='Project Manager'
-								name='manager'
-								required
-								options={[
-									{
-										name: "John Doe",
-										value: "john doe",
-									},
-									{
-										name: "Jane Doe",
-										value: "jane doe",
-									},
-									{
-										name: "John Smith",
-										value: "john smith",
-									},
-								]}
-								optionComponent={(option, selectedOption) => {
-									return (
-										<div
-											className={`py-2 w-full px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A] ${
-												option?.value === selectedOption?.value
-													? "bg-[#FF69001A]"
-													: ""
-											}`}>
-											<div className='w-full text-sm flex items-center space-x-2'>
-												<div>{option?.name}</div>
-											</div>
-
-											{option?.name === selectedOption?.name && (
-												<div>
-													<Icons.SelectedIcon />
-												</div>
-											)}
-										</div>
-									);
-								}}
-								trigger={(selected) => {
-									return (
-										<div className='flex h-min bg-transparent items-center space-x-1'>
-											{selected ? (
-												<div className='text-tc-main flex space-x-2 items-center text-sm'>
-													<span>{selected.name}</span>
-												</div>
-											) : (
-												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Manager
-												</div>
-											)}
-										</div>
-									);
-								}}
+								type='date'
 							/>
 							<Input
-								name='summary'
-								label='Project Summary'
+								name='amount'
+								label='Amount'
 								rules={["required"]}
-								placeholder='Enter Project Summary'
+								placeholder='Enter Amount'
+							/>
+							<Input
+								name='description'
+								label='Description'
+								rules={["required"]}
+								placeholder='Enter Description'
 								tag='textarea'
-							/>
-							<SelectInput
-								label='Project Supervisor'
-								name='supervisor'
-								required
-								options={[
-									{
-										name: "John Doe",
-										value: "john doe",
-									},
-									{
-										name: "Jane Doe",
-										value: "jane doe",
-									},
-									{
-										name: "John Smith",
-										value: "john smith",
-									},
-								]}
-								optionComponent={(option, selectedOption) => {
-									return (
-										<div
-											className={`py-2 w-full px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A] ${
-												option?.value === selectedOption?.value
-													? "bg-[#FF69001A]"
-													: ""
-											}`}>
-											<div className='w-full text-sm flex items-center space-x-2'>
-												<div>{option?.name}</div>
-											</div>
-
-											{option?.name === selectedOption?.name && (
-												<div>
-													<Icons.SelectedIcon />
-												</div>
-											)}
-										</div>
-									);
-								}}
-								trigger={(selected) => {
-									return (
-										<div className='flex h-min bg-transparent items-center space-x-1'>
-											{selected ? (
-												<div className='text-tc-main flex space-x-2 items-center text-sm'>
-													<span>{selected.name}</span>
-												</div>
-											) : (
-												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Supervisor
-												</div>
-											)}
-										</div>
-									);
-								}}
 							/>
 							<div className='lg:col-span-2 flex justify-center py-4'>
 								<Button
@@ -279,11 +178,13 @@ const CreateProjectModal = ({
 			{step === "success" && (
 				<section className='flex flex-col h-full justify-center items-center space-y-4'>
 					<Icons.SuccessIcon />
-					<p className='pb-10 text-center'>Project created successfully</p>
+					<p className='pb-10 text-center'>
+						Expense request submitted successfully
+					</p>
 				</section>
 			)}
 		</Modal>
 	);
 };
 
-export default CreateProjectModal;
+export default CreateRequestModal;
