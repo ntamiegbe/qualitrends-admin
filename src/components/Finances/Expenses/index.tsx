@@ -14,7 +14,7 @@ const expenses = () => {
 			expensename: "Rent",
 			expensetype: "Expenses Request",
 			totalpaid: 5000000,
-			totaloutstanding: " ₦ 0.00",
+			totaloutstanding: 11.11,
 			sourceaccount: "Gen Acct",
 			receiver: "Project Manager",
 		},

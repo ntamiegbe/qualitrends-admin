@@ -261,7 +261,7 @@ const income = () => {
 			incomecategory: "Sales",
 			invoiceID: "12J23",
 			totalReceived: 5000000,
-			outstandingbalance: "₦00.00",
+			outstandingbalance: 100001,
 			lastpaymentdate: "12 Jul 2023",
 		},
 		{
