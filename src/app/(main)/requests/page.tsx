@@ -1,11 +1,13 @@
-import { Metadata } from "next";
+"use client"
 
-export const metadata: Metadata = {
-	title: "Requests",
-};
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-const RequestPage = () => {
-	return <div>RequestPage</div>;
-};
+export default function RequestsPage() {
+	const router = useRouter();
 
-export default RequestPage;
+	useEffect(() => {
+		router.push("/requests/purchase-order");
+	}, []);
+	return <main className=''></main>;
+}
