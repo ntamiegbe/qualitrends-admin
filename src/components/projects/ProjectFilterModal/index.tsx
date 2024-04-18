@@ -4,6 +4,7 @@ import Button from "@/components/global/Button";
 import Modal from "@/components/global/Modal";
 import SelectInput from "@/components/global/SelectInput";
 import Icons from "@/components/icons";
+import { cn } from "@/lib/utils";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 type ProjectFilterModalProps = {
@@ -74,11 +75,13 @@ const ProjectFilterModal = ({
 							optionComponent={(option, selectedOption) => {
 								return (
 									<div
-										className={`py-2 w-full px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A] ${
-											option?.value === selectedOption?.value
-												? "bg-[#FF69001A]"
-												: ""
-										}`}>
+										className={cn(
+											"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+											{
+												"bg-[#FF69001A]":
+													option?.value === selectedOption?.value,
+											}
+										)}>
 										<div className='w-full text-sm flex items-center space-x-2'>
 											<div>{option?.name}</div>
 										</div>
@@ -135,11 +138,13 @@ const ProjectFilterModal = ({
 							optionComponent={(option, selectedOption) => {
 								return (
 									<div
-										className={`py-2 w-full px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A] ${
-											option?.value === selectedOption?.value
-												? "bg-[#FF69001A]"
-												: ""
-										}`}>
+										className={cn(
+											"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+											{
+												"bg-[#FF69001A]":
+													option?.value === selectedOption?.value,
+											}
+										)}>
 										<div className='w-full text-sm flex items-center space-x-2'>
 											<div>{option?.name}</div>
 										</div>
@@ -196,11 +201,13 @@ const ProjectFilterModal = ({
 							optionComponent={(option, selectedOption) => {
 								return (
 									<div
-										className={`py-2 w-full px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A] ${
-											option?.value === selectedOption?.value
-												? "bg-[#FF69001A]"
-												: ""
-										}`}>
+										className={cn(
+											"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+											{
+												"bg-[#FF69001A]":
+													option?.value === selectedOption?.value,
+											}
+										)}>
 										<div className='w-full text-sm flex items-center space-x-2'>
 											<div>{option?.name}</div>
 										</div>
@@ -258,11 +265,13 @@ const ProjectFilterModal = ({
 							optionComponent={(option, selectedOption) => {
 								return (
 									<div
-										className={`py-2 w-full px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A] ${
-											option?.value === selectedOption?.value
-												? "bg-[#FF69001A]"
-												: ""
-										}`}>
+										className={cn(
+											"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+											{
+												"bg-[#FF69001A]":
+													option?.value === selectedOption?.value,
+											}
+										)}>
 										<div className='w-full text-sm flex items-center space-x-2'>
 											<div>{option?.name}</div>
 										</div>
