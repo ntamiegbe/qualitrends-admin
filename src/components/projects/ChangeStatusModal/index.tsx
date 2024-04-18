@@ -40,7 +40,7 @@ const ChangeStatusModal = ({
 		<Modal
 			title='Change Status'
 			show={showModal}
-			width='!w-[414px]'
+			width='lg:w-[414px]'
 			onRequestClose={() => {
 				setShowModal(false);
 			}}>

@@ -39,7 +39,7 @@ const ProjectFilterModal = ({
 		<Modal
 			title='Filter Project'
 			show={showModal}
-			width='!w-[414px]'
+			width='lg:w-[414px]'
 			onRequestClose={() => {
 				setShowModal(false);
 			}}>
