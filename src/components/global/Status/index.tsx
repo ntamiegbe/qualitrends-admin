@@ -14,7 +14,35 @@ export type StatusType =
 	| "in_transit"
 	| "picked_up"
 	| "awaiting_pickup"
-	| "delivered";
+	| "delivered"
+  | "handed_over"
+  | "in_warehouse"
+  | "out_on_lease"
+  | "pending"
+  | "declined"
+  | "approved"
+  | "fully_delivered"
+  | "partial_delivery"
+  | "in_transit"
+  | "picked_up"
+  | "delivered"
+  | "paid"
+  | "unpaid"
+  | "partial"
+  | "sold"
+  | "handed_over"
+  | "in_warehouse"
+  | "out_on_lease"
+  | "pending"
+  | "declined"
+  | "approved"
+  | "fully_delivered"
+  | "partial_delivery"
+  | "in_transit"
+  | "picked_up"
+  | "awaiting_pickup"
+  | "delivered";
+
 
 type StatusProps = {
 	status: StatusType;
@@ -42,20 +70,35 @@ const Status = ({ status }: StatusProps) => {
 		"text-status-warning-500 bg-status-warning-10": ["out_on_lease", "pending"],
 		"text-status-information-100 bg-status-information-100/10": ["picked_up"],
 	};
+    "text-primary bg-[#FF00001A]": ["handed_over"],
+    "text-status-success-100 bg-status-success-10": [
+      "in_warehouse",
+      "approved",
+      "fully_delivered",
+      "partial_delivery",
+      "delivered",
+      "paid",
+    ],
+    "text-status-error-100 bg-status-error-10": ["sold", "declined", "unpaid"],
+    "text-status-warning-500 bg-status-warning-10": ["out_on_lease", "pending"],
+    "text-primary bg-primary/10": ["in_transit", 'partial'],
+    "text-status-information-100 bg-status-information-100/10": ["picked_up"],
+  };
 
 	const statusDotColorMap: StatusColorMap = {
-		"bg-primary": ["handed_over", "in_transit", "awaiting_pickup"],
-		"bg-status-success-100": [
-			"in_warehouse",
-			"approved",
-			"fully_delivered",
-			"partial_delivery",
-			"delivered",
-		],
-		"bg-status-error-100": ["sold", "declined"],
-		"bg-status-warning-500": ["out_on_lease", "pending"],
-		"bg-status-information-100": ["picked_up"],
-	};
+    "bg-primary": ["handed_over", "in_transit"],
+    "bg-status-success-100": [
+      "in_warehouse",
+      "approved",
+      "fully_delivered",
+      "partial_delivery",
+      "delivered",
+      "paid",
+    ],
+    "bg-status-error-100": ["sold", "declined", "unpaid"],
+    "bg-status-warning-500": ["out_on_lease", "pending", "partial"],
+    "bg-status-information-100": ["picked_up"],
+  };
 
 	const getStatusColor = (status: StatusType) => {
 		return Object.entries(statusColorMap).reduce((acc, [key, value]) => {
