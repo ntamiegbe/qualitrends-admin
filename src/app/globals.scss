@@ -15,7 +15,7 @@ body {
 /* Toggle B */
 input:checked {
 	& ~ .dot {
-		transform: translateX(150%);
+		transform: translateX(140%);
 	}
 
 	& ~ .background {
