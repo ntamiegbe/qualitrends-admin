@@ -3,10 +3,13 @@
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import Stats from "@/components/global/Stats";
+import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
+import RequestsFilterModal from "@/components/requests/requestsFilterModal";
 import { cn, formatAmount } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type RequestsLayoutProps = {
@@ -14,24 +17,29 @@ type RequestsLayoutProps = {
 };
 
 const RequestsLayout = ({ children }: RequestsLayoutProps) => {
+    const [showRequestsFilterModal, setShowRequestsFilterModal] = useState(false);
     const pathname = usePathname();
 
     const routes = [
         {
             name: "Purchase Order",
             path: "/requests/purchase-order",
+            isWider: true
         },
         {
             name: "Expense Request",
             path: "/requests/expense-requests",
+            isWider: true
         },
         {
             name: "Material Transfer",
             path: "/requests/material-transfer",
+            isWider: true
         },
         {
             name: "Warehouse Supply Request",
             path: "/requests/warehouse-supply-requests",
+            isWider: true
         },
     ];
 
@@ -109,7 +117,8 @@ const RequestsLayout = ({ children }: RequestsLayoutProps) => {
                         </FormProvider>
                         <Button
                             theme='plain'
-                            className='border text-black-500 max-lg:px-2.5 h-[42px] border-[#5A5A5A33] rounded'>
+                            onClick={() => setShowRequestsFilterModal(true)}
+                            className='border text-black-500 max-lg:px-2.5 border-[#5A5A5A33] rounded'>
                             <div className='flex items-center lg:space-x-2.5'>
                                 <Icons.FilterIcon />
                                 <div className='max-lg:hidden'>Filter</div>
@@ -119,37 +128,20 @@ const RequestsLayout = ({ children }: RequestsLayoutProps) => {
                     </div>
                 </div>
             </div>
-            <ul className='mt-7 mb-10 flex items-center space-x-4 border-b border-[#CBCFD3] py-2'>
-                {routes.map((route, index) => {
-                    return (
-                        <li key={index} className='relative max-lg:w-1/2'>
-                            <Link
-                                className={cn(
-                                    "capitalize max-lg:text-sm transition-all text-black-500 lg:w-[200px] flex justify-center",
-                                    {
-                                        "font-semibold text-black-900": pathname.includes(
-                                            route.path
-                                        ),
-                                    }
-                                )}
-                                href={route.path}>
-                                {route.name}
-                            </Link>
-
-                            <div
-                                className={cn(
-                                    "absolute left-1/2 transition-width transform -translate-x-1/2 -bottom-2.5 h-[3px] w-0 bg-primary",
-                                    {
-                                        "opacity-0": !pathname.includes(route.path),
-                                        "w-2/4": pathname.includes(route.path),
-                                    }
-                                )}
-                            />
-                        </li>
-                    );
-                })}
-            </ul>
+            <div className='my-10'>
+                <Tab
+                    routes={routes}
+                    initialRoute={{
+                        name: pathname?.split("/")[2]?.replace("-", " "),
+                        value: `/requests/${pathname?.split("/")[2]}`,
+                    }}
+                />
+            </div>
             <div>{children}</div>
+            <RequestsFilterModal
+                showModal={showRequestsFilterModal}
+                setShowModal={setShowRequestsFilterModal}
+            />
         </div>
     );
 };
