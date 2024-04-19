@@ -9,9 +9,11 @@ type NavigationLinkProps = {
 		name: string;
 		to: string;
 		icon: React.ReactNode;
+		absoluteRoute?: string;
 		children?: {
 			name: string;
 			to: string;
+			absoluteRoute?: string;
 		}[];
 	};
 };
@@ -34,14 +36,16 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 						"transition-all flex items-center justify-between space-x-4 rounded-lg w-full text-white px-4 py-3",
 						{
 							"bg-white text-primary font-semibold": pathname.includes(
-								link.to + "/"
+								link.absoluteRoute || link.to + "/"
 							),
 						}
 					)}>
 					<div className='flex items-center space-x-6'>
 						<div
 							className={cn("fill-white transition-all", {
-								"fill-primary": pathname.includes(link.to + "/"),
+								"fill-primary": pathname.includes(
+									link.absoluteRoute || link.to + "/"
+								),
 							})}>
 							{link.icon}
 						</div>
@@ -53,7 +57,9 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 						})}>
 						<Icons.CaretIcon
 							className={cn("fill-white", {
-								"fill-primary": pathname.includes(link.to + "/"),
+								"fill-primary": pathname.includes(
+									link.absoluteRoute || link.to + "/"
+								),
 							})}
 						/>
 					</div>
@@ -85,6 +91,7 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 				</ul>
 			</li>
 		);
+
 	return (
 		<>
 			<li className='hidden lg:block'>
@@ -93,13 +100,17 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 					className={cn(
 						"block transition-all rounded-lg w-full text-white px-4 py-3",
 						{
-							"bg-white text-primary font-semibold": pathname.includes(link.to),
+							"bg-white text-primary font-semibold": pathname.includes(
+								link.absoluteRoute || link.to
+							),
 						}
 					)}>
 					<div className='flex items-center space-x-6'>
 						<div
 							className={cn("fill-white transition-all", {
-								"fill-primary": pathname.includes(link.to),
+								"fill-primary": pathname.includes(
+									link.absoluteRoute || link.to
+								),
 							})}>
 							{link.icon}
 						</div>
@@ -112,13 +123,13 @@ const NavigationLink = ({ link }: NavigationLinkProps) => {
 					<div className='flex flex-col px-4 sm:px-14 items-center space-y-1'>
 						<div
 							className={cn("fill-[#ffffff80] transition-all", {
-								"fill-white": pathname.includes(link.to),
+								"fill-white": pathname.includes(link.absoluteRoute || link.to),
 							})}>
 							{link.icon}
 						</div>
 						<div
 							className={cn("text-[10px] text-[#ffffff80]", {
-								"text-white": pathname.includes(link.to),
+								"text-white": pathname.includes(link.absoluteRoute || link.to),
 							})}>
 							{link.name}
 						</div>
