@@ -1,20 +1,7 @@
 import { cn } from "@/lib/utils";
 
 export type StatusType =
-	| "sold"
-	| "handed_over"
-	| "in_warehouse"
-	| "out_on_lease"
-	| "pending"
-	| "declined"
-	| "approved"
-	| "credit"
-	| "fully_delivered"
-	| "partial_delivery"
-	| "in_transit"
-	| "picked_up"
-	| "awaiting_pickup"
-	| "delivered"
+  | "sold"
   | "handed_over"
   | "in_warehouse"
   | "out_on_lease"
@@ -54,22 +41,6 @@ type StatusColorMap = {
 
 const Status = ({ status }: StatusProps) => {
 	const statusColorMap: StatusColorMap = {
-		"text-primary bg-[#FF00001A]": [
-			"handed_over",
-			"awaiting_pickup",
-			"in_transit",
-		],
-		"text-status-success-100 bg-status-success-10": [
-			"in_warehouse",
-			"approved",
-			"fully_delivered",
-			"partial_delivery",
-			"delivered",
-		],
-		"text-status-error-100 bg-status-error-10": ["sold", "declined", "credit"],
-		"text-status-warning-500 bg-status-warning-10": ["out_on_lease", "pending"],
-		"text-status-information-100 bg-status-information-100/10": ["picked_up"],
-	};
     "text-primary bg-[#FF00001A]": ["handed_over"],
     "text-status-success-100 bg-status-success-10": [
       "in_warehouse",
