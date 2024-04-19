@@ -39,7 +39,7 @@ const Navigation = () => {
 		},
 		{
 			name: "Warehouse",
-			to: "/warehouse",
+			to: "/warehouse/purchase-order",
 			icon: <Icons.WarehouseIcon className='fill-inherit' />,
 			children: [
 				{

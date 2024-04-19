@@ -4,8 +4,10 @@ import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
-import CreateProjectModal from "@/components/projects/CreateProjectModal";
 import ProjectFilterModal from "@/components/projects/ProjectFilterModal";
+import CreateMaterialTransferModal from "@/components/warehouse/CreateMaterialTransferModal";
+import CreatePurchaseModal from "@/components/warehouse/CreatePurchaseModal";
+import WarehouseItemsFilterModal from "@/components/warehouse/ItemsFilterModal";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -18,7 +20,8 @@ type WarehouseLayoutProps = {
 const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 	const pathname = usePathname();
 	const [showCreatePurchaseModal, setShowCreatePurchaseModal] = useState(false);
-	const [showPurchaseFilterModal, setShowPurchaseFilterModal] = useState(false);
+	const [showCreateMaterialTransferModal, setShowCreateMaterialTransferModal] = useState(false);
+	const [showWarehouseItemsFilterModal, setShowWarehouseItemsFilterModal] = useState(false);
 
 	const routes = [
 		{
@@ -89,9 +92,9 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 							</form>
 						</FormProvider>
 						<Button
-							onClick={() => setShowPurchaseFilterModal(true)}
+							onClick={() => setShowWarehouseItemsFilterModal(true)}
 							theme='plain'
-							className='border text-black-500 max-lg:px-2.5 h-[42px] border-[#5A5A5A33] rounded'>
+							className='border text-black-500 max-lg:px-2.5 border-[#5A5A5A33] rounded'>
 							<div className='flex items-center lg:space-x-2.5'>
 								<Icons.FilterIcon />
 								<div className='max-lg:hidden'>Filter</div>
@@ -100,15 +103,29 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 						</Button>
 					</div>
 					<div className='flex justify-between items-center lg:space-x-6 lg:justify-end'>
-						<Button
-							className='w-[200px] max-lg:h-9'
-							onClick={() => setShowCreatePurchaseModal(true)}
-						>
-							<div className='flex items-center space-x-3'>
-								<Icons.PlusIcon className='fill-white size-3.5' />
-								<div>Create Purchase</div>
-							</div>
-						</Button>
+						{pathname === "/warehouse/purchase-order" && (
+							<Button
+								className='w-[200px] max-lg:h-9'
+								onClick={() => setShowCreatePurchaseModal(true)}
+							>
+								<div className='flex items-center space-x-3'>
+									<Icons.PlusIcon className='fill-white size-3.5' />
+									<div>Create Purchase</div>
+								</div>
+							</Button>
+						)}
+						{pathname === "/warehouse/material-transfer" && (
+							<Button
+								className='w-[200px] max-lg:h-9'
+								onClick={() => setShowCreateMaterialTransferModal(true)}
+							>
+								<div className='flex items-center space-x-3'>
+									<Icons.PlusIcon className='fill-white size-3.5' />
+									<div>Material Transfer</div>
+								</div>
+							</Button>
+						)}
+						
 						<button>
 							<Icons.ProjectDocumentIcon />
 						</button>
@@ -128,13 +145,17 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 				/>
 			</div>
 			<div>{children}</div>
-			<CreateProjectModal
+			<CreatePurchaseModal
 				showModal={showCreatePurchaseModal}
 				setShowModal={setShowCreatePurchaseModal}
 			/>
-			<ProjectFilterModal
-				showModal={showPurchaseFilterModal}
-				setShowModal={setShowPurchaseFilterModal}
+			<CreateMaterialTransferModal
+				showModal={showCreateMaterialTransferModal}
+				setShowModal={setShowCreateMaterialTransferModal}
+			/>
+			<WarehouseItemsFilterModal
+				showModal={showWarehouseItemsFilterModal}
+				setShowModal={setShowWarehouseItemsFilterModal}
 			/>
 		</div>
 	);
