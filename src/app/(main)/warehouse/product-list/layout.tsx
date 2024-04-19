@@ -108,6 +108,7 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 						</FormProvider>
 						<Button
 							theme='plain'
+							onClick={() => setShowProductFilterModal(true)}
 							className='border text-black-500 max-lg:px-2.5 border-[#5A5A5A33] rounded'>
 							<div className='flex items-center lg:space-x-2.5'>
 								<Icons.FilterIcon />
