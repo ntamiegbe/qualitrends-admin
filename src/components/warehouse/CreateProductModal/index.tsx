@@ -199,7 +199,7 @@ const CreateProductModal = ({
             {step === "success" && (
                 <section className='flex flex-col h-full justify-center items-center space-y-4'>
                     <Icons.SuccessIcon />
-                    <p className='pb-10 text-center'>Project created successfully</p>
+                    <p className='pb-10 text-center'>Product created successfully</p>
                 </section>
             )}
         </Modal>
