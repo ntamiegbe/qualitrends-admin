@@ -4,9 +4,12 @@ import SwitchInput from "@/components/global/SwitchInput";
 import Table from "@/components/global/Table";
 import Icons from "@/components/icons";
 import { cn, formatAmount } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 
 const WarehouseAssets = () => {
+    const router = useRouter()
+
     const methods = useForm();
     const data = [
         {
@@ -65,7 +68,7 @@ const WarehouseAssets = () => {
             unitPrice: 10000000,
             totalValue: 100000000,
         },
-        
+
     ];
 
     const tableHeadData = [
@@ -120,8 +123,10 @@ const WarehouseAssets = () => {
                     } = transaction;
                     return (
                         <tr
-                            onClick={() => { }}
-                            className={cn("text-sm border-[#5A5A5A99]", {
+                            onClick={() => {
+                                router.push("/warehouse/" + id + "/assets");
+                            }}
+                            className={cn("text-sm border-[#5A5A5A99] cursor-pointer", {
                                 "border-b": index !== length - 1,
                             })}>
                             <td className='p-4 text-black-500 whitespace-nowrap'>{id}</td>
