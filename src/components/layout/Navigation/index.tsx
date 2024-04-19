@@ -48,7 +48,7 @@ const Navigation = () => {
 				},
 				{
 					name: "Product List",
-					to: "/warehouse/product-list",
+					to: "/warehouse/product-list/warehouse-inventory",
 				},
 				{
 					name: "Warehouse Activities",

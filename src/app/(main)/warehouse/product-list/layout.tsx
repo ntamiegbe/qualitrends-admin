@@ -6,6 +6,7 @@ import Stats from "@/components/global/Stats";
 import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
 import CreateProductModal from "@/components/warehouse/CreateProductModal";
+import WarehouseItemsFilterModal from "@/components/warehouse/ItemsFilterModal";
 import { formatAmount } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -148,10 +149,10 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 				showModal={showCreateProductModal}
 				setShowModal={setShowCreateProductModal}
 			/>
-			{/* <ProjectFilterModal
+			<WarehouseItemsFilterModal
 				showModal={showProductFilterModal}
 				setShowModal={setShowProductFilterModal}
-			/> */}
+			/>
 		</div>
 	);
 };
