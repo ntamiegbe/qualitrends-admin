@@ -82,7 +82,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
           <div className="mt-6">
             <div className="col-span-2 space-y-6">
-              <Stats stats={stats} leaseStats showMobileTitle={false} />
+              <Stats stats={stats}  showMobileTitle={false} />
             </div>
           </div>
         </div>

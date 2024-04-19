@@ -75,7 +75,7 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
                     <div className='mt-6'>
                         <section className='lg:grid lg:grid-cols-1 lg:gap-8 max-lg:space-y-4'>
                             <div className='col-span-2 space-y-6'>
-                                <Stats altStats stats={stats} showMobileTitle={false} />
+                                <Stats stats={stats} showMobileTitle={false} />
                             </div>
                         </section>
                     </div>
