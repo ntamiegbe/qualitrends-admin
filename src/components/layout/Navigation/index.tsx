@@ -44,7 +44,8 @@ const Navigation = () => {
 			children: [
 				{
 					name: "Warehouse",
-					to: "/warehouse",
+					to: "/warehouse/purchase-order",
+					absoluteRoute: "/warehouse",
 				},
 				{
 					name: "Product List",
@@ -83,6 +84,7 @@ const Navigation = () => {
 		{
 			name: "Finances",
 			to: "/finances/income",
+			absoluteRoute: "/finances",
 			icon: <Icons.FinancesIcon className='fill-inherit' />,
 		},
 		{
