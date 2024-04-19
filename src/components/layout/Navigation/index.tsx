@@ -44,7 +44,7 @@ const Navigation = () => {
 			children: [
 				{
 					name: "Warehouse",
-					to: "/warehouse",
+					to: "/warehouse/purchase-order",
 				},
 				{
 					name: "Product List",
