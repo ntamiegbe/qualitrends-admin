@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
+import Dropdown from "@/components/global/Dropdown";
 
 type FinancesLayoutProps = {
 	children: React.ReactNode;
@@ -37,6 +38,17 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 		formState: { errors },
 		watch,
 	} = methods;
+
+	const dropdownButtons = [
+		{
+			label: "Incoming Payment",
+			onClick: () => {},
+		},
+		{
+			label: "Make Payment",
+			onClick: () => {},
+		},
+	];
 
 	return (
 		<div>
@@ -93,12 +105,27 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 
 					<div className='flex items-center float-right '>
 						<div className="">
-							<Button className='w-[200px] max-lg:h-9'>
-								<div className='flex items-center space-x-3'>
-									<Icons.PlusIcon className='fill-white' />
-									<div>Create</div>
+								<Dropdown
+								trigger={() => (
+									<Button className='w-[200px] max-lg:h-9 hover:bg-white hover:text-primary'>
+										<div className='flex items-center space-x-3'>
+											<Icons.PlusIcon className='fill-white hover:fill-primary' />
+											<div>Create</div>
+										</div>
+									</Button>
+								)}
+								className='top-14'>
+								<div className='w-[240px] bg-white rounded-md'>
+									{dropdownButtons.map((button, index) => (
+										<button
+											key={index}
+											onClick={button.onClick}
+											className='flex w-full dropdown-item hover:bg-[#FFE2D2] transition-all text-sm items-center justify-between p-3 border-b last:border-b-0 border-[#CBCFD3]'>
+											{button.label}
+										</button>
+									))}
 								</div>
-							</Button>
+							</Dropdown>
 							{/* <button className='lg:hidden'>
 								<Icons.ProjectEmailIcon />
 							</button>

@@ -5,6 +5,7 @@ import Icons from "@/components/icons";
 import { cn, formatAmount } from "@/lib/utils";
 import TotalOutstanding from "./component/totaloutstanding"; 
 import Pagination from "./component/pagination"
+// import Pagination from "@/components/global/Pagination"
 
 
 const expenses = () => {
