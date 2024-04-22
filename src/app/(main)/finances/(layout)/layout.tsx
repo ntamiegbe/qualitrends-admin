@@ -8,12 +8,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import Dropdown from "@/components/global/Dropdown";
+import IncomingPaymentModal from "@/components/Finances/IncomingPaymentModal";
+import MakePaymentModal from "@/components/Finances/MakePaymentModal";
+import { useState } from "react";
 
 type FinancesLayoutProps = {
 	children: React.ReactNode;
 };
 
 const FinancesLayout = ({ children }: FinancesLayoutProps) => {
+	const [ShowIncomingPaymentModal, setShowIncomingPaymentModal] = useState(false);
+	const [ShowMakePaymentModal, setShowMakePaymentModal] = useState(false);
 	const pathname = usePathname();
 
 	const routes = [
@@ -42,11 +47,11 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 	const dropdownButtons = [
 		{
 			label: "Incoming Payment",
-			onClick: () => {},
+			onClick: () => setShowIncomingPaymentModal(true),
 		},
 		{
 			label: "Make Payment",
-			onClick: () => {},
+			onClick: () => setShowMakePaymentModal(true),
 		},
 	];
 
@@ -115,7 +120,7 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 									</Button>
 								)}
 								className='top-14'>
-								<div className='w-[240px] bg-white rounded-md'>
+								<div className='w-[200px] bg-white rounded-md'>
 									{dropdownButtons.map((button, index) => (
 										<button
 											key={index}
@@ -191,6 +196,15 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 				})}
 			</ul>
 			<div>{children}</div>
+
+			<IncomingPaymentModal
+				showModal={ShowIncomingPaymentModal}
+				setShowModal={setShowIncomingPaymentModal}
+			/>
+			<MakePaymentModal
+			showModal={ShowMakePaymentModal }
+			setShowModal={ setShowMakePaymentModal}
+		/>
 		</div>
 	);
 };
