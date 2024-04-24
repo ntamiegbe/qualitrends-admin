@@ -3,45 +3,18 @@
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import Stats from "@/components/global/Stats";
-import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
-import RequestsFilterModal from "@/components/requests/requestsFilterModal";
-import { cn, formatAmount } from "@/lib/utils";
+import { formatAmount } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
-type RequestsLayoutProps = {
+type WarehouseDetailsLayoutProps = {
     children: React.ReactNode;
 };
 
-const RequestsLayout = ({ children }: RequestsLayoutProps) => {
-    const [showRequestsFilterModal, setShowRequestsFilterModal] = useState(false);
+const WarehouseDetailsLayout = ({ children }: WarehouseDetailsLayoutProps) => {
     const pathname = usePathname();
-
-    const routes = [
-        {
-            name: "Purchase Order",
-            path: "/requests/purchase-order",
-            isWider: true
-        },
-        {
-            name: "Expense Request",
-            path: "/requests/expense-requests",
-            isWider: true
-        },
-        {
-            name: "Material Transfer",
-            path: "/requests/material-transfer",
-            isWider: true
-        },
-        {
-            name: "Warehouse Supply Request",
-            path: "/requests/warehouse-supply-requests",
-            isWider: true
-        },
-    ];
 
     const methods = useForm({
         mode: "onChange",
@@ -80,18 +53,18 @@ const RequestsLayout = ({ children }: RequestsLayoutProps) => {
                         <span>
                             <Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
                         </span>
-                        <Link href='/requests'>Requests</Link>
+                        <Link href='/warehouse'>Warehouse</Link>
                         <span>
                             <Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
                         </span>
                         <span className='capitalize text-primary'>
-                            {pathname?.split("/")[2]?.replace("-", " ")}
+                            {pathname?.split("/")[3]?.replace("-", " ")} Detail
                         </span>
                     </div>
                     <div className='mt-6'>
                         <section className='lg:grid lg:grid-cols-1 lg:gap-8 max-lg:space-y-4'>
                             <div className='col-span-2 space-y-6'>
-                                <Stats stats={stats} showMobileTitle={false} />
+                                <Stats altStats stats={stats} showMobileTitle={false} />
                             </div>
                         </section>
                     </div>
@@ -117,7 +90,6 @@ const RequestsLayout = ({ children }: RequestsLayoutProps) => {
                         </FormProvider>
                         <Button
                             theme='plain'
-                            onClick={() => setShowRequestsFilterModal(true)}
                             className='border text-black-500 max-lg:px-2.5 border-[#5A5A5A33] rounded'>
                             <div className='flex items-center lg:space-x-2.5'>
                                 <Icons.FilterIcon />
@@ -126,24 +98,22 @@ const RequestsLayout = ({ children }: RequestsLayoutProps) => {
                             </div>
                         </Button>
                     </div>
+                    <div className='flex justify-between items-center lg:space-x-10 lg:justify-end'>
+                        <button>
+                            <Icons.ProjectDocumentIcon />
+                        </button>
+                        <button>
+                            <Icons.ProjectDocumentIcon />
+                        </button>
+                        <button>
+                            <Icons.ProjectDocumentIcon />
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div className='my-10'>
-                <Tab
-                    routes={routes}
-                    initialRoute={{
-                        name: pathname?.split("/")[2]?.replace("-", " "),
-                        value: `/requests/${pathname?.split("/")[2]}`,
-                    }}
-                />
-            </div>
-            <div>{children}</div>
-            <RequestsFilterModal
-                showModal={showRequestsFilterModal}
-                setShowModal={setShowRequestsFilterModal}
-            />
+            <div className="py-10">{children}</div>
         </div>
     );
 };
 
-export default RequestsLayout;
+export default WarehouseDetailsLayout;

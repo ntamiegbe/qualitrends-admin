@@ -38,7 +38,7 @@ const Navigation = () => {
 		},
 		{
 			name: "Warehouse",
-			to: "/warehouse",
+			to: "/warehouse/purchase-order",
 			icon: <Icons.WarehouseIcon className='fill-inherit' />,
 			children: [
 				{
@@ -48,7 +48,7 @@ const Navigation = () => {
 				},
 				{
 					name: "Product List",
-					to: "/warehouse/product-list",
+					to: "/warehouse/product-list/warehouse-inventory",
 				},
 				{
 					name: "Warehouse Activities",
