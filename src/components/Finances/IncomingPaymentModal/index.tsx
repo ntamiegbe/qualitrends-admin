@@ -48,7 +48,7 @@ const IncomingPaymentModal = ({
 		},
 		success: {
 			title: "",
-			width: "!w-[400px]",
+			width: "!w-[200px]",
 			closeButtonStyle: "fill-primary",
 			showHeaderBorder: false,
 		},
@@ -80,31 +80,19 @@ const IncomingPaymentModal = ({
 					<FormProvider {...methods}>
 						<form
 							onSubmit={methods.handleSubmit(onSubmit)}
-							className='max-lg:space-y-6 lg:grid lg:grid-cols-2 lg:gap-x-9 gap-y-6'>
-							<Input
-								name='code'
-								label='Project Code'
-								rules={["required"]}
-								placeholder='68_89GYN'
-								left={<div className='font-medium text-sm px-3'>QGS - </div>}
-								paddingLeft='pl-14'
-							/>
+							className='max-lg:space-y-6 flex flex-col  gap-4'>
 							<SelectInput
-								label='Project Type'
+								label='Customer'
 								name='type'
 								required
 								options={[
 									{
-										name: "Furniture",
-										value: "furniture",
+										name: "New Customer",
+										value: "new customer",
 									},
 									{
-										name: "Concrete",
-										value: "concrete",
-									},
-									{
-										name: "Building",
-										value: "building",
+										name: "Existing Customer",
+										value: "existing customer",
 									},
 								]}
 								optionComponent={(option, selectedOption) => {
@@ -138,35 +126,43 @@ const IncomingPaymentModal = ({
 												</div>
 											) : (
 												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Type
+													Select 
 												</div>
 											)}
 										</div>
 									);
 								}}
 							/>
-							<Input
+							{/* <Input
 								name='budget'
 								label='Project Budget'
 								rules={["required"]}
 								placeholder='Enter Budget'
-							/>
+							/> */}
 							<SelectInput
-								label='Project Manager'
-								name='manager'
+								label='Project Code'
+								name='code'
 								required
 								options={[
 									{
-										name: "John Doe",
-										value: "john doe",
+										name: "Wuse_1365",
+										value: "Wuse_1365",
 									},
 									{
-										name: "Jane Doe",
-										value: "jane doe",
+										name: "Idu_294_pmt",
+										value: "idu",
 									},
 									{
-										name: "John Smith",
-										value: "john smith",
+										name: "Qualitrends Roof",
+										value: "qualitrends",
+									},
+									{
+										name: "Wuye_366_pmt",
+										value: "wuye",
+									},
+									{
+										name: "Dape_1_218_pmt",
+										value: "dape",
 									},
 								]}
 								optionComponent={(option, selectedOption) => {
@@ -200,7 +196,7 @@ const IncomingPaymentModal = ({
 												</div>
 											) : (
 												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Manager
+													Select Project  
 												</div>
 											)}
 										</div>
@@ -208,28 +204,25 @@ const IncomingPaymentModal = ({
 								}}
 							/>
 							<Input
-								name='summary'
-								label='Project Summary'
+								name='invoice'
+								label='Invoice ID'
 								rules={["required"]}
-								placeholder='Enter Project Summary'
-								tag='textarea'
+								placeholder='INV192098'
+							/>
+							<Input
+								name='amount'
+								label='Amount Paid'
+								rules={["required"]}
+								placeholder='Enter Amount'
 							/>
 							<SelectInput
-								label='Project Supervisor'
-								name='supervisor'
+								label='Date'
+								name='date'
 								required
 								options={[
 									{
-										name: "John Doe",
-										value: "john doe",
-									},
-									{
-										name: "Jane Doe",
-										value: "jane doe",
-									},
-									{
-										name: "John Smith",
-										value: "john smith",
+										name: "2024",
+										value: "date",
 									},
 								]}
 								optionComponent={(option, selectedOption) => {
@@ -263,12 +256,70 @@ const IncomingPaymentModal = ({
 												</div>
 											) : (
 												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Supervisor
+													Select Date
 												</div>
 											)}
 										</div>
 									);
 								}}
+							/>
+							
+							<SelectInput
+								label='Income Category'
+								name='incomecategory'
+								required
+								options={[
+									{
+										name: "outgoing",
+										value: "out",
+									},
+									{
+										name: "incominge",
+										value: "in",
+									},
+								]}
+								optionComponent={(option, selectedOption) => {
+									return (
+										<div
+											className={cn(
+												"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+												{
+													"bg-[#FF69001A]":
+														option?.value === selectedOption?.value,
+												}
+											)}>
+											<div className='w-full text-sm flex items-center space-x-2'>
+												<div>{option?.name}</div>
+											</div>
+
+											{option?.name === selectedOption?.name && (
+												<div>
+													<Icons.SelectedIcon />
+												</div>
+											)}
+										</div>
+									);
+								}}
+								trigger={(selected) => {
+									return (
+										<div className='flex h-min bg-transparent items-center space-x-1'>
+											{selected ? (
+												<div className='text-tc-main flex space-x-2 items-center text-sm'>
+													<span>{selected.name}</span>
+												</div>
+											) : (
+												<div className='text-sm mt-[2px] text-black-500'>
+													Select 
+												</div>
+											)}
+										</div>
+									);
+								}}
+							/>
+							<Input
+								name='support'
+								label='Supporting Documents'
+								placeholder='Upload File'
 							/>
 							<div className='lg:col-span-2 flex justify-center py-4'>
 								<Button
@@ -286,7 +337,7 @@ const IncomingPaymentModal = ({
 			{step === "success" && (
 				<section className='flex flex-col h-full justify-center items-center space-y-4'>
 					<Icons.SuccessIcon />
-					<p className='pb-10 text-center'>Project created successfully</p>
+					<p className='pb-10 text-center'>Incoming payment recorded successfully</p>
 				</section>
 			)}
 		</Modal>

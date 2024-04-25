@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
-type MakePaymentModalProps = {
+type IncomingPaymentModalProps = {
 	showModal: boolean;
 	setShowModal: (value: boolean) => void;
 };
@@ -17,7 +17,7 @@ type MakePaymentModalProps = {
 const IncomingPaymentModal = ({
 	showModal,
 	setShowModal,
-}: MakePaymentModalProps) => {
+}: IncomingPaymentModalProps) => {
 	const [step, setStep] = useState<"create" | "success">("create");
 
 	const methods = useForm({
@@ -44,11 +44,11 @@ const IncomingPaymentModal = ({
 
 	const stepProps = {
 		create: {
-			title: "Make Payment",
+			title: "Make Payment For Expense",
 		},
 		success: {
 			title: "",
-			width: "!w-[400px]",
+			width: "!w-[200px]",
 			closeButtonStyle: "fill-primary",
 			showHeaderBorder: false,
 		},
@@ -60,113 +60,123 @@ const IncomingPaymentModal = ({
 			showHeaderBorder?: boolean;
 		};
 	};
-
+	
 	return (
 		<Modal
-			title={stepProps[step].title}
-			show={showModal}
-			width={stepProps[step].width}
-			closeButtonStyle={stepProps[step].closeButtonStyle}
-			showHeaderBorder={stepProps[step].showHeaderBorder}
-			onRequestClose={() => {
-				setShowModal(false);
-				setTimeout(() => {
-					reset();
-					setStep("create");
-				}, 1000);
-			}}>
+		title={stepProps[step].title}
+		show={showModal}
+		width={stepProps[step].width}
+		closeButtonStyle={stepProps[step].closeButtonStyle}
+		showHeaderBorder={stepProps[step].showHeaderBorder}
+		onRequestClose={() => {
+			setShowModal(false);
+			setTimeout(() => {
+				reset();
+				setStep("create");
+			}, 1000);
+		}}>
 			{step === "create" && (
 				<section className='w-full'>
 					<FormProvider {...methods}>
 						<form
 							onSubmit={methods.handleSubmit(onSubmit)}
-							className='max-lg:space-y-6 lg:grid lg:grid-cols-2 lg:gap-x-9 gap-y-6'>
+							className='max-lg:space-y-6 flex flex-col  gap-4'>
+								
 							<Input
-								name='code'
-								label='Project Code'
+								name='transcatID'
+								label='Transaction ID'
 								rules={["required"]}
-								placeholder='68_89GYN'
-								left={<div className='font-medium text-sm px-3'>QGS - </div>}
-								paddingLeft='pl-14'
+								left={<div className='font-medium text-sm px-3'>1000</div>}
+								placeholder=''
 							/>
-							<SelectInput
-								label='Project Type'
-								name='type'
-								required
-								options={[
-									{
-										name: "Furniture",
-										value: "furniture",
-									},
-									{
-										name: "Concrete",
-										value: "concrete",
-									},
-									{
-										name: "Building",
-										value: "building",
-									},
-								]}
-								optionComponent={(option, selectedOption) => {
-									return (
-										<div
-											className={cn(
-												"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
-												{
-													"bg-[#FF69001A]":
-														option?.value === selectedOption?.value,
-												}
-											)}>
-											<div className='w-full text-sm flex items-center space-x-2'>
-												<div>{option?.name}</div>
+								<SelectInput
+									label='Expense Name'
+									name='expensename'
+									required
+									options={[
+										{
+											name: "outgoing",
+											value: "out",
+										},
+										{
+											name: "incominge",
+											value: "in",
+										},
+									]}
+									optionComponent={(option, selectedOption) => {
+										return (
+											<div
+												className={cn(
+													"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+													{
+														"bg-[#FF69001A]":
+															option?.value === selectedOption?.value,
+													}
+												)}>
+												<div className='w-full text-sm flex items-center space-x-2'>
+													<div>{option?.name}</div>
+												</div>
+							
+												{option?.name === selectedOption?.name && (
+													<div>
+														<Icons.SelectedIcon />
+													</div>
+												)}
 											</div>
-
-											{option?.name === selectedOption?.name && (
-												<div>
-													<Icons.SelectedIcon />
-												</div>
-											)}
-										</div>
-									);
-								}}
-								trigger={(selected) => {
-									return (
-										<div className='flex h-min bg-transparent items-center space-x-1'>
-											{selected ? (
-												<div className='text-tc-main flex space-x-2 items-center text-sm'>
-													<span>{selected.name}</span>
-												</div>
-											) : (
-												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Type
-												</div>
-											)}
-										</div>
-									);
-								}}
-							/>
+										);
+									}}
+									trigger={(selected) => {
+										return (
+											<div className='flex h-min bg-transparent items-center space-x-1'>
+												{selected ? (
+													<div className='text-tc-main flex space-x-2 items-center text-sm'>
+														<span>{selected.name}</span>
+													</div>
+												) : (
+													<div className='text-sm mt-[2px] text-black-500'>
+														Select 
+													</div>
+												)}
+											</div>
+										);
+									}}
+								/>
 							<Input
+								label='Transaction Type'
+								name='TransType'
+								required
+								placeholder="Expense"
+							/>
+							{/* <Input
 								name='budget'
 								label='Project Budget'
 								rules={["required"]}
 								placeholder='Enter Budget'
-							/>
+							/> */}
 							<SelectInput
-								label='Project Manager'
-								name='manager'
+								label='Supplier'
+								name='supplier'
 								required
 								options={[
 									{
-										name: "John Doe",
-										value: "john doe",
+										name: "Wuse_1365",
+										value: "Wuse_1365",
 									},
 									{
-										name: "Jane Doe",
-										value: "jane doe",
+										name: "Idu_294_pmt",
+										value: "idu",
 									},
 									{
-										name: "John Smith",
-										value: "john smith",
+										name: "Maleek Ltd",
+										value: "maleek inc",
+									},
+									{
+										name: "Wuye_366_pmt",
+										value: "wuye",
+									},
+									{
+										name: "Dape_1_218_pmt",
+										value: "dape",
 									},
 								]}
 								optionComponent={(option, selectedOption) => {
@@ -200,7 +210,59 @@ const IncomingPaymentModal = ({
 												</div>
 											) : (
 												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Manager
+													Select    
+												</div>
+											)}
+										</div>
+									);
+								}}
+							/>
+							<SelectInput
+								label='Source Account'
+								name='SAccount'
+								required
+								options={[
+									{
+										name: "Old",
+										value: "old",
+									},
+									{
+										name: "New",
+										value: "new",
+									},
+								]}
+								optionComponent={(option, selectedOption) => {
+									return (
+										<div
+											className={cn(
+												"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
+												{
+													"bg-[#FF69001A]":
+														option?.value === selectedOption?.value,
+												}
+											)}>
+											<div className='w-full text-sm flex items-center space-x-2'>
+												<div>{option?.name}</div>
+											</div>
+
+											{option?.name === selectedOption?.name && (
+												<div>
+													<Icons.SelectedIcon />
+												</div>
+											)}
+										</div>
+									);
+								}}
+								trigger={(selected) => {
+									return (
+										<div className='flex h-min bg-transparent items-center space-x-1'>
+											{selected ? (
+												<div className='text-tc-main flex space-x-2 items-center text-sm'>
+													<span>{selected.name}</span>
+												</div>
+											) : (
+												<div className='text-sm mt-[2px] text-black-500'>
+													Select 
 												</div>
 											)}
 										</div>
@@ -208,76 +270,18 @@ const IncomingPaymentModal = ({
 								}}
 							/>
 							<Input
-								name='summary'
-								label='Project Summary'
-								rules={["required"]}
-								placeholder='Enter Project Summary'
-								tag='textarea'
-							/>
-							<SelectInput
-								label='Project Supervisor'
-								name='supervisor'
-								required
-								options={[
-									{
-										name: "John Doe",
-										value: "john doe",
-									},
-									{
-										name: "Jane Doe",
-										value: "jane doe",
-									},
-									{
-										name: "John Smith",
-										value: "john smith",
-									},
-								]}
-								optionComponent={(option, selectedOption) => {
-									return (
-										<div
-											className={cn(
-												"py-2 w-full border-b px-4 flex items-center space-x-5 text-tc-main hover:bg-[#FF69001A]",
-												{
-													"bg-[#FF69001A]":
-														option?.value === selectedOption?.value,
-												}
-											)}>
-											<div className='w-full text-sm flex items-center space-x-2'>
-												<div>{option?.name}</div>
-											</div>
-
-											{option?.name === selectedOption?.name && (
-												<div>
-													<Icons.SelectedIcon />
-												</div>
-											)}
-										</div>
-									);
-								}}
-								trigger={(selected) => {
-									return (
-										<div className='flex h-min bg-transparent items-center space-x-1'>
-											{selected ? (
-												<div className='text-tc-main flex space-x-2 items-center text-sm'>
-													<span>{selected.name}</span>
-												</div>
-											) : (
-												<div className='text-sm mt-[2px] text-black-500'>
-													Select Project Supervisor
-												</div>
-											)}
-										</div>
-									);
-								}}
+								name='Amount Paid'
+								label='Amount Paid'
+								placeholder='Enter Amount'
 							/>
 							<div className='lg:col-span-2 flex justify-center py-4'>
 								<Button
 									type='submit'
 									disabled={!isValid}
 									className='w-full lg:w-[240px]'>
-									Create
+									Save
 								</Button>
-							</div>
+							</div> 
 						</form>
 					</FormProvider>
 				</section>
@@ -286,7 +290,7 @@ const IncomingPaymentModal = ({
 			{step === "success" && (
 				<section className='flex flex-col h-full justify-center items-center space-y-4'>
 					<Icons.SuccessIcon />
-					<p className='pb-10 text-center'>Project created successfully</p>
+					<p className='pb-10 text-center'>Payment Made successfully</p>
 				</section>
 			)}
 		</Modal>
