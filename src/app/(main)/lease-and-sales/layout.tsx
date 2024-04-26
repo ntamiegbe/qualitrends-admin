@@ -3,11 +3,16 @@
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import Stats from "@/components/global/Stats";
+<<<<<<< HEAD
 import Tab from '@/components/global/Tab';
+=======
+import Tab from "@/components/global/Tab";
+>>>>>>> a4db5745e22550ce9e4202ceab20e2c707904a20
 import Icons from "@/components/icons";
-import { cn, formatAmount } from "@/lib/utils";
+import { formatAmount } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type LayoutProps = {
@@ -16,6 +21,9 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   const pathname = usePathname();
+  const [showCreateInvoiceModal, setShowCreateInvoiceModal] = useState(false);
+  const [showCreateSalesInvoiceModal, setShowCreateSalesInvoiceModal] = useState(false);
+  const [showCreateLeaseInvoiceModal, setShowCreateLeaseInvoiceModal] = useState(false);
 
   const routes = [
     {
@@ -28,11 +36,19 @@ const Layout = ({ children }: LayoutProps) => {
     },
     {
       name: "Offer Letter",
+<<<<<<< HEAD
       path: "/lease-and-sales/offer",
     },
     {
       name: "Asset Lease",
       path: "/lease-and-sales/lease",
+=======
+      path: "/lease-and-sales/offer-letter",
+    },
+    {
+      name: "Asset Lease",
+      path: "/lease-and-sales/asset-lease",
+>>>>>>> a4db5745e22550ce9e4202ceab20e2c707904a20
     },
   ];
 
@@ -59,13 +75,17 @@ const Layout = ({ children }: LayoutProps) => {
     },
     {
       title: "Total Customers",
-      value: formatAmount(+100, "NGN"),
+      value: "100"
     },
     {
       title: "Total Oustanding",
       value: formatAmount(+10000, "NGN"),
     },
   ];
+
+  const handleCreateInvoice = () => {
+    console.log("create")
+  }
 
   return (
     <div>
@@ -117,21 +137,22 @@ const Layout = ({ children }: LayoutProps) => {
             </Button>
           </div>
           <div className="flex justify-between items-center lg:space-x-10 lg:justify-end">
-            <Button className="w-[200px] max-lg:h-9">
+            <Button className="w-[200px] max-lg:h-9" onClick={handleCreateInvoice}>
               <div className="flex items-center space-x-3">
-                <Icons.PlusIcon className="fill-white" />
+                <Icons.PlusIcon className="fill-white size-3.5" />
                 <div>Create Invoice</div>
               </div>
             </Button>
             <Button theme="outline" className="w-[200px] max-lg:h-9">
               <div className="flex items-center space-x-3">
-                <Icons.PlusIcon className="fill-primary" />
+                <Icons.PlusIcon className="fill-primary size-3.5" />
                 <div>Create letter</div>
               </div>
             </Button>
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <Tab
         routes={routes}
         initialRoute={{
@@ -139,6 +160,17 @@ const Layout = ({ children }: LayoutProps) => {
           value: `/lease-and-sales/${pathname?.split("/")[2]}`,
         }}
       />
+=======
+      <div className='my-10'>
+        <Tab
+          routes={routes}
+          initialRoute={{
+            name: pathname?.split("/")[2]?.replace("-", " "),
+            value: `/lease-and-sales/${pathname?.split("/")[2]}`,
+          }}
+        />
+      </div>
+>>>>>>> a4db5745e22550ce9e4202ceab20e2c707904a20
       <div>{children}</div>
     </div>
   );
