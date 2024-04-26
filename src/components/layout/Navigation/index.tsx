@@ -43,11 +43,9 @@ const Navigation = () => {
 			children: [
 				{
 					name: "Warehouse",
+					// to: "/warehouse",
 					to: "/warehouse/purchase-order",
-<<<<<<<<< Temporary merge branch 1
 					absoluteRoute: "/warehouse",
-=========
->>>>>>>>> Temporary merge branch 2
 				},
 				{
 					name: "Product List",
