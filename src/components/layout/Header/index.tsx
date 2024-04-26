@@ -3,9 +3,12 @@
 import Dropdown from "@/components/global/Dropdown";
 import Input from "@/components/global/Input";
 import Icons from "@/components/icons";
+import CreateProjectModal from "@/components/projects/CreateProjectModal";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 const Header = () => {
+	const [showCreateProjectModal, setShowCreateProjectModal] = useState(false);
 	const methods = useForm({
 		mode: "onChange",
 		defaultValues: {
@@ -21,59 +24,60 @@ const Header = () => {
 	const dropdownButtons = [
 		{
 			label: "Create New Project",
-			onClick: () => {},
+			onClick: () => setShowCreateProjectModal(true),
 		},
 		{
 			label: "Create Expenses",
-			onClick: () => {},
+			onClick: () => { },
 		},
 		{
 			label: "Create Offer Letter",
-			onClick: () => {},
+			onClick: () => { },
 		},
 		{
 			label: "Create Material Transfer",
-			onClick: () => {},
+			onClick: () => { },
 		},
 		{
 			label: "Item Lease",
-			onClick: () => {},
+			onClick: () => { },
 		},
 		{
 			label: "Item Sales",
-			onClick: () => {},
+			onClick: () => { },
 		},
 	];
 
 	return (
-		<header className='max-lg:container bg-white lg:px-8 py-4 w-full fixed z-50 top-0 right-0 lg:w-[calc(100%-278px)] shadow-sm'>
-			<div className='flex items-center justify-between space-x-8 lg:space-x-6'>
-				<div className='lg:hidden'>
-					<Icons.MenuIcon />
-				</div>
-				<FormProvider {...methods}>
-					<form className='max-lg:max-w-[300px] lg:!ml-0 flex-1'>
-						<div className='lg:w-[300px]'>
-							<Input
-								name='search'
-								placeholder='Search'
-								paddingLeft='pl-11'
-								type='search'
-								left={
-									<div className='w-9 pl-3'>
-										<Icons.SearchIcon />
-									</div>
-								}
-							/>
-						</div>
-					</form>
-				</FormProvider>
+		<>
+			<header className='max-lg:container bg-white lg:px-8 py-4 w-full fixed z-50 top-0 right-0 lg:w-[calc(100%-278px)] shadow-sm'>
+				<div className='flex items-center justify-between space-x-8 lg:space-x-6'>
+					<div className='lg:hidden'>
+						<Icons.MenuIcon />
+					</div>
+					<FormProvider {...methods}>
+						<form className='max-lg:max-w-[300px] lg:!ml-0 flex-1'>
+							<div className='lg:w-[300px]'>
+								<Input
+									name='search'
+									placeholder='Search'
+									paddingLeft='pl-11'
+									type='search'
+									left={
+										<div className='w-9 pl-3'>
+											<Icons.SearchIcon />
+										</div>
+									}
+								/>
+							</div>
+						</form>
+					</FormProvider>
 
 				<div className='flex items-center space-x-4 lg:space-x-6'>
 					<Dropdown
 						trigger={() => (
 							<button className='hidden lg:flex justify-center items-center p-4 rounded border border-primary'>
-								<Icons.PlusIcon className='fill-primary' />
+								<Icons.PlusIcon className='fill-primary size-3.5' />
 							</button>
 						)}
 						className='-left-24 top-14'>
