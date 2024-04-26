@@ -1,5 +1,9 @@
 import Sales from "@/components/lease&sale/Sales";
-import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lease and Sales | Sales",
+};
 
 const page = () => {
   return <Sales />;
