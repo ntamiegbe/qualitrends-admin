@@ -2,6 +2,7 @@
 
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
+import { cn } from 'clsx';
 import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
 import CreateMaterialTransferModal from "@/components/warehouse/CreateMaterialTransferModal";
