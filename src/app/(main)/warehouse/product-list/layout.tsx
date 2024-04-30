@@ -5,7 +5,7 @@ import Input from "@/components/global/Input";
 import Stats from "@/components/global/Stats";
 import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
-import { cn } from 'clsx'; 
+import cn from "clsx"
 import CreateProductModal from "@/components/warehouse/CreateProductModal";
 import WarehouseItemsFilterModal from "@/components/warehouse/ItemsFilterModal";
 import { formatAmount } from "@/lib/utils";

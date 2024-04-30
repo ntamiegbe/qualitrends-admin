@@ -3,11 +3,7 @@
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import Stats from "@/components/global/Stats";
-<<<<<<< HEAD
 import Tab from '@/components/global/Tab';
-=======
-import Tab from "@/components/global/Tab";
->>>>>>> a4db5745e22550ce9e4202ceab20e2c707904a20
 import Icons from "@/components/icons";
 import { formatAmount } from "@/lib/utils";
 import Link from "next/link";
@@ -36,19 +32,15 @@ const Layout = ({ children }: LayoutProps) => {
     },
     {
       name: "Offer Letter",
-<<<<<<< HEAD
       path: "/lease-and-sales/offer",
     },
     {
       name: "Asset Lease",
-      path: "/lease-and-sales/lease",
-=======
       path: "/lease-and-sales/offer-letter",
     },
     {
       name: "Asset Lease",
       path: "/lease-and-sales/asset-lease",
->>>>>>> a4db5745e22550ce9e4202ceab20e2c707904a20
     },
   ];
 
@@ -152,7 +144,6 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <Tab
         routes={routes}
         initialRoute={{
@@ -160,7 +151,6 @@ const Layout = ({ children }: LayoutProps) => {
           value: `/lease-and-sales/${pathname?.split("/")[2]}`,
         }}
       />
-=======
       <div className='my-10'>
         <Tab
           routes={routes}
@@ -170,7 +160,6 @@ const Layout = ({ children }: LayoutProps) => {
           }}
         />
       </div>
->>>>>>> a4db5745e22550ce9e4202ceab20e2c707904a20
       <div>{children}</div>
     </div>
   );
