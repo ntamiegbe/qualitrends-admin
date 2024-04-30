@@ -2,19 +2,14 @@
 
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
-import { cn } from 'clsx';
-import Tab from "@/components/global/Tab";
 import Icons from "@/components/icons";
-import CreateMaterialTransferModal from "@/components/warehouse/CreateMaterialTransferModal";
-import CreatePurchaseModal from "@/components/warehouse/CreatePurchaseModal";
-import WarehouseItemsFilterModal from "@/components/warehouse/ItemsFilterModal";
+import { cn, formatAmount } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 type WarehouseLayoutProps = {
-    children: React.ReactNode;
+	children: React.ReactNode;
 };
 
 const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
@@ -39,17 +34,17 @@ const WarehouseLayout = ({ children }: WarehouseLayoutProps) => {
 		},
 	];
 
-    const methods = useForm({
-        mode: "onChange",
-        defaultValues: {
-            search: "",
-        },
-    });
+	const methods = useForm({
+		mode: "onChange",
+		defaultValues: {
+			search: "",
+		},
+	});
 
-    const {
-        formState: { errors },
-        watch,
-    } = methods;
+	const {
+		formState: { errors },
+		watch,
+	} = methods;
 
 	return (
 		<div>
