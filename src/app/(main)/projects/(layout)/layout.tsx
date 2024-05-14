@@ -101,7 +101,7 @@ const ProjectsLayout = ({ children }: ProjectsLayoutProps) => {
 							onClick={() => setShowCreateProjectModal(true)}
 							className='w-[200px] max-lg:h-9'>
 							<div className='flex items-center space-x-3'>
-								<Icons.PlusIcon className='fill-white size-3.5' />
+								<Icons.PlusIcon className='fill-white' />
 								<div>Create Project</div>
 							</div>
 						</Button>

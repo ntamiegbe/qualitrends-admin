@@ -22,7 +22,7 @@ const CreateCard = () => {
 					return (
 						<li key={index}>
 							<button className='px-5 py-4 w-full bg-white rounded-lg drop-shadow-md flex items-center space-x-5'>
-								<Icons.PlusIcon className='fill-[#5A5A5A] size-3.5' />
+								<Icons.PlusIcon className='fill-[#5A5A5A]' />
 								<div className='text-[#2B2B29]'>{action.name}</div>
 							</button>
 						</li>

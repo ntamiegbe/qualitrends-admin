@@ -7,12 +7,18 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
+import Dropdown from "@/components/global/Dropdown";
+import IncomingPaymentModal from "@/components/Finances/IncomingPaymentModal";
+import MakePaymentModal from "@/components/Finances/MakePaymentModal";
+import { useState } from "react";
 
 type FinancesLayoutProps = {
 	children: React.ReactNode;
 };
 
 const FinancesLayout = ({ children }: FinancesLayoutProps) => {
+	const [ShowIncomingPaymentModal, setShowIncomingPaymentModal] = useState(false);
+	const [ShowMakePaymentModal, setShowMakePaymentModal] = useState(false);
 	const pathname = usePathname();
 
 	const routes = [
@@ -38,6 +44,17 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 		watch,
 	} = methods;
 
+	const dropdownButtons = [
+		{
+			label: "Incoming Payment",
+			onClick: () => setShowIncomingPaymentModal(true),
+		},
+		{
+			label: "Make Payment",
+			onClick: () => setShowMakePaymentModal(true),
+		},
+	];
+
 	return (
 		<div>
 			<div className='lg:flex lg:space-x-5 justify-between'>
@@ -48,13 +65,17 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 						<span>
 							<Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
 						</span>
-						<Link href='/finances/income'>Account & Finance</Link>
-						<span>
+						<Link href='/finances/income' className="text-primary">Account & Finance</Link>
+						{/* <span>
 							<Icons.CaretIcon className='fill-black-900 transform -rotate-90' />
-						</span>
+						</span> */}
 						<span className='capitalize text-primary'>
-							{pathname?.split("/")[2]?.replace("-", " ")}
+							{pathname?.split("/")[3]?.replace("-", " ")}
 						</span>
+					</div>
+					<div className='max-lg:hidden mt-6 font-semibold flex justify-between items-center'>
+						<div className="text-[16px] mr-[73px]">Total Income: <span className="text-[20px] text-primary">₦ 0.00</span></div>
+						<div className="text-[16px]">Total Expenses: <span className="text-[20px] text-primary">₦ 0.00</span></div>
 					</div>
 				</div>
 				<div className='space-y-4 lg:space-y-6 max-lg:mt-4'>
@@ -86,22 +107,61 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 							</div>
 						</Button>
 					</div>
-					<div className='flex justify-between items-center lg:justify-end'>
-						<Button className='w-[200px] max-lg:h-9'>
-							<div className='flex items-center space-x-3'>
-								<Icons.PlusIcon className='fill-white size-3.5' />
-								<div>Create Project</div>
+
+					<div className='flex items-center float-right '>
+						<div className="">
+								<Dropdown
+								trigger={() => (
+									<Button className='w-[200px] max-lg:h-9 hover:bg-white hover:text-primary'>
+										<div className='flex items-center space-x-3'>
+											<Icons.PlusIcon className='fill-white hover:fill-primary' />
+											<div>Create</div>
+										</div>
+									</Button>
+								)}
+								className='top-14'>
+								<div className='w-[200px] bg-white rounded-md'>
+									{dropdownButtons.map((button, index) => (
+										<button
+											key={index}
+											onClick={button.onClick}
+											className='flex w-full dropdown-item hover:bg-[#FFE2D2] transition-all text-sm items-center justify-between p-3 border-b last:border-b-0 border-[#CBCFD3]'>
+											{button.label}
+										</button>
+									))}
+								</div>
+							</Dropdown>
+							{/* <button className='lg:hidden'>
+								<Icons.ProjectEmailIcon />
+							</button>
+							<button className='lg:hidden'>
+								<Icons.ProjectPrinterIcon />
+							</button>
+							<button className='lg:hidden'>
+								<Icons.ProjectDocumentIcon />
+							</button> */}
+						</div>
+
+						<div className="flex justify-between items-center lg:ml-[28px]">
+							<div className=" ">
+								<Button
+									theme='plain'
+									className='border text-black-500 max-lg:px-2.5 w-[56px] h-[42px] border-[#5A5A5A33] rounded'>
+									<div className='flex items-center lg:space-x-2.5'>
+										<Icons.FileX />
+									</div>
+								</Button>
 							</div>
-						</Button>
-						<button className='lg:hidden'>
-							<Icons.ProjectEmailIcon />
-						</button>
-						<button className='lg:hidden'>
-							<Icons.ProjectPrinterIcon />
-						</button>
-						<button className='lg:hidden'>
-							<Icons.ProjectDocumentIcon />
-						</button>
+							<div className="lg:ml-[40px]">
+								<Button
+									theme='plain'
+									className='border text-black-500 max-lg:px-2.5 w-[56px] h-[42px] border-[#5A5A5A33] rounded'>
+									<div className='flex items-center lg:space-x-2.5'>
+										<Icons.PdfFile />
+									</div>
+								</Button>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -136,6 +196,15 @@ const FinancesLayout = ({ children }: FinancesLayoutProps) => {
 				})}
 			</ul>
 			<div>{children}</div>
+
+			<IncomingPaymentModal
+				showModal={ShowIncomingPaymentModal}
+				setShowModal={setShowIncomingPaymentModal}
+			/>
+			<MakePaymentModal
+			showModal={ShowMakePaymentModal }
+			setShowModal={ setShowMakePaymentModal}
+		/>
 		</div>
 	);
 };

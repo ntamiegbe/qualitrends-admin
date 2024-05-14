@@ -188,6 +188,7 @@ const Invoice = () => {
               onClick={() => {}}
               className={cn("text-sm border-[#5A5A5A99] cursor-pointer", {
                 "border-b": index !== length - 1,
+                "border-t": index === 0,
               })}
             >
               <td className="p-4 text-black-500 whitespace-nowrap">{id}</td>

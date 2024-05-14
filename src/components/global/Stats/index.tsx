@@ -8,17 +8,9 @@ type StatsProps = {
 	}[];
 	showMobileTitle?: boolean;
 	warehouseStats?: boolean;
-	leaseStats?: boolean;
-	altStats?: boolean;
 };
 
-const Stats = ({
-	stats,
-	showMobileTitle = true,
-	warehouseStats = false,
-	leaseStats = false,
-	altStats = false,
-}: StatsProps) => {
+const Stats = ({ stats, showMobileTitle = true, warehouseStats = false }: StatsProps) => {
 	return (
 		<div>
 			{showMobileTitle && (
@@ -26,12 +18,9 @@ const Stats = ({
 			)}
 			<div
 				className={cn(
-					"grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8",
+					'grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8',
 					{
-						"lg:grid-cols-3": warehouseStats,
-					},
-					{
-						leaseStats: "lg:grid-cols-4",
+						"lg:grid-cols-3": warehouseStats
 					}
 				)}>
 				{stats.map((stat, index) => (
@@ -40,11 +29,13 @@ const Stats = ({
 						className='bg-white px-4 lg:px-5 py-3 lg:py-6 drop-shadow-md rounded-lg'>
 						{stat.icon}
 						<p className='lg:text-xl font-bold mt-1.5 lg:mt-3'>{stat.value}</p>
-						<p
-							className={cn("text-sm lg:text-lg mt-1 lg:mt-2", {
-								"text-primary lg:text-base":
-									altStats || warehouseStats || leaseStats,
-							})}>
+						<p className={cn(
+							'text-sm lg:text-lg mt-1 lg:mt-2',
+							{
+								"text-primary lg:text-base": warehouseStats
+							}
+						)}
+						>
 							{stat.title}
 						</p>
 					</div>

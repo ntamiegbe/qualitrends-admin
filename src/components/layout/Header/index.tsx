@@ -73,46 +73,42 @@ const Header = () => {
 						</form>
 					</FormProvider>
 
-					<div className='flex items-center space-x-4 lg:space-x-6'>
-						<Dropdown
-							trigger={() => (
-								<button className='hidden lg:flex justify-center items-center p-4 rounded border border-primary'>
-									<Icons.PlusIcon className='fill-primary size-3.5' />
+				<div className='flex items-center space-x-4 lg:space-x-6'>
+					<Dropdown
+						trigger={() => (
+							<button className='hidden lg:flex justify-center items-center p-4 rounded border border-primary'>
+								<Icons.PlusIcon className='fill-primary size-3.5' />
+							</button>
+						)}
+						className='-left-24 top-14'>
+						<div className='w-[240px] bg-white rounded-md'>
+							{dropdownButtons.map((button, index) => (
+								<button
+									key={index}
+									onClick={button.onClick}
+									className='flex w-full dropdown-item hover:bg-[#FFE2D2] transition-all text-sm items-center justify-between p-3 border-b last:border-b-0 border-[#CBCFD3]'>
+									{button.label}
 								</button>
-							)}
-							className='-left-24 top-14'>
-							<div className='w-[240px] bg-white rounded-md'>
-								{dropdownButtons.map((button, index) => (
-									<button
-										key={index}
-										onClick={button.onClick}
-										className='flex w-full dropdown-item hover:bg-[#FFE2D2] transition-all text-sm items-center justify-between p-3 border-b last:border-b-0 border-[#CBCFD3]'>
-										{button.label}
-									</button>
-								))}
-							</div>
-						</Dropdown>
-						<div className='hidden lg:block w-[1px] h-10 bg-[#CBCFD3]' />
-						<button className='flex max-lg:!ml-0 justify-center items-center '>
-							<Icons.NotificationsIcon />
-						</button>
-						<div className='hidden lg:block w-[1px] h-10 bg-[#CBCFD3]' />
-						<button className='flex items-center space-x-4'>
-							<div className='size-8 rounded-full border border-[#FFE2D2] bg-primary flex items-center justify-center text-xs text-white font-bold'>
-								DD
-							</div>
-							<div className='hidden lg:block text-black-900 text-left'>
-								<div className='font-medium'>Daniel Donald</div>
-								<div className='text-xs'>Super Admin</div>
-							</div>
-						</button>
-					</div>
+							))}
+						</div>
+					</Dropdown>
+					<div className='hidden lg:block w-[1px] h-10 bg-[#CBCFD3]' />
+					<button className='flex max-lg:!ml-0 justify-center items-center '>
+						<Icons.NotificationsIcon />
+					</button>
+					<div className='hidden lg:block w-[1px] h-10 bg-[#CBCFD3]' />
+					<button className='flex items-center space-x-4'>
+						<div className='size-8 rounded-full border border-[#FFE2D2] bg-primary flex items-center justify-center text-xs text-white font-bold'>
+							DD
+						</div>
+						<div className='hidden lg:block text-black-900 text-left'>
+							<div className='font-medium'>Daniel Donald</div>
+							<div className='text-xs'>Super Admin</div>
+						</div>
+					</button>
 				</div>
-			</header>
-			<CreateProjectModal
-				showModal={showCreateProjectModal}
-				setShowModal={setShowCreateProjectModal}
-			/>
+			</div>
+		</header>
 		</>
 	);
 };

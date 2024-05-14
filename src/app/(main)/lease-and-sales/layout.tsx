@@ -3,7 +3,7 @@
 import Button from "@/components/global/Button";
 import Input from "@/components/global/Input";
 import Stats from "@/components/global/Stats";
-import Tab from "@/components/global/Tab";
+import Tab from '@/components/global/Tab';
 import Icons from "@/components/icons";
 import { formatAmount } from "@/lib/utils";
 import Link from "next/link";
@@ -32,6 +32,10 @@ const Layout = ({ children }: LayoutProps) => {
     },
     {
       name: "Offer Letter",
+      path: "/lease-and-sales/offer",
+    },
+    {
+      name: "Asset Lease",
       path: "/lease-and-sales/offer-letter",
     },
     {
@@ -90,7 +94,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
           <div className="mt-6">
             <div className="col-span-2 space-y-6">
-              <Stats stats={stats} leaseStats showMobileTitle={false} />
+              <Stats stats={stats}  showMobileTitle={false} />
             </div>
           </div>
         </div>
@@ -140,6 +144,13 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </div>
+      <Tab
+        routes={routes}
+        initialRoute={{
+          name: pathname?.split("/")[2]?.replace("-", " "),
+          value: `/lease-and-sales/${pathname?.split("/")[2]}`,
+        }}
+      />
       <div className='my-10'>
         <Tab
           routes={routes}
